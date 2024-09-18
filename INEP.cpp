@@ -55,6 +55,9 @@ void consultes()
 
 int main()
 {
+	/*
+		Biel Lacasa Díaz
+	*/
 	cout << "1. Gestió usuari" << endl;
 	cout << "2. Gestió continguts" << endl;
 	cout << "3. Consultes" << endl;
