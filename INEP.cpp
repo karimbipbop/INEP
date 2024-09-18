@@ -53,7 +53,7 @@ void consultes()
 
 }
 
-//canvios
+//canvios otro canvio va
 int main()
 {
 	/*
