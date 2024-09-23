@@ -25,9 +25,6 @@ void gestioUsuari()
 	else if (i == 4) {
 
 	}
-	else if (i == 5) {
-		
-	}
 }
 
 void gestioContinguts()
@@ -50,7 +47,32 @@ void gestioContinguts()
 
 void consultes()
 {
+	cout << "1. Consulta per qualificació d'edat" << endl;
+	cout << "2. Últimes novetats" << endl;
+	cout << "3. Pròximes estrenes" << endl;
+	cout << "4. Tornar" << endl;
+	int i;
+	cin >> i;
+	if (i == 1) {
 
+	}
+	else if (i == 2) {
+
+	}
+	else if (i == 3) {
+		
+	}
+	else if (i == 4) {
+
+	}
+}
+
+void mostraMenuPrincipal()
+{
+	cout << "1. Gestió usuari" << endl;
+	cout << "2. Gestió continguts" << endl;
+	cout << "3. Consultes" << endl;
+	cout << "4. Sortir" << endl;
 }
 
 //canvios otro canvio va y otro venga
@@ -59,22 +81,21 @@ int main()
 	/*
 		Biel Lacasa Díaz
 	*/
-	cout << "1. Gestió usuari" << endl;
-	cout << "2. Gestió continguts" << endl;
-	cout << "3. Consultes" << endl;
-	cout << "4. Sortir" << endl;
+
+	mostraMenuPrincipal();
 	int inp;
 	cin >> inp;
-	if (inp == 1) {
-		gestioUsuari();
-	}
-	else if (inp == 2) {
-		gestioContinguts();
-	}
-	else if (inp == 3) {
-		consultes();
-	}
-	else if (inp == 4) {
-
+	while (inp != 4) {
+		if (inp == 1) {
+			gestioUsuari();
+		}
+		else if (inp == 2) {
+			gestioContinguts();
+		}
+		else if (inp == 3) {
+			consultes();
+		}
+		mostraMenuPrincipal();
+		cin >> inp;
 	}
 }
