@@ -58,6 +58,7 @@ int main()
 {
 	/*
 		Biel Lacasa Díaz
+		Adrià Querol Catalán
 	*/
 	cout << "1. Gestió usuari" << endl;
 	cout << "2. Gestió continguts" << endl;
