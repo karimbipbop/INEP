@@ -4,6 +4,40 @@
 #include <iostream>
 using namespace std;
 
+struct usuari {
+	string nomComplet;
+	string sobrenom;
+};
+
+void procesarRegistreUsuari()
+{
+	usuari act;
+	cout << "Ingresa el teu nom complet i sobrenom" << endl;
+	cin >> act.nomComplet >> act.sobrenom;
+	if (act.nomComplet == "" or act.sobrenom == "") cout << "Error al registrar usuari";
+	else cout << "El registre de l'usuari " << act.nomComplet << " (" << act.sobrenom << ") s'ha processat correctament" << endl;
+}
+
+void procesarConsultaUsuari()
+{
+	usuari act;
+	cout << "El teu usuari es " << act.nomComplet << " (" << act.sobrenom << ")" << endl;
+}
+
+void procesarModificaUsuari()
+{
+	usuari act;
+	cout << "Escriu un nou sobrenom:" << endl;
+	cin >> act.sobrenom;
+	if (act.sobrenom != "") cout << "La modificació s'ha processat correctament";
+	else cout << "Sobrenom no vàlid" << endl;
+}
+
+void procesarEsborraUsuari()
+{
+	cout << "Usuari esborrat" << endl;
+}
+
 void gestioUsuari() 
 {
 	cout << "1. Registre usuari" << endl;
@@ -14,17 +48,27 @@ void gestioUsuari()
 	int i;
 	cin >> i;
 	if (i == 1) {
-		
+		procesarRegistreUsuari();
 	}
 	else if (i == 2) {
-
+		procesarConsultaUsuari();
 	}
 	else if (i == 3) {
-
+		procesarModificaUsuari();
 	}
 	else if (i == 4) {
-
+		procesarEsborraUsuari();
 	}
+}
+
+void procesarGestioPelicules() 
+{
+	cout << "S'ha processat l'opció Gestió  pel·lícules" << endl;
+}
+
+void procesarGestioSeries()
+{
+	cout << "S'ha processat l'opció Gestió series" << endl;
 }
 
 void gestioContinguts()
@@ -35,14 +79,26 @@ void gestioContinguts()
 	int i;
 	cin >> i;
 	if (i == 1) {
-
+		procesarGestioPelicules();
 	}
 	else if (i == 2) {
-
+		procesarGestioSeries();
 	}
-	else if (i == 3) {
+}
 
-	}
+void procesarConsultaQualificacioEdat()
+{
+	cout << "S'ha processat l'opció Consulta per qualificació d'edat" << endl;
+}
+
+void procesarUltimesNovetats()
+{
+	cout << "S'ha processat l'opció Ultimes novetats" << endl;
+}
+
+void procesarProximesEstrenes()
+{
+	cout << "S'ha processat l'opció Pròximes estrenes" << endl;
 }
 
 void consultes()
@@ -54,16 +110,13 @@ void consultes()
 	int i;
 	cin >> i;
 	if (i == 1) {
-
+		procesarConsultaQualificacioEdat();
 	}
 	else if (i == 2) {
-
+		procesarUltimesNovetats();
 	}
 	else if (i == 3) {
-		
-	}
-	else if (i == 4) {
-
+		procesarProximesEstrenes();
 	}
 }
 
