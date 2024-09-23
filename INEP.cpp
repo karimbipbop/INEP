@@ -75,11 +75,12 @@ void mostraMenuPrincipal()
 	cout << "4. Sortir" << endl;
 }
 
-//canvios otro canvio va y otro venga
+
 int main()
 {
 	/*
 		Biel Lacasa Díaz
+
 		Adrià Querol Catalán
 	*/
 
