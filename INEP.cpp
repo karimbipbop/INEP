@@ -14,7 +14,7 @@ void procesarRegistreUsuari()
 	usuari act;
 	cout << "Ingresa el teu nom complet i sobrenom" << endl;
 	cin >> act.nomComplet >> act.sobrenom;
-	if (act.nomComplet == "" or act.sobrenom == "") cout << "Error al registrar usuari";
+	if (act.nomComplet == "" or act.sobrenom == "") cout << "Error al registrar usuari" << endl;
 	else cout << "El registre de l'usuari " << act.nomComplet << " (" << act.sobrenom << ") s'ha processat correctament" << endl;
 }
 
