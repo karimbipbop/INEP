@@ -55,7 +55,7 @@ void procesarConsultaUsuari()
 		string sobrenom;
 		cout << "Entra el teu sobrenom" << endl;
 		cin >> sobrenom;
-		string sql = "SELECT * FROM Usuari WHERE sobrenom='" + sobrenom + "";
+		string sql = "SELECT * FROM Usuari WHERE sobrenom='" + sobrenom + "'";
 		sql::ResultSet* res = stmt->executeQuery(sql);
 		// Bucle per recórrer les dades retornades mostrant les dades de cada fila
 		while (res->next()) {
