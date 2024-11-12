@@ -1,5 +1,3 @@
-// INEP.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
@@ -158,7 +156,12 @@ void gestioUsuari()
 	cout << "5. Tornar" << endl;
 	int i;
 	cin >> i;
-	if (i == 1) {
+	if (cin.fail()) {
+		//L'entrada no és un número
+		cin.clear(); //Esborra l'estat d'error.
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
+	}
+	else if (i == 1) {
 		procesarRegistreUsuari();
 	}
 	else if (i == 2) {
@@ -189,7 +192,12 @@ void gestioContinguts()
 	cout << "3. Tornar" << endl;
 	int i;
 	cin >> i;
-	if (i == 1) {
+	if (cin.fail()) {
+		//L'entrada no és un número
+		cin.clear(); //Esborra l'estat d'error.
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
+	}
+	else if (i == 1) {
 		procesarGestioPelicules();
 	}
 	else if (i == 2) {
@@ -220,7 +228,12 @@ void consultes()
 	cout << "4. Tornar" << endl;
 	int i;
 	cin >> i;
-	if (i == 1) {
+	if (cin.fail()) {
+		//L'entrada no és un número
+		cin.clear(); //Esborra l'estat d'error.
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
+	}
+	else if (i == 1) {
 		procesarConsultaQualificacioEdat();
 	}
 	else if (i == 2) {
