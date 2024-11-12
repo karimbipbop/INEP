@@ -1,6 +1,5 @@
 // INEP.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 
-#include <iostream>
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
@@ -31,7 +30,7 @@ void procesarRegistreUsuari()
 		cout << "Insereix el teu sobrenom, nom i correu elecotrónic respectivament" << endl;
 		cin >> n.sobrenom >> n.nom >> n.correu;
 		string sql = "INSERT INTO Usuari (sobrenom, nom, correu_electronic) VALUES ('" + n.sobrenom + "', '" + n.nom + "', '" + n.correu + "')";
-		stmt->executeUpdate(sql);
+		stmt->execute(sql);
 		cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
 		con->close();
 	}
@@ -49,8 +48,7 @@ void procesarConsultaUsuari()
 	sql::Statement* stmt = NULL;
 	try {
 		driver = sql::mysql::get_mysql_driver_instance();
-		con = driver->connect("ubiwan.epsevg.upc.edu:3306",
-			"inep10", "iyohthe7wiiFie");
+		con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep10", "iyohthe7wiiFie");
 		con->setSchema("inep10");
 		stmt = con->createStatement();
 		// Sentència SQL per obtenir totes les files de la taula usuari
@@ -77,16 +75,56 @@ void procesarConsultaUsuari()
 
 void procesarModificaUsuari()
 {
-	usuari act;
-	cout << "Escriu un nou sobrenom:" << endl;
-	cin >> act.sobrenom;
-	if (act.sobrenom != "") cout << "La modificació s'ha processat correctament";
-	else cout << "Sobrenom no vàlid" << endl;
+	sql::mysql::MySQL_Driver* driver = NULL;
+	sql::Connection* con = NULL;
+	sql::Statement* stmt = NULL;
+	try {
+		driver = sql::mysql::get_mysql_driver_instance();
+		con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep10", "iyohthe7wiiFie");
+		con->setSchema("inep10");
+		stmt = con->createStatement();
+		// Sentència SQL per obtenir totes les files de la taula usuari
+		usuari n;
+		cout << "Insereix el teu sobrenom" << endl;
+		cin >> n.sobrenom;
+		cout << "Insereix el teu nou nom i el teu nou correu electronic" << endl;
+		cin >> n.nom >> n.correu;
+		string sq Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correu + "' WHERE sobrenom='" + n.sobrenom + "'";
+		stmt->executeUpdate(sql);
+		cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
+		con->close();
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error: " << e.what() << std::endl;
+		// si hi ha un error es tanca la connexió (si esta oberta)
+		if (con != NULL) con->close();
+	}
 }
 
 void procesarEsborraUsuari()
 {
-	cout << "Usuari esborrat" << endl;
+	sql::mysql::MySQL_Driver* driver = NULL;
+	sql::Connection* con = NULL;
+	sql::Statement* stmt = NULL;
+	try {
+		driver = sql::mysql::get_mysql_driver_instance();
+		con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep10", "iyohthe7wiiFie");
+		con->setSchema("inep10");
+		stmt = con->createStatement();
+		// Sentència SQL per obtenir totes les files de la taula usuari
+		usuari n;
+		cout << "Insereix el teu sobrenom" << endl;
+		cin >> n.sobrenom;
+		string sql = "DELETE FROM Usuari WHERE sobrenom='" + n.sobrenom + "'";
+		stmt->execute(sql);
+		cout << "L'Usuari " << n.sobrenom << " s'ha esborrat correctament!" << endl;
+		con->close();
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error: " << e.what() << std::endl;
+		// si hi ha un error es tanca la connexió (si esta oberta)
+		if (con != NULL) con->close();
+	}
 }
 
 void gestioUsuari()
