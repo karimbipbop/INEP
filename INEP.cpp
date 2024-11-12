@@ -89,7 +89,7 @@ void procesarModificaUsuari()
 		cin >> n.sobrenom;
 		cout << "Insereix el teu nou nom i el teu nou correu electronic" << endl;
 		cin >> n.nom >> n.correu;
-		string sq Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correu + "' WHERE sobrenom='" + n.sobrenom + "'";
+		string sql = "Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correu + "' WHERE sobrenom='" + n.sobrenom + "'";
 		stmt->executeUpdate(sql);
 		cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
 		con->close();
