@@ -15,24 +15,49 @@ struct usuari {
 	string correu;
 };
 
-void procesarRegistreUsuari()
-{
-	sql::mysql::MySQL_Driver* driver = NULL;
-	sql::Connection* con = NULL;
-	sql::Statement* stmt = NULL;
-	try {
+class ConnexioBD {
+private:
+	sql::mysql::MySQL_Driver* driver;
+	sql::Connection* con;
+	sql::Statement* stmt;
+public:
+	//creadora
+	ConnexioBD() {
 		driver = sql::mysql::get_mysql_driver_instance();
 		con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep10", "iyohthe7wiiFie");
 		con->setSchema("inep10");
 		stmt = con->createStatement();
+	}
+
+	//destructora
+	~ConnexioBD() {
+		con->close();
+	}
+
+	//consulta
+	sql::ResultSet* consulta() {
+		sql::ResultSet* res;
+
+		return res;
+	}
+
+	//execucio
+	void execucio(string sql) {
+		stmt->execute(sql);
+	}
+};
+
+void procesarRegistreUsuari()
+{
+	try {
+		ConnexioBD c;
 		// Sentència SQL per obtenir totes les files de la taula usuari
 		usuari n;
 		cout << "Insereix el teu sobrenom, nom i correu elecotrónic respectivament" << endl;
 		cin >> n.sobrenom >> n.nom >> n.correu;
 		string sql = "INSERT INTO Usuari (sobrenom, nom, correu_electronic) VALUES ('" + n.sobrenom + "', '" + n.nom + "', '" + n.correu + "')";
-		stmt->execute(sql);
+		c.execucio(sql);
 		cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
-		con->close();
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error: " << e.what() << std::endl;
@@ -43,19 +68,13 @@ void procesarRegistreUsuari()
 
 void procesarConsultaUsuari()
 {
-	sql::mysql::MySQL_Driver* driver = NULL;
-	sql::Connection* con = NULL;
-	sql::Statement* stmt = NULL;
 	try {
-		driver = sql::mysql::get_mysql_driver_instance();
-		con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep10", "iyohthe7wiiFie");
-		con->setSchema("inep10");
-		stmt = con->createStatement();
+		ConnexioBD c;
 		// Sentència SQL per obtenir totes les files de la taula usuari
 		string sobrenom;
 		cout << "Entra el teu sobrenom" << endl;
 		cin >> sobrenom;
-		string sql = "SELECT * FROM Usuari WHERE sobrenom='" + sobrenom + "'";
+		string sql = "SELECT * FROM Usuari WHERE sobrenom='" + sobrenom + "";
 		sql::ResultSet* res = stmt->executeQuery(sql);
 		// Bucle per recórrer les dades retornades mostrant les dades de cada fila
 		while (res->next()) {
@@ -75,22 +94,16 @@ void procesarConsultaUsuari()
 
 void procesarModificaUsuari()
 {
-	sql::mysql::MySQL_Driver* driver = NULL;
-	sql::Connection* con = NULL;
-	sql::Statement* stmt = NULL;
 	try {
-		driver = sql::mysql::get_mysql_driver_instance();
-		con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep10", "iyohthe7wiiFie");
-		con->setSchema("inep10");
-		stmt = con->createStatement();
+		ConnexioBD c;
 		// Sentència SQL per obtenir totes les files de la taula usuari
 		usuari n;
 		cout << "Insereix el teu sobrenom" << endl;
 		cin >> n.sobrenom;
 		cout << "Insereix el teu nou nom i el teu nou correu electronic" << endl;
 		cin >> n.nom >> n.correu;
-		string sql = "Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correu + "' WHERE sobrenom='" + n.sobrenom + "'";
-		stmt->executeUpdate(sql);
+		string sql = "Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correu + "' WHERE sobrenom = '" + n.sobrenom + "'";
+		c.execucio(sql);
 		cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
 		con->close();
 	}
@@ -103,20 +116,14 @@ void procesarModificaUsuari()
 
 void procesarEsborraUsuari()
 {
-	sql::mysql::MySQL_Driver* driver = NULL;
-	sql::Connection* con = NULL;
-	sql::Statement* stmt = NULL;
 	try {
-		driver = sql::mysql::get_mysql_driver_instance();
-		con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep10", "iyohthe7wiiFie");
-		con->setSchema("inep10");
-		stmt = con->createStatement();
+		ConnexioBD c;
 		// Sentència SQL per obtenir totes les files de la taula usuari
 		usuari n;
 		cout << "Insereix el teu sobrenom" << endl;
 		cin >> n.sobrenom;
 		string sql = "DELETE FROM Usuari WHERE sobrenom='" + n.sobrenom + "'";
-		stmt->execute(sql);
+		c.execucio(sql);
 		cout << "L'Usuari " << n.sobrenom << " s'ha esborrat correctament!" << endl;
 		con->close();
 	}
