@@ -35,9 +35,9 @@ public:
 	}
 
 	//consulta
-	sql::ResultSet* consulta() {
+	sql::ResultSet* consulta(string sql) {
 		sql::ResultSet* res;
-
+		res = stmt->executeQuery(sql);
 		return res;
 	}
 
@@ -53,16 +53,23 @@ void procesarRegistreUsuari()
 		ConnexioBD c;
 		// Sentència SQL per obtenir totes les files de la taula usuari
 		usuari n;
-		cout << "Insereix el teu sobrenom, nom i correu elecotrónic respectivament" << endl;
-		cin >> n.sobrenom >> n.nom >> n.correu;
-		string sql = "INSERT INTO Usuari (sobrenom, nom, correu_electronic) VALUES ('" + n.sobrenom + "', '" + n.nom + "', '" + n.correu + "')";
-		c.execucio(sql);
-		cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
+		cout << "Insereix el teu sobrenom, nom i correu elecotronic respectivament" << endl;
+		cin >> n.sobrenom;
+		string sql = "SELECT COUNT(*) AS count FROM Usuari WHERE sobrenom = '" + n.sobrenom + "'";
+		sql::ResultSet* res = c.consulta(sql);
+		res->next();
+		if (res->getInt("count") != 0) {
+			cout << "ERROR: Ja existeix l'usuari '" << n.sobrenom << "' a la base de dades.\n";
+		}
+		else {
+			cin >> n.nom >> n.correu;
+			string sql = "INSERT INTO Usuari (sobrenom, nom, correu_electronic) VALUES ('" + n.sobrenom + "', '" + n.nom + "', '" + n.correu + "')";
+			c.execucio(sql);
+			cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
+		}
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error: " << e.what() << std::endl;
-		// si hi ha un error es tanca la connexió (si esta oberta)
-		if (con != NULL) con->close();
 	}
 }
 
@@ -74,21 +81,19 @@ void procesarConsultaUsuari()
 		string sobrenom;
 		cout << "Entra el teu sobrenom" << endl;
 		cin >> sobrenom;
-		string sql = "SELECT * FROM Usuari WHERE sobrenom='" + sobrenom + "";
-		sql::ResultSet* res = stmt->executeQuery(sql);
-		// Bucle per recórrer les dades retornades mostrant les dades de cada fila
-		while (res->next()) {
-			// a la funció getString fem servir el nom de la columna de la taula
+		string sql = "SELECT * FROM Usuari WHERE sobrenom='" + sobrenom + "'";
+		sql::ResultSet* res = c.consulta(sql);
+		if (res->next()) {
 			cout << "Sobrenom: " << res->getString("sobrenom") << endl;
 			cout << "Nom: " << res->getString("nom") << endl;
 			cout << "Correu: " << res->getString("correu_electronic") << endl;
 		}
-		con->close();
+		else {
+			cout << "No s'ha trobat l'usuari '" << sobrenom << "' a la base de dades.\n";
+		}
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error: " << e.what() << std::endl;
-		// si hi ha un error es tanca la connexió (si esta oberta)
-		if (con != NULL) con->close();
 	}
 }
 
@@ -100,17 +105,22 @@ void procesarModificaUsuari()
 		usuari n;
 		cout << "Insereix el teu sobrenom" << endl;
 		cin >> n.sobrenom;
-		cout << "Insereix el teu nou nom i el teu nou correu electronic" << endl;
-		cin >> n.nom >> n.correu;
-		string sql = "Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correu + "' WHERE sobrenom = '" + n.sobrenom + "'";
-		c.execucio(sql);
-		cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
-		con->close();
+		string sql = "SELECT COUNT(*) AS count FROM Usuari WHERE sobrenom = '" + n.sobrenom + "'";
+		sql::ResultSet* res = c.consulta(sql);
+		res->next();
+		if (res->getInt("count") == 0) {
+			cout << "ERROR: No existeix l'usuari '" << n.sobrenom << "' a la base de dades.\n";
+		}
+		else {
+			cout << "Insereix el teu nou nom i el teu nou correu electronic" << endl;
+			cin >> n.nom >> n.correu;
+			sql = "UPDATE Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correu + "' WHERE sobrenom = '" + n.sobrenom + "'";
+			c.execucio(sql);
+			cout << "L'Usuari " << n.sobrenom << " s'ha modificat correctament!" << endl;
+		}
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error: " << e.what() << std::endl;
-		// si hi ha un error es tanca la connexió (si esta oberta)
-		if (con != NULL) con->close();
 	}
 }
 
@@ -122,15 +132,20 @@ void procesarEsborraUsuari()
 		usuari n;
 		cout << "Insereix el teu sobrenom" << endl;
 		cin >> n.sobrenom;
-		string sql = "DELETE FROM Usuari WHERE sobrenom='" + n.sobrenom + "'";
-		c.execucio(sql);
-		cout << "L'Usuari " << n.sobrenom << " s'ha esborrat correctament!" << endl;
-		con->close();
+		string sql = "SELECT COUNT(*) AS count FROM Usuari WHERE sobrenom = '" + n.sobrenom + "'";
+		sql::ResultSet* res = c.consulta(sql);
+		res->next();
+		if (res->getInt("count") == 0) {
+			cout << "ERROR: No existeix l'usuari '" << n.sobrenom << "' a la base de dades.\n";
+		}
+		else {
+			string sql = "DELETE FROM Usuari WHERE sobrenom='" + n.sobrenom + "'";
+			c.execucio(sql);
+			cout << "L'Usuari " << n.sobrenom << " s'ha esborrat correctament!" << endl;
+		}
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error: " << e.what() << std::endl;
-		// si hi ha un error es tanca la connexió (si esta oberta)
-		if (con != NULL) con->close();
 	}
 }
 
@@ -159,18 +174,18 @@ void gestioUsuari()
 
 void procesarGestioPelicules()
 {
-	cout << "S'ha processat l'opció Gestió  pel·lícules" << endl;
+	cout << "S'ha processat l'opcio Gestio pel.licules" << endl;
 }
 
 void procesarGestioSeries()
 {
-	cout << "S'ha processat l'opció Gestió series" << endl;
+	cout << "S'ha processat l'opcio Gestio series" << endl;
 }
 
 void gestioContinguts()
 {
-	cout << "1. Gestió pel·lícules" << endl;
-	cout << "2. Gestió sèries" << endl;
+	cout << "1. Gestio pel.licules" << endl;
+	cout << "2. Gestio series" << endl;
 	cout << "3. Tornar" << endl;
 	int i;
 	cin >> i;
@@ -184,24 +199,24 @@ void gestioContinguts()
 
 void procesarConsultaQualificacioEdat()
 {
-	cout << "S'ha processat l'opció Consulta per qualificació d'edat" << endl;
+	cout << "S'ha processat l'opcio Consulta per qualificacio d'edat" << endl;
 }
 
 void procesarUltimesNovetats()
 {
-	cout << "S'ha processat l'opció Ultimes novetats" << endl;
+	cout << "S'ha processat l'opcio Ultimes novetats" << endl;
 }
 
 void procesarProximesEstrenes()
 {
-	cout << "S'ha processat l'opció Pròximes estrenes" << endl;
+	cout << "S'ha processat l'opcio Proximes estrenes" << endl;
 }
 
 void consultes()
 {
-	cout << "1. Consulta per qualificació d'edat" << endl;
-	cout << "2. Últimes novetats" << endl;
-	cout << "3. Pròximes estrenes" << endl;
+	cout << "1. Consulta per qualificacio d'edat" << endl;
+	cout << "2. Ultimes novetats" << endl;
+	cout << "3. Proximes estrenes" << endl;
 	cout << "4. Tornar" << endl;
 	int i;
 	cin >> i;
@@ -218,8 +233,8 @@ void consultes()
 
 void mostraMenuPrincipal()
 {
-	cout << "1. Gestió usuari" << endl;
-	cout << "2. Gestió continguts" << endl;
+	cout << "1. Gestio usuari" << endl;
+	cout << "2. Gestio continguts" << endl;
 	cout << "3. Consultes" << endl;
 	cout << "4. Sortir" << endl;
 }
@@ -237,7 +252,12 @@ int main()
 	int inp;
 	cin >> inp;
 	while (inp != 4) {
-		if (inp == 1) {
+		if (cin.fail()) {
+			//L'entrada no és un número
+			cin.clear(); //Esborra l'estat d'error.
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
+		}
+		else if (inp == 1) {
 			gestioUsuari();
 		}
 		else if (inp == 2) {
