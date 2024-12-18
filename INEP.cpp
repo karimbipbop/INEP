@@ -270,6 +270,7 @@ int main()
 			cin.clear(); //Esborra l'estat d'error.
 			cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
 		}
+		
 		else if (inp == 1) {
 			gestioUsuari();
 		}
