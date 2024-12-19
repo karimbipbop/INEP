@@ -20,7 +20,10 @@ private:
 
 public:
 
-	static ConnexioBD& getInstance();
+	static ConnexioBD& getInstance() {
+		static ConnexioBD c;
+		return c;
+	}
 
 	//destructora
 	~ConnexioBD();

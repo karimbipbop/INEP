@@ -7,11 +7,6 @@ ConnexioBD::ConnexioBD() {
 	stmt = con->createStatement();
 }
 
-ConnexioBD& ConnexioBD::getInstance() {
-	static ConnexioBD c;
-	return c;
-}
-
 //destructora
 ConnexioBD::~ConnexioBD() {
 	con->close();
