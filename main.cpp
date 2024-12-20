@@ -1,5 +1,5 @@
 #include "CapaDePresentacio.h"
-//me dwadohñiwad
+//19.52
 void gestioUsuari()
 {
 	cout << "----------------------" << endl;
