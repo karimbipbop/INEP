@@ -7,31 +7,68 @@ void gestioUsuari()
 	cout << "----------------------" << endl;
 	cout << "    Gestio Usuari" << endl;
 	cout << "----------------------" << endl;
-	cout << "1. Registre usuari" << endl;
-	cout << "2. Consulta usuari" << endl;
+	cout << "1. Consulta usuari" << endl;
 	cout << "3. Modifica usuari" << endl;
+	cout << "3. Modifica constrasenya" << endl;
 	cout << "4. Esborra usuari" << endl;
 	cout << "5. Tornar" << endl;
 	int i;
 	cin >> i;
 	CapaDePresentacio& p = CapaDePresentacio::getInstance();
 	if (cin.fail()) {
-		//L'entrada no és un número
+		//L'entrada no Ã©s un nÃºmero
 		cin.clear(); //Esborra l'estat d'error.
-		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'Ãºltim salt de lÃ­nia.
 	}
 	else if (i == 1) {
-		p.processarRegistreUsuari();
-	}
-	else if (i == 2) {
 		p.processarConsultaUsuari();
 	}
-	else if (i == 3) {
+	else if (i == 2) {
 		p.processarModificaUsuari();
+	}
+	else if (i == 3) {
+		p.processarModificaContr();
 	}
 	else if (i == 4) {
 		p.processarEsborraUsuari();
 	}
+}
+
+void visualitzar() {
+	cout << "----------------------" << endl;
+	cout << "    Visualitzar" << endl;
+	cout << "----------------------" << endl;
+	cout << "1. Visualitzar continguts" << endl;
+	cout << "2. Visualitzar llistes" << endl;
+	cout << "3. Tornar" << endl;
+	int i;
+	cin >> i;
+	CapaDePresentacio& p = CapaDePresentacio::getInstance();
+	if (cin.fail()) {
+		//L'entrada no Ã©s un nÃºmero
+		cin.clear(); //Esborra l'estat d'error.
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'Ãºltim salt de lÃ­nia.
+	}
+	else if (i == 1) {
+		gestioContinguts();
+	}
+	else if (i == 2) {
+		p.processarVisualitzarLlistes();
+	}
+
+
+}
+
+void tancarSessio() {
+	
+}
+
+void iniciarSessio() {
+
+}
+
+void registrarUsuari() {
+
 }
 
 void gestioContinguts()
@@ -46,9 +83,9 @@ void gestioContinguts()
 	cin >> i;
 	CapaDePresentacio& p = CapaDePresentacio::getInstance();
 	if (cin.fail()) {
-		//L'entrada no és un número
+		//L'entrada no Ã©s un nÃºmero
 		cin.clear(); //Esborra l'estat d'error.
-		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'Ãºltim salt de lÃ­nia.
 	}
 	else if (i == 1) {
 		p.processarGestioPelicules();
@@ -68,9 +105,9 @@ void consultes()
 	cin >> i;
 	CapaDePresentacio& p = CapaDePresentacio::getInstance();
 	if (cin.fail()) {
-		//L'entrada no és un número
+		//L'entrada no Ã©s un nÃºmero
 		cin.clear(); //Esborra l'estat d'error.
-		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'Ãºltim salt de lÃ­nia.
 	}
 	else if (i == 1) {
 		p.processarConsultaQualificacioEdat();
@@ -83,7 +120,7 @@ void consultes()
 	}
 }
 
-// Menu Sessió iniciada
+// Menu SessiÃ³ iniciada
 void mostraMenuPrincipalS()
 {
 	cout << "*********************" << endl;
@@ -97,7 +134,7 @@ void mostraMenuPrincipalS()
 	cout << "Escriu opcio: ";
 }
 
-// Menu Sessió no iniciada
+// Menu SessiÃ³ no iniciada
 void mostraMenuPrincipalN()
 {
 	cout << "*********************" << endl;
@@ -118,23 +155,24 @@ int main()
 	cin >> inp;
 	while (run) {
 		if (log) {
-		//sessió iniciada
+		//sessiÃ³ iniciada
 			if (cin.fail()) {
-				//L'entrada no és un número
+				//L'entrada no Ã©s un nÃºmero
 				cin.clear(); //Esborra l'estat d'error.
-				cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
+				cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'Ãºltim salt de lÃ­nia.
 			}
 			else if (inp == 1) {
 				gestioUsuari();
 			}
 			else if (inp == 2) {
-				gestioContinguts();
+				visualitzar();
 			}
 			else if (inp == 3) {
 				consultes();
 			}
 			else if (inp == 4) {
-				
+				tancarSessio();
+				log = false;
 			}
 			else if (inp == 5) {
 				run = false;
@@ -142,17 +180,18 @@ int main()
 			mostraMenuPrincipalN();
 		}
 		else {
-		//sessió no iniciada
+		//sessiÃ³ no iniciada
 			if (cin.fail()) {
-				//L'entrada no és un número
+				//L'entrada no Ã©s un nÃºmero
 				cin.clear(); //Esborra l'estat d'error.
-				cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
+				cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'Ãºltim salt de lÃ­nia.
 			}
 			else if (inp == 1) {
-				gestioUsuari();
+				iniciarSessio();
+				log = true;
 			}
 			else if (inp == 2) {
-				gestioContinguts();
+				registrarUsuari();
 			}
 			else if (inp == 3) {
 				consultes();
