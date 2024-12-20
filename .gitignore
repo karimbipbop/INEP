@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Ignorar archivos del proyecto
+INEP.vcxproj
+INEP.vcxproj.*
+private.txt
+
 # User-specific files
 *.rsuser
 *.suo
