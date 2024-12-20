@@ -1,5 +1,5 @@
 #include "CapaDePresentacio.h"
-//hola vas o no
+//me dwadohñiwad
 void gestioUsuari()
 {
 	cout << "----------------------" << endl;
