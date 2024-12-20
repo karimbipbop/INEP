@@ -1,6 +1,6 @@
 #include "CapaDePresentacio.h"
 
-
+// ya o que?
 
 void gestioUsuari()
 {
