@@ -1,7 +1,5 @@
 #include "CapaDePresentacio.h"
 
-// ya o que?
-
 void gestioUsuari()
 {
 	cout << "----------------------" << endl;
@@ -27,7 +25,7 @@ void gestioUsuari()
 		p.processarModificaUsuari();
 	}
 	else if (i == 3) {
-		p.processarModificaContr();
+		//p.processarModificaContr();
 	}
 	else if (i == 4) {
 		p.processarEsborraUsuari();
@@ -50,10 +48,10 @@ void visualitzar() {
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
 	}
 	else if (i == 1) {
-		gestioContinguts();
+		//p.gestioContinguts();
 	}
 	else if (i == 2) {
-		p.processarVisualitzarLlistes();
+		//p.processarVisualitzarLlistes();
 	}
 
 
