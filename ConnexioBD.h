@@ -13,7 +13,7 @@ private:
 	sql::mysql::MySQL_Driver* driver;
 	sql::Connection* con;
 	sql::Statement* stmt;
-	#include "private.txt"
+	#include "config.txt"
 
 	//creadora
 	ConnexioBD();
