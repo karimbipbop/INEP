@@ -9,8 +9,8 @@ private:
     string nom, sobrenom, contrasenya, correuElectronic, dataNaixement, subscripcio;
 
 public:
-    PassarelaUsuari(sql::ResultSet* result);
     PassarelaUsuari();
+    PassarelaUsuari(sql::ResultSet* result);
     PassarelaUsuari(string nomU, string sobrenomU, string contrasenyaU, string correuElectronicU, string dataNaixementU, string subscripcioU);
     void insereix();
     void modifica();
