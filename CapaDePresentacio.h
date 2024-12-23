@@ -1,5 +1,4 @@
-#include "ConnexioBD.h"
-#include "Usuari.h"
+#include "PassarelaUsuari.h"
 
 class CapaDePresentacio {
 private:
