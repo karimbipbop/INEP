@@ -99,7 +99,7 @@ void PassarelaUsuari::modifica() {
 void PassarelaUsuari::esborra() {
     try {
         ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom + "' ";
+        std::string query = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom + "'";
         c.execucio(query);
     }
     catch (sql::SQLException& e) {
