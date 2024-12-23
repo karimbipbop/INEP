@@ -17,10 +17,10 @@ PassarelaVisualitzaPel::PassarelaVisualitzaPel(sql::ResultSet* result) {
 }
 
 PassarelaVisualitzaPel::PassarelaVisualitzaPel(string sobrenomP, string titolPeliculaP, string dataP, int numVisualitzacionsP) {
-	sobrenom = sobrenom;
-	titolPelicula = titolPelicula;
-	data = data;
-	numVisualitzacions = numVisualitzacions;
+	sobrenom = sobrenomP;
+	titolPelicula = titolPeliculaP;
+	data = dataP;
+	numVisualitzacions = numVisualitzacionsP;
 }
 
 void PassarelaVisualitzaPel::insereix() {
@@ -30,7 +30,7 @@ void PassarelaVisualitzaPel::insereix() {
 			sobrenom + "', '" +
 			titolPelicula + "', '" +
 			data + "', '" +
-			numVisualitzacions + "')";
+			std::to_string(numVisualitzacions) + "')";
 		c.execucio(query);
 	}
 	catch (sql::SQLException& e) {
@@ -42,7 +42,7 @@ void PassarelaVisualitzaPel::modifica() {
 	try {
 		ConnexioBD& c = ConnexioBD::getInstance();
 		std::string query = "UPDATE visualitzacio_pelicula SET "
-			"num_visualitzacions = '" + numVisualitzacions + "' "
+			"num_visualitzacions = '" + std::to_string(numVisualitzacions) + "' "
 			"WHERE sobrenom = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "' AND data = '" + data + "'";
 		c.execucio(query);
 	}
@@ -60,6 +60,7 @@ void PassarelaVisualitzaPel::esborra() {
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error: " << e.what() << std::endl;
 	}
+}
 
 
 string PassarelaVisualitzaPel::obteSobrenom()

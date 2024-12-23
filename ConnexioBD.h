@@ -1,3 +1,4 @@
+#pragma once //Evitar inclusions multiples
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>

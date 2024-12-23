@@ -1,5 +1,5 @@
 #include "ConnexioBD.h"
-#include "Usuari.h"
+#include "DTOUsuari.h"
 
 const int SobrenomExisteix = 3;
 const int CorreuExisteix = 4;

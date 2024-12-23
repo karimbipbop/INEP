@@ -1,7 +1,9 @@
+#include "ConnexioBD.h"
+
 class PassarelaVisualitzaPel {
 private:
     string sobrenom, titolPelicula, data;
-	int numVisualitzacions;
+    int numVisualitzacions;
 
 public:
     PassarelaVisualitzaPel();
@@ -14,6 +16,5 @@ public:
     string obteSobrenom();
     string obteTitolPelicula();
     string obteData();
-	int obteNumVisualitzacions();
+    int obteNumVisualitzacions();
 };
-#pragma once
