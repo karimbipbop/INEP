@@ -1,9 +1,3 @@
-#include "ConnexioBD.h"
-#include "Usuari.h"
-
-const int SobrenomExisteix = 3;
-const int CorreuExisteix = 4;
-
 class PassarelaVisualitzaPel {
 private:
     string sobrenom, titolPelicula, data;

@@ -1,4 +1,5 @@
 #include "PassarelaUsuari.h"
+#include "PassarelaVisualitzaPel.h"
 
 class CapaDePresentacio {
 private:
