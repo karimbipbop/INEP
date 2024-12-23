@@ -1,11 +1,13 @@
 #include "ConnexioBD.h"
-
-using namespace std;
+#include "Usuari.h"
 
 const int SobrenomExisteix = 3;
 const int CorreuExisteix = 4;
 
 class PassarelaUsuari {
+private:
+    string nom, sobrenom, contrasenya, correuElectronic, dataNaixement, subscripcio;
+
 public:
     PassarelaUsuari(sql::ResultSet* result);
     PassarelaUsuari();
@@ -23,7 +25,4 @@ public:
     void posaNom(string nomU);
     void posaCorreuElectronic(string correuU);
     void posaDataNaixement(string neixU);
-
-private:
-    string nom, sobrenom, contrasenya, correuElectronic, dataNaixement, subscripcio;
 };
