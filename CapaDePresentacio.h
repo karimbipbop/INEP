@@ -7,6 +7,9 @@
 #include "PassarelaTemporada.h"
 #include "PassarelaCapitol.h"
 #include "PassarelaRelacionat.h"
+#include "PassarelaQualificacioEdat.h"
+#include "PassarelaModalitatSubscripcio.h"
+
 
 class CapaDePresentacio {
 private:

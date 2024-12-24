@@ -1,5 +1,5 @@
 #include "ConnexioBD.h"
-
+// 16.34
 class PassarelaModalitatSubscripcio {
 private:
 	string nom;

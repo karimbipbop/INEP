@@ -51,6 +51,6 @@ void PassarelaModalitatSubscripcio::esborra() {
 	}
 }
 
-string obteNom() {
+string PassarelaModalitatSubscripcio::obteNom() {
 	return nom;
 }
