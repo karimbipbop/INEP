@@ -9,7 +9,7 @@ PassarelaVisualitzaPel::PassarelaVisualitzaPel() {
 
 PassarelaVisualitzaPel::PassarelaVisualitzaPel(sql::ResultSet* result) {
 	if (result->next()) {
-		sobrenom = result->getString("sobrenom");
+		sobrenom = result->getString("sobrenom_usuari");
 		titolPelicula = result->getString("titol_pelicula");
 		data = result->getString("data");
 		numVisualitzacions = result->getInt("num_visualitzacions");
@@ -43,7 +43,7 @@ void PassarelaVisualitzaPel::modifica() {
 		ConnexioBD& c = ConnexioBD::getInstance();
 		std::string query = "UPDATE visualitzacio_pelicula SET "
 			"num_visualitzacions = '" + std::to_string(numVisualitzacions) + "' "
-			"WHERE sobrenom = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "' AND data = '" + data + "'";
+			"WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "'";
 		c.execucio(query);
 	}
 	catch (sql::SQLException& e) {
@@ -54,7 +54,7 @@ void PassarelaVisualitzaPel::modifica() {
 void PassarelaVisualitzaPel::esborra() {
 	try {
 		ConnexioBD& c = ConnexioBD::getInstance();
-		std::string query = "DELETE FROM visualitzacio_pelicula WHERE sobrenom = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "' AND data = '" + data + "'";
+		std::string query = "DELETE FROM visualitzacio_pelicula WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "' AND data = '" + data + "'";
 		c.execucio(query);
 	}
 	catch (sql::SQLException& e) {

@@ -1,5 +1,12 @@
 #include "PassarelaUsuari.h"
 #include "PassarelaVisualitzaPel.h"
+#include "PassarelaVisualitzaCap.h"
+#include "PassarelaContingut.h"
+#include "PassarelaPelicula.h"
+#include "PassarelaSerie.h"
+#include "PassarelaTemporada.h"
+#include "PassarelaCapitol.h"
+#include "PassarelaRelacionat.h"
 
 class CapaDePresentacio {
 private:

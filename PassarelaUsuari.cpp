@@ -59,7 +59,7 @@ void PassarelaUsuari::modifica()
                         "contrasenya = '" + contrasenya + "', "
                         "correu_electronic = '" + correuElectronic + "', "
                         "data_naixement = '" + dataNaixement + "' "
-                        "WHERE sobrenom = '" + sobrenom + "';";
+                        "WHERE sobrenom = '" + sobrenom + "'";
         c.execucio(query);
     }
     catch (sql::SQLException& e) {
@@ -105,10 +105,10 @@ string PassarelaUsuari::obteDataNaixement()
     return dataNaixement;
 }
 
-void PassarelaUsuari::posaContrasenya(string contraU)
-{
-    contrasenya = contraU;
-}
+//void PassarelaUsuari::posaContrasenya(string contrasenyaU)
+//{
+//    contrasenya = contrasenyaU;
+//}
 
 void PassarelaUsuari::posaNom(string nomU)
 {
@@ -123,4 +123,9 @@ void PassarelaUsuari::posaCorreuElectronic(string correuU)
 void PassarelaUsuari::posaDataNaixement(string neixU)
 {
     dataNaixement = neixU;
+}
+
+void PassarelaUsuari::posaSubscripcio(string subscripcioU)
+{
+    subscripcio = subscripcioU;
 }
