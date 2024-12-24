@@ -39,7 +39,7 @@ void PassarelaRelacionat::modifica()
         ConnexioBD& c = ConnexioBD::getInstance();
         std::string query = "UPDATE relacionat SET "
             "titol_x = '" + titolX + "', "
-            "titol_y = '" + titolY + "', "
+            "titol_y = '" + titolY + "' "
             "WHERE titol_x = '" + titolX +
             "' AND titol_y = '" + titolY + "'";
         c.execucio(query);
