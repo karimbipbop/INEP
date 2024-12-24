@@ -150,8 +150,7 @@ int main()
 	bool run = true, log = false;
 	int inp;
 	mostraMenuPrincipalN();
-	while (run) {
-		cin >> inp;
+	while (run and cin >> inp) {
 		if (log) {
 			//sessió iniciada
 			switch (inp)
@@ -178,7 +177,6 @@ int main()
 				run = false;
 				break;
 			}
-			if(run) mostraMenuPrincipalS();
 		}
 		else {
 			//sessió no iniciada
@@ -203,7 +201,8 @@ int main()
 				run = false;
 				break;
 			}
-			if (run && !log) mostraMenuPrincipalN();
 		}
+		if (run and !log) mostraMenuPrincipalN();
+		else if (run and log) mostraMenuPrincipalS();
 	}
 }
