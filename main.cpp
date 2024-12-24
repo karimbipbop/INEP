@@ -147,58 +147,63 @@ void mostraMenuPrincipalN()
 
 int main()
 {
-	mostraMenuPrincipalN();
 	bool run = true, log = false;
 	int inp;
-	cin >> inp;
+	mostraMenuPrincipalN();
 	while (run) {
+		cin >> inp;
 		if (log) {
-		//sessió iniciada
-			if (cin.fail()) {
-				//L'entrada no és un número
+			//sessió iniciada
+			switch (inp)
+			{
+			default:
+				//L'entrada no és una opció vàlida.
 				cin.clear(); //Esborra l'estat d'error.
 				cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
-			}
-			else if (inp == 1) {
+				break;
+			case 1:
 				gestioUsuari();
-			}
-			else if (inp == 2) {
+				break;
+			case 2:
 				visualitzar();
-			}
-			else if (inp == 3) {
+				break;
+			case 3:
 				consultes();
-			}
-			else if (inp == 4) {
+				break;
+			case 4:
 				tancarSessio();
 				log = false;
-			}
-			else if (inp == 5) {
+				break;
+			case 5:
 				run = false;
+				break;
 			}
-			mostraMenuPrincipalN();
+			if(run) mostraMenuPrincipalS();
 		}
 		else {
-		//sessió no iniciada
-			if (cin.fail()) {
-				//L'entrada no és un número
+			//sessió no iniciada
+			switch (inp)
+			{
+			default:
+				//L'entrada no és una opció vàlida.
 				cin.clear(); //Esborra l'estat d'error.
 				cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
-			}
-			else if (inp == 1) {
+				break;
+			case 1:
 				iniciarSessio();
 				log = true;
-			}
-			else if (inp == 2) {
+				break;
+			case 2:
 				registrarUsuari();
-			}
-			else if (inp == 3) {
+				break;
+			case 3:
 				consultes();
-			}
-			else if (inp == 4) {
+				break;
+			case 4:
 				run = false;
+				break;
 			}
-			mostraMenuPrincipalS();
+			if (run && !log) mostraMenuPrincipalN();
 		}
-		cin >> inp;
 	}
 }
