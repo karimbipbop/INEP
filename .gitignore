@@ -367,3 +367,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /INEP.vcxproj
+.vscode/c_cpp_properties.json
+.vscode/settings.json
