@@ -6,6 +6,47 @@ CapaDePresentacio::CapaDePresentacio() {
 
 void CapaDePresentacio::processarRegistreUsuari()
 {
+	/*
+	cout << "** Registrar usuari **" << endl;
+	string nU, sU, cU, correuU, dU, subU;
+	cout << "Nom complert: ";
+	cin >> nU;
+	cout << endl << "Sobrenom: ";
+	cin >> sU;
+	cout << endl << "Contrassenya: ";
+	cin >> cU;
+	cout << endl << "Correu electronic: ";
+	cin >> correuU;
+	cout << endl << "Data naixement (DD/MM/AAAA): ";
+	cin >> dU;
+	cout << endl << "Modalitats de subscripció disponibles" << endl;
+	cout << " > 1. Completa" << endl;
+	cout << " > 2. Cinèfil" << endl;
+	cout << " > 3. Infantil" << endl;
+	cout << "Escull modalitat: ";
+	int n;
+	cin >> n;
+	if (n == 1) {
+		subU = "Completa";
+	}
+	else if (n == 2) {
+		subU = "Cinèfil";
+	}
+	else if (n == 3) {
+		subU = "Infantil";
+	}
+	else {
+		cout << "Error: Modalitat errònia";
+		// S'hauria d'acabar el cas d'us
+	}
+	*/
+
+	cout << "*********************" << endl;
+	cout << "1. Iniciar sessio" << endl;
+	cout << "2. Registrar Usuaris" << endl;
+	cout << "3. Consultes" << endl;
+	cout << "4. Sortir" << endl;
+	cout << "Escriu opcio: ";
 	try {
 		ConnexioBD& c = ConnexioBD::getInstance();
 		// Sentència SQL per obtenir totes les files de la taula usuari
@@ -19,8 +60,8 @@ void CapaDePresentacio::processarRegistreUsuari()
 			cout << "ERROR: Ja existeix l'usuari '" << n.sobrenom << "' a la base de dades.\n";
 		}
 		else {
-			cin >> n.nom >> n.correu;
-			string sql = "INSERT INTO Usuari (sobrenom, nom, correu_electronic) VALUES ('" + n.sobrenom + "', '" + n.nom + "', '" + n.correu + "')";
+			cin >> n.nom >> n.correuElectronic;
+			string sql = "INSERT INTO Usuari (sobrenom, nom, correu_electronic) VALUES ('" + n.sobrenom + "', '" + n.nom + "', '" + n.correuElectronic + "')";
 			c.execucio(sql);
 			cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
 		}
@@ -70,8 +111,8 @@ void CapaDePresentacio::processarModificaUsuari()
 		}
 		else {
 			cout << "Insereix el teu nou nom i el teu nou correu electronic" << endl;
-			cin >> n.nom >> n.correu;
-			sql = "UPDATE Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correu + "' WHERE sobrenom = '" + n.sobrenom + "'";
+			cin >> n.nom >> n.correuElectronic;
+			sql = "UPDATE Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correuElectronic + "' WHERE sobrenom = '" + n.sobrenom + "'";
 			c.execucio(sql);
 			cout << "L'Usuari " << n.sobrenom << " s'ha modificat correctament!" << endl;
 		}
