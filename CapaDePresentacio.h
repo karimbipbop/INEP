@@ -1,5 +1,15 @@
-#include "ConnexioBD.h"
-#include "Usuari.h"
+#include "PassarelaUsuari.h"
+#include "PassarelaVisualitzaPel.h"
+#include "PassarelaVisualitzaCap.h"
+#include "PassarelaContingut.h"
+#include "PassarelaPelicula.h"
+#include "PassarelaSerie.h"
+#include "PassarelaTemporada.h"
+#include "PassarelaCapitol.h"
+#include "PassarelaRelacionat.h"
+#include "PassarelaQualificacioEdat.h"
+#include "PassarelaModalitatSubscripcio.h"
+
 
 class CapaDePresentacio {
 private:

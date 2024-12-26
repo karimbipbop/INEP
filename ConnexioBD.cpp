@@ -2,8 +2,8 @@
 
 ConnexioBD::ConnexioBD() {
 	driver = sql::mysql::get_mysql_driver_instance();
-	con = driver->connect(ser, nom, pass);
-	con->setSchema(nom);
+	con = driver->connect(hostaddr + ':' + port, dbname, password);
+	con->setSchema(user);
 	stmt = con->createStatement();
 }
 

@@ -1,3 +1,4 @@
+#pragma once //Evitar inclusions multiples
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/statement.h>
@@ -13,7 +14,7 @@ private:
 	sql::mysql::MySQL_Driver* driver;
 	sql::Connection* con;
 	sql::Statement* stmt;
-	#include "private.txt"
+	#include "config.txt"
 
 	//creadora
 	ConnexioBD();

@@ -7,6 +7,9 @@
 INEP.vcxproj
 INEP.vcxproj.*
 private.txt
+config.txt
+
+.
 
 # User-specific files
 *.rsuser
