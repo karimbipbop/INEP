@@ -8,10 +8,12 @@ bool formatDate(std::string& inputDate) {
 
 	// Parse the input string and split it into parts
 	for (char ch : inputDate) {
-		if (ch == '/') {
+		if (ch == '/' || ch == '-') {
 			parts.push_back(part);
 			part.clear();
 		}
+		else if (ch == ' ')
+			break;
 		else {
 			part += ch;
 		}
@@ -123,6 +125,7 @@ void CapaDePresentacio::processarConsultaUsuari() {
 	TxConsultaUsuari tcon;
 	tcon.executar();
 	Usuari u = tcon.obteResultat();
+	formatDate(u.dataNaixament);
 	TxInfoVisualitzacions tinfo;
 	tinfo.executar();
 	pair<int, int> nbVis = tinfo.obteResultat();
