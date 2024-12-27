@@ -11,6 +11,7 @@
 //#include "PassarelaModalitatSubscripcio.h"
 #include "TxRegistraUsuari.h"
 #include "TxIniciSessio.h"
+#include "TxTancaSessio.h"
 
 
 class CapaDePresentacio {
