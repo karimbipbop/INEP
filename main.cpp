@@ -67,7 +67,7 @@ void gestioUsuari()
 	cout << "2. Modifica usuari" << endl;
 	cout << "3. Esborra usuari" << endl;
 	cout << "4. Tornar" << endl;
-	cout << "Escriu opcio: " << endl;
+	cout << "Escriu opcio: ";
 
 	int i;
 	cin >> i;
@@ -101,7 +101,7 @@ void visualitzar() {
 	cout << "2. Visualitzar capitol" << endl;
 	cout << "3. Consulta visualitzacions" << endl;
 	cout << "4. Tornar" << endl;
-	cout << "Escriu opcio: " << endl;
+	cout << "Escriu opcio: ";
 	int i;
 	cin >> i;
 	CapaDePresentacio& p = CapaDePresentacio::getInstance();

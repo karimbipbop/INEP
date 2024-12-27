@@ -3,6 +3,8 @@
 #include <string>
 #include "PetitFlix.h"
 #include "CercadoraUsuari.h"
+#include "CercadoraVisualitzaCap.h"
+#include "CercadoraVisualitzaPel.h"
 
 using namespace std;
 
@@ -22,6 +24,8 @@ public:
 
 protected:
     CercadoraUsuari cercUsu;
+    CercadoraVisualitzaPel cercVisP;
+    CercadoraVisualitzaCap cercVisC;
     void inicialitza();
 
 };
