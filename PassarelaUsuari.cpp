@@ -13,14 +13,12 @@ PassarelaUsuari::PassarelaUsuari()
 
 PassarelaUsuari::PassarelaUsuari(sql::ResultSet* result)
 {
-    if (result->next()) {
-        sobrenom = result->getString("sobrenom");
-        nom = result->getString("nom");
-        contrasenya = result->getString("contrasenya");
-        correuElectronic = result->getString("correu_electronic");
-        dataNaixement = result->getString("data_naixement");
-        dataNaixement = result->getString("subscripcio");
-    }
+    sobrenom = result->getString("sobrenom");
+    nom = result->getString("nom");
+    contrasenya = result->getString("contrasenya");
+    correuElectronic = result->getString("correu_electronic");
+    dataNaixement = result->getString("data_naixement");
+    subscripcio = result->getString("subscripcio");
 }
 
 

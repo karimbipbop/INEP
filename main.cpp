@@ -172,6 +172,7 @@ void consultes()
 
 int main()
 {
+	CapaDePresentacio& p = p.getInstance();
 	bool run = true, log = false;
 	int inp;
 	mostraMenuPrincipalN();
@@ -214,8 +215,13 @@ int main()
 				cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
 				break;
 			case 1:
-				iniciarSessio();
-				log = true;
+				try {
+					p.processarIniciSessio();
+					log = true;
+				}
+				catch (int exc) {
+					
+				}
 				break;
 			case 2:
 				registrarUsuari();

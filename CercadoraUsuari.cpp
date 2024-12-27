@@ -1,4 +1,3 @@
-#pragma once
 #include "CercadoraUsuari.h"
 
 
@@ -17,7 +16,7 @@ PassarelaUsuari CercadoraUsuari::cercaUsuari(string sobrenomU) {
             delete result; // Free memory
             throw(UsuariNoExisteix);
         }
-
+        //cout << result->getString("contrasenya");
         // Pass data to PassarelaUsuari (assuming PassarelaUsuari constructor accepts a ResultSet)
         PassarelaUsuari pasUsu(result);
 
