@@ -10,5 +10,7 @@ void TxIniciSessio::executar() {
 	PassarelaUsuari pU = cercUsu.cercaUsuari(sobrenom);
 	if (pU.obteContrasenya() != contrasenya)
 		throw(ErrorContrasenya);
-	//Iniciar sesion con usuario pU...
+	else {
+		//Iniciar sesion con usuario pU...
+	}
 }
