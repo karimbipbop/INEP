@@ -2,7 +2,7 @@
 
 
 // Modifica la data que se li passa per canviar de DD/MM/YYYY a YYYY-MM-DD
-void formatDate(std::string& inputDate) {
+bool formatDate(std::string& inputDate) {
 	std::vector<std::string> parts;
 	std::string part;
 
@@ -20,11 +20,12 @@ void formatDate(std::string& inputDate) {
 
 	// Validate that we have exactly three parts
 	if (parts.size() != 3) {
-		throw std::invalid_argument("Invalid date format. Expected DD/MM/YYYY.");
+		return false;
 	}
 
 	// Modify the input string to the formatted YYYY-MM-DD
-	inputDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+	inputDate = parts[2] + "/" + parts[1] + "/" + parts[0];
+	return true;
 }
 
 CapaDePresentacio::CapaDePresentacio() {
@@ -50,7 +51,10 @@ void CapaDePresentacio::processarRegistreUsuari()
 	cin >> u.correuElectronic;
 	cout << "Data naixement (DD/MM/AAAA): ";
 	cin >> u.dataNaixament;
-	formatDate(u.dataNaixament);
+	if (!formatDate(u.dataNaixament)) {
+		cout << "Error: data erronia\n";
+		return;
+	}
 	cout << "Modalitats de subscripcio disponibles" << endl;
 	cout << " > 1. Completa" << endl;
 	cout << " > 2. Cinefil" << endl;
@@ -62,7 +66,7 @@ void CapaDePresentacio::processarRegistreUsuari()
 		u.subscripcio = "Completa";
 	}
 	else if (n == 2) {
-		u.subscripcio = "Cinèfil";
+		u.subscripcio = "Cinefil";
 	}
 	else if (n == 3) {
 		u.subscripcio = "Infantil";
@@ -78,6 +82,7 @@ void CapaDePresentacio::processarRegistreUsuari()
 	}
 	catch (sql::SQLException& e) {
 		std::cerr << "SQL Error: " << e.what() << std::endl;
+		return;
 	}
 }
 
@@ -131,32 +136,26 @@ void CapaDePresentacio::processarConsultaUsuari() {
 	cout << nbVis.second << " capitols visualitzats\n";
 }
 
-/************************************************/
+void CapaDePresentacio::processarEsborraUsuari() {
+	cout << "** Esborrar usuari **" << endl;
+	cout << "Per confirmar l'esborrat, s'ha d'entrar la contrassenya" << endl;
+	cout << "Contrassenya: ";
+	string c;
+	cin >> c;
+	try {
+		TxEsborraUsuari tesb(c);
+		tesb.executar();
+		cout << "Usuari esborrat correctament" << endl;
+		TxTancaSessio ttanc;
+		ttanc.executar();
+	}
+	catch (int exc) {
+		cout << "La contrassenya es incorrecta." << endl;
+		throw(ErrorContrasenya);
+	}
+}
 
-//void CapaDePresentacio::processarConsultaUsuari()
-//{
-//	try {
-//		ConnexioBD& c = ConnexioBD::getInstance();
-//		// Sentència SQL per obtenir totes les files de la taula usuari
-//		string sobrenom;
-//		cout << "Entra el teu sobrenom" << endl;
-//		cin >> sobrenom;
-//		string sql = "SELECT * FROM Usuari WHERE sobrenom='" + sobrenom + "'";
-//		sql::ResultSet* res = c.consulta(sql);
-//		if (res->next()) {
-//			cout << "Sobrenom: " << res->getString("sobrenom") << endl;
-//			cout << "Nom: " << res->getString("nom") << endl;
-//			cout << "Correu: " << res->getString("correu_electronic") << endl;
-//		}
-//		else {
-//			cout << "No s'ha trobat l'usuari '" << sobrenom << "' a la base de dades.\n";
-//		}
-//	}
-//	catch (sql::SQLException& e) {
-//		std::cerr << "SQL Error: " << e.what() << std::endl;
-//	}
-//}
-//
+/************************************************/
 //void CapaDePresentacio::processarModificaUsuari()
 //{
 //	try {
@@ -184,22 +183,6 @@ void CapaDePresentacio::processarConsultaUsuari() {
 //	}
 //}
 //
-void CapaDePresentacio::processarEsborraUsuari() {
-	cout << "** Esborrar usuari **" << endl;
-	cout << "Per confirmar l'esborrat, s'ha d'entrar la contrassenya" << endl;
-	cout << "Contrassenya: ";
-	string c;
-	cin >> c;
-	try {
-		TxEsborraUsuari tesb(c);
-		tesb.executar();
-		cout << "Usuari esborrat correctament" << endl;
-	}
-	catch (int exc) {
-		cout << "La contrassenya es incorrecta." << endl;
-		throw(ErrorContrasenya);
-	}
-}
 //{
 //	try {
 //		ConnexioBD& c = ConnexioBD::getInstance();

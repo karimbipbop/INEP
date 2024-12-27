@@ -1,35 +1,8 @@
 #include "CapaDePresentacio.h"
 
-void registrarUsuari() {
-
-}
-
-//void gestioContinguts()
-//{
-//	cout << "----------------------" << endl;
-//	cout << "    Gestio Continguts" << endl;
-//	cout << "----------------------" << endl;
-//	cout << "1. Gestio pel.licules" << endl;
-//	cout << "2. Gestio series" << endl;
-//	cout << "3. Tornar" << endl;
-//	int i;
-//	cin >> i;
-//	CapaDePresentacio& p = CapaDePresentacio::getInstance();
-//	if (cin.fail()) {
-//		//L'entrada no és un número
-//		cin.clear(); //Esborra l'estat d'error.
-//		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
-//	}
-//	else if (i == 1) {
-//		p.processarGestioPelicules();
-//	}
-//	else if (i == 2) {
-//		p.processarGestioSeries();
-//	}
-//}
-
-
-
+//Variables globals per manejar el menu.
+bool run = true;
+bool logg = false;
 
 // Menu Sessió no iniciada
 void mostraMenuPrincipalN()
@@ -58,6 +31,7 @@ void mostraMenuPrincipalS()
 	cout << "Escriu opcio: ";
 }
 
+//Menu gestió usuari
 void gestioUsuari()
 {
 	cout << "----------------------" << endl;
@@ -86,13 +60,15 @@ void gestioUsuari()
 		break;
 	case 3:
 		p.processarEsborraUsuari();
+		logg = false;
 		break;
 	case 4:
 		break;
 	}
-	if (i != 4) gestioUsuari(); //No torna, segueix a aquest submenú.
+	if (i != 4 && logg) gestioUsuari(); //No torna, segueix a aquest submenú.
 }
 
+//Menu visualitzar
 void visualitzar() {
 	cout << "----------------------" << endl;
 	cout << "    Visualitzar" << endl;
@@ -127,6 +103,7 @@ void visualitzar() {
 	if (i != 4) visualitzar(); //No torna, segueix a aquest submenú.
 }
 
+//Menu consultes
 void consultes()
 {
 	cout << "----------------------" << endl;
@@ -165,12 +142,11 @@ void consultes()
 int main()
 {
 	CapaDePresentacio& p = p.getInstance();
-	bool run = true, log = false;
 	int inp;
 	mostraMenuPrincipalN();
 	while (run) {
 		cin >> inp;
-		if (log) {
+		if (logg) {
 			//sessió iniciada
 			switch (inp)
 			{
@@ -191,7 +167,7 @@ int main()
 			case 4:
 				try {
 					p.processarTancaSessio();
-					log = false;
+					logg = false;
 				}
 				catch (int exc) {
 					//Error al tancar la sessió
@@ -214,7 +190,7 @@ int main()
 			case 1:
 				try {
 					p.processarIniciSessio();
-					log = true;
+					logg = true;
 				}
 				catch (int exc) {
 					//Error al iniciar la sessió
@@ -222,7 +198,6 @@ int main()
 				break;
 			case 2:
 				p.processarRegistreUsuari();
-				registrarUsuari();
 				break;
 			case 3:
 				consultes();
@@ -232,7 +207,7 @@ int main()
 				break;
 			}
 		}
-		if (run and !log) mostraMenuPrincipalN();
-		else if (run and log) mostraMenuPrincipalS();
+		if (run and !logg) mostraMenuPrincipalN();
+		else if (run and logg) mostraMenuPrincipalS();
 	}
 }

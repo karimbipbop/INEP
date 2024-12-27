@@ -45,7 +45,7 @@ void PassarelaUsuari::insereix()
         c.execucio(query);
     }
     catch (sql::SQLException& e) {
-		std::cerr << "SQL Error: " << e.what() << std::endl;
+        throw(e);
 	}
 }
 
