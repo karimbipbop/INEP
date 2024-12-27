@@ -79,7 +79,7 @@ void gestioUsuari()
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
 		break;
 	case 1:
-		cout << "CONSULTA USUARI\n";
+		p.processarConsultaUsuari();
 		break;
 	case 2:
 		cout << "MODIFICA USUARI\n";
@@ -194,7 +194,7 @@ int main()
 					log = false;
 				}
 				catch (int exc) {
-					//Error al tancar la sessió.
+					//Error al tancar la sessió
 				}
 				break;
 			case 5:
@@ -217,7 +217,7 @@ int main()
 					log = true;
 				}
 				catch (int exc) {
-					
+					//Error al iniciar la sessió
 				}
 				break;
 			case 2:

@@ -7,8 +7,6 @@ const int CorreuExisteix = 4;
 
 class PassarelaUsuari {
 private:
-	// y si en vez de poner 6 strings, ponemos un DTOUsuari?
-	// Usuari usuari;w
     string nom, sobrenom, contrasenya, correuElectronic, dataNaixement, subscripcio;
 
 public:
@@ -18,12 +16,13 @@ public:
     void insereix();
     void modifica();
     void esborra();
-
-    string obteContrasenya();
+ 
     string obteNom();
     string obteSobrenom();
+    string obteContrasenya();
     string obteCorreuElectronic();
     string obteDataNaixement();
+    string obteSubscripcio();
     //void posaContrasenya(string contraU); --> modificaUsuari() no deja modificar contrasenya
     void posaNom(string nomU);
     void posaCorreuElectronic(string correuU);

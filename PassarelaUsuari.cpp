@@ -104,6 +104,11 @@ string PassarelaUsuari::obteDataNaixement()
     return dataNaixement;
 }
 
+string PassarelaUsuari::obteSubscripcio()
+{
+    return subscripcio;
+}
+
 //void PassarelaUsuari::posaContrasenya(string contrasenyaU)
 //{
 //    contrasenya = contrasenyaU;

@@ -3,7 +3,8 @@
 
 class TxConsultaUsuari: public Transaccio {
 private:
-    Usuari usuari;
+    PassarelaUsuari usuari;
+    Usuari resultat;
 
 public:
     TxConsultaUsuari();
