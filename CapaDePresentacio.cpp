@@ -103,6 +103,9 @@ void CapaDePresentacio::processarTancaSessio() {
 		// PetitFlix.tancaSessio();
 		cout << "Sessio tancada correctament!\n";
 	}
+	else {
+		throw(NoTancaSessio);
+	}
 }
 
 void CapaDePresentacio::processarConsultaUsuari() {

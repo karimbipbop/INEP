@@ -7,6 +7,7 @@
 using namespace std;
 
 const int ErrorContrasenya = 2;
+const int NoTancaSessio = 5;
 
 class Transaccio {
 public:

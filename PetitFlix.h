@@ -5,6 +5,7 @@ class PetitFlix {
 private:
 	PassarelaUsuari usuari;
 	PetitFlix();
+
 public:
 	PassarelaUsuari obteUsuari();
 	void iniciaSessio(PassarelaUsuari u);
