@@ -113,11 +113,17 @@ void CapaDePresentacio::processarConsultaUsuari() {
 	TxConsultaUsuari tcon;
 	tcon.executar();
 	Usuari u = tcon.obteResultat();
-
-	//TxVisualitzaUsuari tvis(u);
-	//tvis.executar();
-	//InfoVisualitzacio infovis = tvis.obteResultat();
-	//COUT INFORMACIO VISUALITZACIO
+	TxInfoVisualitzacions tinfo;
+	tinfo.executar();
+	pair<int, int> nbVis = tinfo.obteResultat();
+	cout << "** Consulta usuari **\n";
+	cout << "Nom complet: " << u.nom << "\n";
+	cout << "Sobrenom: " << u.sobrenom << "\n";
+	cout << "Correu electronic: " << u.correuElectronic << "\n";
+	cout << "Data naixement (DD/MM/AAAA): " << u.dataNaixament << "\n";
+	cout << "Modalitat subscripcio: " << u.subscripcio << "\n\n";
+	cout << nbVis.first << " pel.licules visualitzades\n";
+	cout << nbVis.second << " capitols visualitzats\n";
 }
 
 /************************************************/

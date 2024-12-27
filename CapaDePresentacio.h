@@ -13,6 +13,7 @@
 #include "TxIniciSessio.h"
 #include "TxTancaSessio.h"
 #include "TxConsultaUsuari.h"
+#include "TxInfoVisualitzacions.h"
 
 
 class CapaDePresentacio {

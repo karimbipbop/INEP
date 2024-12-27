@@ -16,4 +16,3 @@ void TxConsultaUsuari::executar() {
 Usuari TxConsultaUsuari::obteResultat() {
 	return resultat;
 }
-
