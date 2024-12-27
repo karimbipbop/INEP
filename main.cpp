@@ -85,7 +85,7 @@ void gestioUsuari()
 		cout << "MODIFICA USUARI\n";
 		break;
 	case 3:
-		cout << "ESBORRA USUARI\n";
+		p.processarEsborraUsuari();
 		break;
 	case 4:
 		break;

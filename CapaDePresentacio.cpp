@@ -156,7 +156,22 @@ void CapaDePresentacio::processarConsultaUsuari() {
 //	}
 //}
 //
-//void CapaDePresentacio::processarEsborraUsuari()
+void CapaDePresentacio::processarEsborraUsuari() {
+	cout << "** Esborrar usuari **" << endl;
+	cout << "Per confirmar l'esborrat, s'ha d'entrar la contrassenya" << endl;
+	cout << "Contrassenya: ";
+	string c;
+	cin >> c;
+	try {
+		TxEsborraUsuari tesb(c);
+		tesb.executar();
+		cout << "Usuari esborrat correctament" << endl;
+	}
+	catch (int exc) {
+		cout << "La contrassenya es incorrecta." << endl;
+		throw(ErrorContrasenya);
+	}
+}
 //{
 //	try {
 //		ConnexioBD& c = ConnexioBD::getInstance();
