@@ -1,13 +1,5 @@
 #include "CapaDePresentacio.h"
 
-void tancarSessio() {
-	
-}
-
-void iniciarSessio() {
-
-}
-
 void registrarUsuari() {
 
 }
@@ -197,8 +189,13 @@ int main()
 				consultes();
 				break;
 			case 4:
-				tancarSessio();
-				log = false;
+				try {
+					p.processarTancaSessio();
+					log = false;
+				}
+				catch (int exc) {
+					//Error al tancar la sessió.
+				}
 				break;
 			case 5:
 				run = false;
