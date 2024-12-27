@@ -89,6 +89,28 @@ void CapaDePresentacio::processarIniciSessio() {
 	}
 }
 
+void CapaDePresentacio::processarTancaSessio() {
+	cout << "** Tancar sessio **\n";
+	cout << "Vols tancar la sessio (S/N): ";
+	char op;
+	cin >> op;
+	if (op == 'S' || op == 's') {
+		// PetitFlix.tancaSessio();
+		cout << "Sessio tancada correctament!\n";
+	}
+}
+
+void CapaDePresentacio::processarConsultaUsuari() {
+	TxConsultaUsuari tcon;
+	tcon.executar();
+	Usuari u = tcon.obteResultat();
+
+	//TxVisualitzaUsuari tvis(u);
+	//tvis.executar();
+	//InfoVisualitzacio infovis = tvis.obteResultat();
+	//COUT INFORMACIO VISUALITZACIO
+}
+
 /************************************************/
 
 //void CapaDePresentacio::processarConsultaUsuari()

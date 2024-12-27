@@ -12,6 +12,7 @@
 #include "TxRegistraUsuari.h"
 #include "TxIniciSessio.h"
 #include "TxTancaSessio.h"
+#include "TxConsultaUsuari.h"
 
 
 class CapaDePresentacio {
@@ -27,6 +28,8 @@ public:
 
 	void processarRegistreUsuari();
 	void processarIniciSessio();
+	void processarTancaSessio();
+	void processarConsultaUsuari();
 
 	/*a partir de aqui son operaciones de las entregas del lab*/
 	//void processarConsultaUsuari();
