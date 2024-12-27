@@ -1,11 +1,10 @@
 #include "TxTancaSessio.h"
 
-TxTancaUsuari::TxTancaUsuari() {
+TxTancaSessio::TxTancaSessio() {
 	inicialitza();
 }
 
-void TxTancaUsuari::executar() {
-	PassarelaUsuari pU = cercUsu.cercaUsuari(usuari.sobrenom);
-	//Cerrar sesion con usuario pU...
-	// PetitFlix.tancaSessio(); algo asi
+void TxTancaSessio::executar() {
+	PetitFlix& pf = pf.getInstance();
+	pf.tancaSessio();
 }

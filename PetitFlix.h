@@ -7,8 +7,8 @@ private:
 	PetitFlix();
 
 public:
+	static PetitFlix& getInstance();
 	PassarelaUsuari obteUsuari();
 	void iniciaSessio(PassarelaUsuari u);
 	void tancaSessio();
-	static PetitFlix& getInstance();
 };

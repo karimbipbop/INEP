@@ -100,7 +100,8 @@ void CapaDePresentacio::processarTancaSessio() {
 	char op;
 	cin >> op;
 	if (op == 'S' || op == 's') {
-		// PetitFlix.tancaSessio();
+		TxTancaSessio ttanc;
+		ttanc.executar();
 		cout << "Sessio tancada correctament!\n";
 	}
 	else {

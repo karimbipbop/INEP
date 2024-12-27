@@ -8,7 +8,7 @@ const int CorreuExisteix = 4;
 class PassarelaUsuari {
 private:
 	// y si en vez de poner 6 strings, ponemos un DTOUsuari?
-	// DTOUsuari usuari;
+	// Usuari usuari;w
     string nom, sobrenom, contrasenya, correuElectronic, dataNaixement, subscripcio;
 
 public:

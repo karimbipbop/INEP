@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-struct Usuari {
+struct Usuari { // cambiar nombre DTOUsuari
 	std::string nom;
 	std::string sobrenom;
 	std::string contrassenya;
