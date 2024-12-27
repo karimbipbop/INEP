@@ -1,5 +1,32 @@
 #include "CapaDePresentacio.h"
 
+
+// Modifica la data que se li passa per canviar de DD/MM/YYYY a YYYY-MM-DD
+void formatDate(std::string& inputDate) {
+	std::vector<std::string> parts;
+	std::string part;
+
+	// Parse the input string and split it into parts
+	for (char ch : inputDate) {
+		if (ch == '/') {
+			parts.push_back(part);
+			part.clear();
+		}
+		else {
+			part += ch;
+		}
+	}
+	parts.push_back(part); // Add the last part
+
+	// Validate that we have exactly three parts
+	if (parts.size() != 3) {
+		throw std::invalid_argument("Invalid date format. Expected DD/MM/YYYY.");
+	}
+
+	// Modify the input string to the formatted YYYY-MM-DD
+	inputDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+}
+
 CapaDePresentacio::CapaDePresentacio() {
 
 }
@@ -23,6 +50,7 @@ void CapaDePresentacio::processarRegistreUsuari()
 	cin >> u.correuElectronic;
 	cout << "Data naixement (DD/MM/AAAA): ";
 	cin >> u.dataNaixament;
+	formatDate(u.dataNaixament);
 	cout << "Modalitats de subscripcio disponibles" << endl;
 	cout << " > 1. Completa" << endl;
 	cout << " > 2. Cinefil" << endl;
