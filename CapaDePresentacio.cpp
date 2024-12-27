@@ -4,6 +4,11 @@ CapaDePresentacio::CapaDePresentacio() {
 
 }
 
+CapaDePresentacio& CapaDePresentacio::getInstance() {
+	static CapaDePresentacio p;
+	return p;
+}
+
 void CapaDePresentacio::processarRegistreUsuari()
 {
 	/*

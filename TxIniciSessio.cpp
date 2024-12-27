@@ -11,6 +11,7 @@ void TxIniciSessio::executar() {
 	if (pU.obteContrasenya() != contrasenya)
 		throw(ErrorContrasenya);
 	else {
-		//Iniciar sesion con usuario pU...
+		PetitFlix& pf = PetitFlix::getInstance();
+		pf.iniciaSessio(pU);
 	}
 }

@@ -21,11 +21,7 @@ private:
 
 public:
 
-	static CapaDePresentacio& getInstance() {
-		static CapaDePresentacio p;
-		return p;
-	}
-
+	static CapaDePresentacio& getInstance();
 	void processarRegistreUsuari();
 	void processarIniciSessio();
 	void processarTancaSessio();
