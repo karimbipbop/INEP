@@ -4,14 +4,9 @@ TxRegistraUsuari::TxRegistraUsuari() {
     inicialitza();
 }
 
-TxRegistraUsuari::TxRegistraUsuari(string nU, string sU, string cU, string ceU, string dnU, string subU) {
+TxRegistraUsuari::TxRegistraUsuari(Usuari u) {
     inicialitza();
-    usuari.nom = nU;
-    usuari.sobrenom = sU;
-    usuari.contrassenya = cU;
-    usuari.correuElectronic = ceU;
-    usuari.dataNaixament = dnU;
-    usuari.subscripcio = subU;
+    usuari = u;
 }
 
 void TxRegistraUsuari::executar() {

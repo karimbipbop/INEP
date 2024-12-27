@@ -11,19 +11,18 @@ CapaDePresentacio& CapaDePresentacio::getInstance() {
 
 void CapaDePresentacio::processarRegistreUsuari()
 {
-	/*
 	cout << "** Registrar usuari **" << endl;
-	string nU, sU, cU, correuU, dU, subU;
+	Usuari u;
 	cout << "Nom complert: ";
-	cin >> nU;
+	cin >> u.nom;
 	cout << endl << "Sobrenom: ";
-	cin >> sU;
+	cin >> u.sobrenom;
 	cout << endl << "Contrassenya: ";
-	cin >> cU;
+	cin >> u.contrassenya;
 	cout << endl << "Correu electronic: ";
-	cin >> correuU;
+	cin >> u.correuElectronic;
 	cout << endl << "Data naixement (DD/MM/AAAA): ";
-	cin >> dU;
+	cin >> u.dataNaixament;
 	cout << endl << "Modalitats de subscripció disponibles" << endl;
 	cout << " > 1. Completa" << endl;
 	cout << " > 2. Cinèfil" << endl;
@@ -32,47 +31,25 @@ void CapaDePresentacio::processarRegistreUsuari()
 	int n;
 	cin >> n;
 	if (n == 1) {
-		subU = "Completa";
+		u.subscripcio = "Completa";
 	}
 	else if (n == 2) {
-		subU = "Cinèfil";
+		u.subscripcio = "Cinèfil";
 	}
 	else if (n == 3) {
-		subU = "Infantil";
+		u.subscripcio = "Infantil";
 	}
 	else {
-		cout << "Error: Modalitat errònia";
-		// S'hauria d'acabar el cas d'us
+		cout << "Error: Modalitat errònia" << endl;
+		return;
 	}
-	*/
-
-	cout << "*********************" << endl;
-	cout << "1. Iniciar sessio" << endl;
-	cout << "2. Registrar Usuaris" << endl;
-	cout << "3. Consultes" << endl;
-	cout << "4. Sortir" << endl;
-	cout << "Escriu opcio: ";
 	try {
-		ConnexioBD& c = ConnexioBD::getInstance();
-		// Sentència SQL per obtenir totes les files de la taula usuari
-		Usuari n;
-		cout << "Insereix el teu sobrenom, nom i correu elecotronic respectivament" << endl;
-		cin >> n.sobrenom;
-		string sql = "SELECT COUNT(*) AS count FROM Usuari WHERE sobrenom = '" + n.sobrenom + "'";
-		sql::ResultSet* res = c.consulta(sql);
-		res->next();
-		if (res->getInt("count") != 0) {
-			cout << "ERROR: Ja existeix l'usuari '" << n.sobrenom << "' a la base de dades.\n";
-		}
-		else {
-			cin >> n.nom >> n.correuElectronic;
-			string sql = "INSERT INTO Usuari (sobrenom, nom, correu_electronic) VALUES ('" + n.sobrenom + "', '" + n.nom + "', '" + n.correuElectronic + "')";
-			c.execucio(sql);
-			cout << "L'Usuari " << n.sobrenom << " s'ha registrat correctament!" << endl;
-		}
+		TxRegistraUsuari treg(u);
+		treg.executar();
+		cout << "Nou usuari registrat correctament!" << endl;
 	}
 	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error: " << e.what() << std::endl;
+		cout << "Error: " << e.what() << endl;
 	}
 }
 

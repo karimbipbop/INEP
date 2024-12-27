@@ -8,6 +8,6 @@ private:
 
 public:
     TxRegistraUsuari();
-    TxRegistraUsuari(string nU, string sU, string cU, string ceU, string dnU, string subU);
+    TxRegistraUsuari(Usuari u);
     void executar();
 };

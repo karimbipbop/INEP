@@ -221,6 +221,7 @@ int main()
 				}
 				break;
 			case 2:
+				p.processarRegistreUsuari();
 				registrarUsuari();
 				break;
 			case 3:
