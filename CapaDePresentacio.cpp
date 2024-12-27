@@ -15,17 +15,17 @@ void CapaDePresentacio::processarRegistreUsuari()
 	Usuari u;
 	cout << "Nom complert: ";
 	cin >> u.nom;
-	cout << endl << "Sobrenom: ";
+	cout << "Sobrenom: ";
 	cin >> u.sobrenom;
-	cout << endl << "Contrassenya: ";
+	cout << "Contrassenya: ";
 	cin >> u.contrassenya;
-	cout << endl << "Correu electronic: ";
+	cout << "Correu electronic: ";
 	cin >> u.correuElectronic;
-	cout << endl << "Data naixement (DD/MM/AAAA): ";
+	cout << "Data naixement (DD/MM/AAAA): ";
 	cin >> u.dataNaixament;
-	cout << endl << "Modalitats de subscripció disponibles" << endl;
+	cout << "Modalitats de subscripcio disponibles" << endl;
 	cout << " > 1. Completa" << endl;
-	cout << " > 2. Cinèfil" << endl;
+	cout << " > 2. Cinefil" << endl;
 	cout << " > 3. Infantil" << endl;
 	cout << "Escull modalitat: ";
 	int n;
@@ -40,7 +40,7 @@ void CapaDePresentacio::processarRegistreUsuari()
 		u.subscripcio = "Infantil";
 	}
 	else {
-		cout << "Error: Modalitat errònia" << endl;
+		cout << "Error: Modalitat erronia" << endl;
 		return;
 	}
 	try {
@@ -49,7 +49,7 @@ void CapaDePresentacio::processarRegistreUsuari()
 		cout << "Nou usuari registrat correctament!" << endl;
 	}
 	catch (sql::SQLException& e) {
-		cout << "Error: " << e.what() << endl;
+		std::cerr << "SQL Error: " << e.what() << std::endl;
 	}
 }
 

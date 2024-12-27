@@ -41,7 +41,7 @@ void PassarelaUsuari::insereix()
                             nom + "', '" + 
                             contrasenya + "', '" + 
                             correuElectronic + "', '" + 
-                            dataNaixement + "')";
+                            dataNaixement + "', '" + subscripcio +"')";
         c.execucio(query);
     }
     catch (sql::SQLException& e) {
