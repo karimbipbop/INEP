@@ -59,9 +59,15 @@ void gestioUsuari()
 		p.processarModificaUsuari();
 		break;
 	case 3:
-		p.processarEsborraUsuari();
-		logg = false;
-		break;
+		try {
+			p.processarEsborraUsuari();
+			logg = false;
+			break;
+		}
+		catch (int exc) {
+			cout << "La contrassenya es incorrecta." << endl;
+			break;
+		}
 	case 4:
 		break;
 	}

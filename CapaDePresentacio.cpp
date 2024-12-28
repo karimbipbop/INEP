@@ -197,7 +197,6 @@ void CapaDePresentacio::processarEsborraUsuari() {
 		ttanc.executar();
 	}
 	catch (int exc) {
-		cout << "La contrassenya es incorrecta." << endl;
 		throw(ErrorContrasenya);
 	}
 }
