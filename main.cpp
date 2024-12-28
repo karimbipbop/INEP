@@ -1,8 +1,5 @@
 #include "CapaDePresentacio.h"
 
-//Variables globals per manejar el menu.
-bool run = true;
-bool logg = false;
 
 //Menu Sessió no iniciada
 void mostraMenuPrincipalN()
@@ -131,7 +128,7 @@ void consultes()
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
 		break;
 	case 1:
-		cout << "PROPERES ESTRENES\n";
+		p.processarProximesEstrenes();
 		break;
 	case 2:
 		cout << "ULTIMES NOVETATS\n";

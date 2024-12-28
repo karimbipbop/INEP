@@ -18,6 +18,13 @@
 #include "TxEsborraUsuari.h"
 #include "CtrlModificaUsuari.h"
 
+#include "TxProximesEstrenes.h"
+
+
+//Variables globals per manejar el menu.
+extern bool run;
+extern bool logg;
+
 class CapaDePresentacio {
 private:
 	CapaDePresentacio();
@@ -31,6 +38,8 @@ public:
 	void processarConsultaUsuari();
 	void processarModificaUsuari();
 	void processarEsborraUsuari();
+
+	void processarProximesEstrenes();
 
 	/*a partir de aqui son operaciones de las entregas del lab*/
 	//void processarConsultaUsuari();

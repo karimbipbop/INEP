@@ -5,6 +5,7 @@
 #include "CercadoraUsuari.h"
 #include "CercadoraVisualitzaCap.h"
 #include "CercadoraVisualitzaPel.h"
+#include "CercadoraContinguts.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ protected:
     CercadoraUsuari cercUsu;
     CercadoraVisualitzaPel cercVisP;
     CercadoraVisualitzaCap cercVisC;
+    CercadoraContinguts cercCont;
     void inicialitza();
 
 };

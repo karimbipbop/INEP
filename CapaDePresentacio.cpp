@@ -1,5 +1,8 @@
 #include "CapaDePresentacio.h"
 
+bool run = true;
+bool logg = false;
+
 // Modifica la data que se li passa per canviar de DD/MM/YYYY a YYYY-MM-DD
 bool formatDate(std::string& inputDate) {
 	std::vector<std::string> parts;
@@ -273,7 +276,23 @@ void CapaDePresentacio::processarEsborraUsuari() {
 //	cout << "S'ha processat l'opcio Ultimes novetats" << endl;
 //}
 //
-//void CapaDePresentacio::processarProximesEstrenes()
-//{
-//	cout << "S'ha processat l'opcio Proximes estrenes" << endl;
-//}
+void CapaDePresentacio::processarProximesEstrenes() {
+	string modalitat;
+	if (!logg) {
+		cout << "Indica la modalitat de subscripcio: ";
+		cin >> modalitat;
+	}
+	else {
+		TxConsultaUsuari tcon;
+		tcon.executar();
+		DTOUsuari u = tcon.obteResultat();
+		modalitat = u.subscripcio;
+	}
+	TxProximesEstrenes p(modalitat);
+	p.executar();
+	vector<string> estrenes = p.obteResultat();
+	// Mostrem 10 estrenes
+	for (int i = 0; i < 10; ++i) {
+		cout << estrenes[i] << endl;
+	}
+}
