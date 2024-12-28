@@ -9,6 +9,7 @@
 //#include "PassarelaRelacionat.h"
 //#include "PassarelaQualificacioEdat.h"
 //#include "PassarelaModalitatSubscripcio.h"
+#pragma once
 #include "TxRegistraUsuari.h"
 #include "TxIniciSessio.h"
 #include "TxTancaSessio.h"

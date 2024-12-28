@@ -1,4 +1,3 @@
-#pragma once
 #include "PassarelaUsuari.h"
 
 PassarelaUsuari::PassarelaUsuari()

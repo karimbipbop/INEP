@@ -1,3 +1,4 @@
+#pragma once
 #include "Transaccio.h"
 #include "PassarelaUsuari.h"
 

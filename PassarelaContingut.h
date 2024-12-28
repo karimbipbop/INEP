@@ -1,3 +1,4 @@
+#pragma once
 #include "ConnexioBD.h"
 
 class PassarelaContingut {
