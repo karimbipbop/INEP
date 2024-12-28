@@ -153,17 +153,17 @@ void CapaDePresentacio::processarModificaUsuari() {
 	cout << "Omplir la informacio  que es vol modificar ...\n";
 
 	cout << "Nom complet: ";
-	cin >> u.nom;
+	getline(cin, u.nom);
 	cout << "Sobrenom: ";
-	cin >> u.sobrenom;
+	getline(cin, u.sobrenom);
 	cout << "Contrassenya: ";
-	cin >> u.contrassenya;
+	getline(cin, u.contrassenya);
 	cout << "Correu electronic: ";
-	cin >> u.correuElectronic;
+	getline(cin, u.correuElectronic);
 	cout << "Data naixement (DD/MM/AAAA): ";
-	cin >> u.dataNaixament;
+	getline(cin, u.dataNaixament);
 	cout << "Modalitats de subscripcio: \n";
-	cin >> u.subscripcio;
+	getline(cin, u.subscripcio);
 
 	try {
 		cmu.modificaUsuari(u.nom, u.contrassenya, u.correuElectronic, u.dataNaixament, u.subscripcio);

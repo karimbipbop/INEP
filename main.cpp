@@ -11,7 +11,7 @@ void mostraMenuPrincipalN()
 	cout << "   Menu Principal" << endl;
 	cout << "*********************" << endl;
 	cout << "1. Iniciar sessio" << endl;
-	cout << "2. Registrar Usuaris" << endl;
+	cout << "2. Registrar usuari" << endl;
 	cout << "3. Consultes" << endl;
 	cout << "4. Sortir" << endl;
 	cout << "Escriu opcio: ";
