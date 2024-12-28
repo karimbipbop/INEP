@@ -4,7 +4,7 @@ TxRegistraUsuari::TxRegistraUsuari() {
     inicialitza();
 }
 
-TxRegistraUsuari::TxRegistraUsuari(Usuari u) {
+TxRegistraUsuari::TxRegistraUsuari(DTOUsuari u) {
     inicialitza();
     usuari = u;
 }

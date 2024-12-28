@@ -11,16 +11,11 @@ using namespace std;
 const int ErrorContrasenya = 2;
 const int NoTancaSessio = 5;
 
-
 class Transaccio {
 public:
-
-
     Transaccio();
     virtual void executar() = 0;
     ~Transaccio();
-
-
 
 protected:
     CercadoraUsuari cercUsu;

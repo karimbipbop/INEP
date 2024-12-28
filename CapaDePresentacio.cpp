@@ -1,6 +1,5 @@
 #include "CapaDePresentacio.h"
 
-
 // Modifica la data que se li passa per canviar de DD/MM/YYYY a YYYY-MM-DD
 bool formatDate(std::string& inputDate) {
 	std::vector<std::string> parts;
@@ -42,7 +41,7 @@ CapaDePresentacio& CapaDePresentacio::getInstance() {
 void CapaDePresentacio::processarRegistreUsuari()
 {
 	cout << "** Registrar usuari **" << endl;
-	Usuari u;
+	DTOUsuari u;
 	cout << "Nom complert: ";
 	cin >> u.nom;
 	cout << "Sobrenom: ";
@@ -124,7 +123,7 @@ void CapaDePresentacio::processarTancaSessio() {
 void CapaDePresentacio::processarConsultaUsuari() {
 	TxConsultaUsuari tcon;
 	tcon.executar();
-	Usuari u = tcon.obteResultat();
+	DTOUsuari u = tcon.obteResultat();
 	formatDate(u.dataNaixament);
 	TxInfoVisualitzacions tinfo;
 	tinfo.executar();
@@ -137,6 +136,47 @@ void CapaDePresentacio::processarConsultaUsuari() {
 	cout << "Modalitat subscripcio: " << u.subscripcio << "\n\n";
 	cout << nbVis.first << " pel.licules visualitzades\n";
 	cout << nbVis.second << " capitols visualitzats\n";
+}
+
+void CapaDePresentacio::processarModificaUsuari() {
+	cout << "** Modificar usuari **" << endl;
+
+	CtrlModificaUsuari cmu;
+	DTOUsuari u = cmu.consultaUsuari();
+	cout << "** Modificar usuari **" << endl;
+	cout << "Nom complet: " << u.nom << "\n";
+	cout << "Sobrenom: " << u.sobrenom << "\n";
+	cout << "Correu electronic: " << u.correuElectronic << "\n";
+	cout << "Data naixement (DD/MM/AAAA): " << u.dataNaixament << "\n";
+	cout << "Modalitat subscripcio: " << u.subscripcio << "\n";
+
+	cout << "Omplir la informacio  que es vol modificar ...\n";
+
+	cout << "Nom complet: ";
+	cin >> u.nom;
+	cout << "Sobrenom: ";
+	cin >> u.sobrenom;
+	cout << "Contrassenya: ";
+	cin >> u.contrassenya;
+	cout << "Correu electronic: ";
+	cin >> u.correuElectronic;
+	cout << "Data naixement (DD/MM/AAAA): ";
+	cin >> u.dataNaixament;
+	cout << "Modalitats de subscripcio: \n";
+	cin >> u.subscripcio;
+
+	try {
+		cmu.modificaUsuari(u.nom, u.contrassenya, u.correuElectronic, u.dataNaixament, u.subscripcio);
+		cout << "** Dades usuari modificades **\n";
+		cout << "Nom complet: " << u.nom << "\n";
+		cout << "Sobrenom: " << u.sobrenom << "\n";
+		cout << "Correu electronic: " << u.correuElectronic << "\n";
+		cout << "Data naixement (DD/MM/AAAA): " << u.dataNaixament << "\n";
+		cout << "Modalitat subscripcio: " << u.subscripcio << "\n";
+	}
+	catch (sql::SQLException& e) {
+		std::cerr << "SQL Error: " << e.what() << std::endl;
+	}
 }
 
 void CapaDePresentacio::processarEsborraUsuari() {

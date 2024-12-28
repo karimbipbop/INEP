@@ -4,10 +4,10 @@
 
 class TxRegistraUsuari : public Transaccio {
 private:
-    Usuari usuari;
+    DTOUsuari usuari;
 
 public:
     TxRegistraUsuari();
-    TxRegistraUsuari(Usuari u);
+    TxRegistraUsuari(DTOUsuari u);
     void executar();
 };

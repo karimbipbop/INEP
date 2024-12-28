@@ -4,10 +4,11 @@
 class TxConsultaUsuari: public Transaccio {
 private:
     PassarelaUsuari usuari;
-    Usuari resultat;
+    DTOUsuari resultat;
 
 public:
     TxConsultaUsuari();
     void executar();
-	Usuari obteResultat();
+	DTOUsuari obteResultat();
+	PassarelaUsuari obteUsuari();
 };

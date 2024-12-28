@@ -4,6 +4,7 @@
 class TxInfoVisualitzacions : public Transaccio {
 private:
 	pair<int, int> resultat;
+
 public:
 	TxInfoVisualitzacions();
 	void executar();

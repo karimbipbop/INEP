@@ -36,7 +36,7 @@ void PassarelaUsuari::insereix()
 {
     try {
         ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "INSERT INTO usuari VALUES ('" + 
+        string query = "INSERT INTO usuari VALUES ('" + 
                             sobrenom + "', '" + 
                             nom + "', '" + 
                             contrasenya + "', '" + 
@@ -53,7 +53,7 @@ void PassarelaUsuari::modifica()
 {
     try {
         ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "UPDATE usuari SET "
+        string query = "UPDATE usuari SET "
                         "nom = '" + nom + "', "
                         "contrasenya = '" + contrasenya + "', "
                         "correu_electronic = '" + correuElectronic + "', "
@@ -62,7 +62,7 @@ void PassarelaUsuari::modifica()
         c.execucio(query);
     }
     catch (sql::SQLException& e) {
-		std::cerr << "SQL Error: " << e.what() << endl;
+		cerr << "SQL Error: " << e.what() << endl;
 	}
 }
 
@@ -70,11 +70,11 @@ void PassarelaUsuari::esborra()
 {
     try {
         ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom + "'";
+        string query = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom + "'";
         c.execucio(query);
     }
     catch (sql::SQLException& e) {
-		std::cerr << "SQL Error: " << e.what() << std::endl;
+		cerr << "SQL Error: " << e.what() << std::endl;
 	}
 }
 
@@ -109,15 +109,15 @@ string PassarelaUsuari::obteSubscripcio()
     return subscripcio;
 }
 
-//void PassarelaUsuari::posaContrasenya(string contrasenyaU)
-//{
-//    contrasenya = contrasenyaU;
-//}
-
 void PassarelaUsuari::posaNom(string nomU)
 {
     nom = nomU;
 
+}
+
+void PassarelaUsuari::posaContrasenya(string contrasenyaU)
+{
+    contrasenya = contrasenyaU;
 }
 
 void PassarelaUsuari::posaCorreuElectronic(string correuU)

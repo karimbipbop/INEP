@@ -4,7 +4,6 @@
 #include "PassarelaUsuari.h"
 #include "ConnexioBD.h"
 
-
 const int UsuariNoExisteix = 1;
 
 using namespace std;

@@ -4,7 +4,7 @@
 bool run = true;
 bool logg = false;
 
-// Menu Sessió no iniciada
+//Menu Sessió no iniciada
 void mostraMenuPrincipalN()
 {
 	cout << "*********************" << endl;
@@ -17,7 +17,7 @@ void mostraMenuPrincipalN()
 	cout << "Escriu opcio: ";
 }
 
-// Menu Sessió iniciada
+//Menu Sessió iniciada
 void mostraMenuPrincipalS()
 {
 	cout << "*********************" << endl;
@@ -56,7 +56,7 @@ void gestioUsuari()
 		p.processarConsultaUsuari();
 		break;
 	case 2:
-		cout << "MODIFICA USUARI\n";
+		p.processarModificaUsuari();
 		break;
 	case 3:
 		p.processarEsborraUsuari();

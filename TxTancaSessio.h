@@ -3,7 +3,7 @@
 
 class TxTancaSessio : public Transaccio {
 private:
-    Usuari usuari;
+    DTOUsuari usuari;
 
 public:
     TxTancaSessio();

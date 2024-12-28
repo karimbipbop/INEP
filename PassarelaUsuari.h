@@ -23,8 +23,8 @@ public:
     string obteCorreuElectronic();
     string obteDataNaixement();
     string obteSubscripcio();
-    //void posaContrasenya(string contraU); --> modificaUsuari() no deja modificar contrasenya
     void posaNom(string nomU);
+    void posaContrasenya(string contraU);
     void posaCorreuElectronic(string correuU);
     void posaDataNaixement(string neixU);
     void posaSubscripcio(string subscripcioU);

@@ -13,6 +13,10 @@ void TxConsultaUsuari::executar() {
 	resultat.subscripcio = usuari.obteSubscripcio();
 }
 
-Usuari TxConsultaUsuari::obteResultat() {
+DTOUsuari TxConsultaUsuari::obteResultat() {
 	return resultat;
+}
+
+PassarelaUsuari TxConsultaUsuari::obteUsuari() {
+	return usuari;
 }

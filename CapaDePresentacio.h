@@ -15,7 +15,7 @@
 #include "TxConsultaUsuari.h"
 #include "TxInfoVisualitzacions.h"
 #include "TxEsborraUsuari.h"
-
+#include "CtrlModificaUsuari.h"
 
 class CapaDePresentacio {
 private:
@@ -28,6 +28,7 @@ public:
 	void processarIniciSessio();
 	void processarTancaSessio();
 	void processarConsultaUsuari();
+	void processarModificaUsuari();
 	void processarEsborraUsuari();
 
 	/*a partir de aqui son operaciones de las entregas del lab*/

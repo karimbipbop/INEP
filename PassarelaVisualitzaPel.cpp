@@ -54,7 +54,10 @@ void PassarelaVisualitzaPel::modifica() {
 void PassarelaVisualitzaPel::esborra() {
 	try {
 		ConnexioBD& c = ConnexioBD::getInstance();
-		std::string query = "DELETE FROM visualitzacio_pelicula WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "' AND data = '" + data + "'";
+		std::string query = "DELETE FROM visualitzacio_pelicula WHERE sobrenom_usuari = '" + 
+							sobrenom + "' AND titol_pelicula = '" + 
+							titolPelicula + "' AND data = '" + 
+							data + "'";
 		c.execucio(query);
 	}
 	catch (sql::SQLException& e) {
