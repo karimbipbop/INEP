@@ -139,43 +139,47 @@ void CapaDePresentacio::processarConsultaUsuari() {
 }
 
 void CapaDePresentacio::processarModificaUsuari() {
-	cout << "** Modificar usuari **" << endl;
-
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	CtrlModificaUsuari cmu;
 	DTOUsuari u = cmu.consultaUsuari();
 	cout << "** Modificar usuari **" << endl;
 	cout << "Nom complet: " << u.nom << "\n";
 	cout << "Sobrenom: " << u.sobrenom << "\n";
 	cout << "Correu electronic: " << u.correuElectronic << "\n";
+	formatDate(u.dataNaixament);
 	cout << "Data naixement (DD/MM/AAAA): " << u.dataNaixament << "\n";
 	cout << "Modalitat subscripcio: " << u.subscripcio << "\n";
 
 	cout << "Omplir la informacio  que es vol modificar ...\n";
 
 	cout << "Nom complet: ";
-	cin >> u.nom;
-	cout << "Sobrenom: ";
-	cin >> u.sobrenom;
+	getline(cin, u.nom);
 	cout << "Contrassenya: ";
-	cin >> u.contrassenya;
+	getline(cin, u.contrassenya);
 	cout << "Correu electronic: ";
-	cin >> u.correuElectronic;
+	getline(cin, u.correuElectronic);
 	cout << "Data naixement (DD/MM/AAAA): ";
-	cin >> u.dataNaixament;
-	cout << "Modalitats de subscripcio: \n";
-	cin >> u.subscripcio;
-
+	getline(cin, u.dataNaixament);
+	formatDate(u.dataNaixament);
+	cout << "Modalitats de subscripcio: ";
+	getline(cin, u.subscripcio);
+	if (u.nom.empty() && u.contrassenya.empty() && u.correuElectronic.empty() && u.dataNaixament.empty() && u.subscripcio.empty()) {
+		cout << "No s'ha entrat cap dada a modificar\n";
+		return;
+	}
 	try {
 		cmu.modificaUsuari(u.nom, u.contrassenya, u.correuElectronic, u.dataNaixament, u.subscripcio);
+		u = cmu.consultaUsuari();
 		cout << "** Dades usuari modificades **\n";
 		cout << "Nom complet: " << u.nom << "\n";
 		cout << "Sobrenom: " << u.sobrenom << "\n";
 		cout << "Correu electronic: " << u.correuElectronic << "\n";
+		formatDate(u.dataNaixament);
 		cout << "Data naixement (DD/MM/AAAA): " << u.dataNaixament << "\n";
 		cout << "Modalitat subscripcio: " << u.subscripcio << "\n";
 	}
 	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error: " << e.what() << std::endl;
+		throw(e);
 	}
 }
 

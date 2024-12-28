@@ -15,12 +15,17 @@ DTOUsuari CtrlModificaUsuari::consultaUsuari() {
 
 void CtrlModificaUsuari::modificaUsuari(string nomU, string contraU, string correuU, string neixU, string modalitatU) {
 	if (nomU != "") usuari.posaNom(nomU);
-	if (contraU != "") usuari.posaContrasenya(nomU);
-	if (correuU != "") usuari.posaCorreuElectronic(nomU);
-	if (neixU != "") usuari.posaDataNaixement(nomU);
-	if (modalitatU != "") usuari.posaSubscripcio(nomU);
+	if (contraU != "") usuari.posaContrasenya(contraU);
+	if (correuU != "") usuari.posaCorreuElectronic(correuU);
+	if (neixU != "") usuari.posaDataNaixement(neixU);
+	if (modalitatU != "") usuari.posaSubscripcio(modalitatU);
 
-	if (nomU != "" or contraU != "" or correuU != "" or neixU != "" or modalitatU != "") {
+	try {
 		usuari.modifica();
+		PetitFlix& pf = PetitFlix::getInstance();
+		pf.iniciaSessio(usuari);
+	}
+	catch (sql::SQLException& e) {
+		throw(e);
 	}
 }

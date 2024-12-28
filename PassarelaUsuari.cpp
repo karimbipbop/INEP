@@ -56,12 +56,13 @@ void PassarelaUsuari::modifica()
                         "nom = '" + nom + "', "
                         "contrasenya = '" + contrasenya + "', "
                         "correu_electronic = '" + correuElectronic + "', "
-                        "data_naixement = '" + dataNaixement + "' "
+                        "data_naixement = '" + dataNaixement + "', "
+                        "subscripcio = '" + subscripcio + "' "
                         "WHERE sobrenom = '" + sobrenom + "'";
         c.execucio(query);
     }
     catch (sql::SQLException& e) {
-		cerr << "SQL Error: " << e.what() << endl;
+        throw(e);
 	}
 }
 
