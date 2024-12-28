@@ -15,7 +15,6 @@ void TxProximesEstrenes::executar() {
 		}
 		else {
 			// es serie
-
 		}
 	}
 	resultat = res;

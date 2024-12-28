@@ -275,7 +275,7 @@ void CapaDePresentacio::processarEsborraUsuari() {
 //{
 //	cout << "S'ha processat l'opcio Ultimes novetats" << endl;
 //}
-//
+
 void CapaDePresentacio::processarProximesEstrenes() {
 	string modalitat;
 	if (!logg) {
@@ -288,11 +288,24 @@ void CapaDePresentacio::processarProximesEstrenes() {
 		DTOUsuari u = tcon.obteResultat();
 		modalitat = u.subscripcio;
 	}
+
+	cout << "** Properes estrenes **\n";
+	cout << "Modalitat: " << modalitat << "\n\n";
+
 	TxProximesEstrenes p(modalitat);
 	p.executar();
 	vector<string> estrenes = p.obteResultat();
 	// Mostrem 10 estrenes
 	for (int i = 0; i < 10; ++i) {
 		cout << estrenes[i] << endl;
+	}
+}
+
+void CapaDePresentacio::processarConsultarPelicules() {
+	
+
+	cout << "** Pel.licules mes visualitzades **\n\n";
+	for (int i = 1; i < 6; ++i) {
+		cout << i << ".- " << "hola\n";
 	}
 }

@@ -19,6 +19,7 @@
 #include "CtrlModificaUsuari.h"
 
 #include "TxProximesEstrenes.h"
+#include "TxConsultarPelicules.h"
 
 
 //Variables globals per manejar el menu.
@@ -40,6 +41,7 @@ public:
 	void processarEsborraUsuari();
 
 	void processarProximesEstrenes();
+	void processarConsultarPelicules();
 
 	/*a partir de aqui son operaciones de las entregas del lab*/
 	//void processarConsultaUsuari();

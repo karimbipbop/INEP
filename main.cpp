@@ -134,7 +134,7 @@ void consultes()
 		cout << "ULTIMES NOVETATS\n";
 		break;
 	case 3:
-		cout << "PEL.LICULES MES VISTES\n";
+		p.processarConsultarPelicules();
 		break;
 	case 4:
 		break;
