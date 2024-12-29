@@ -8,10 +8,8 @@ PassarelaRelacionat::PassarelaRelacionat()
 
 PassarelaRelacionat::PassarelaRelacionat(sql::ResultSet* result)
 {
-    if (result->next()) {
-        titolX = result->getString("titol_x");
-        titolY = result->getString("titol_y");
-    }
+    titolX = result->getString("titol_x");
+    titolY = result->getString("titol_y");
 }
 
 PassarelaRelacionat::PassarelaRelacionat(string titolXr, string titolYr)

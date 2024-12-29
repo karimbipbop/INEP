@@ -19,6 +19,7 @@
 #include "CtrlModificaUsuari.h"
 #include "TxVisualitzarPel.h"
 #include "TxObteInfoPel.h"
+#include "TxObteRelacionatsPel.h"
 
 #include "TxProximesEstrenes.h"
 #include "TxConsultarPelicules.h"

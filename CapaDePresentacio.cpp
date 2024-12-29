@@ -186,9 +186,6 @@ void CapaDePresentacio::processarVisualitzaPel() {
 	PetitFlix& pf = PetitFlix::getInstance();
 	string sobrenom = pf.obteUsuari().obteSobrenom();
 	string modalitat = pf.obteUsuari().obteSubscripcio();
-	//transaccio mostra dades pelicula...
-
-	
 	try {
 		TxObteInfoPel tinfp(nomP);
 		tinfp.executar();
@@ -218,7 +215,17 @@ void CapaDePresentacio::processarVisualitzaPel() {
 			formatDate(avui);
 			cout << "Visualitzacio registrada: " << avui << "\n";
 			cout << "Titols relacionats:\n";
-
+			TxObteRelacionatsPel torp(nomP);
+			torp.executar();
+			vector<string> relacionats = torp.obteTitolsRel();
+			for (unsigned int i = 0; i < relacionats.size(); ++i) {
+				TxObteInfoPel tinfp(relacionats[i]);
+				tinfp.executar();
+				DTOPelicula aux = tinfp.obteResultat();
+				formatDate(aux.dataEstrena);
+				cout << "- " << aux.titol << "; " << aux.descripcio << "; " << aux.qualificacio;
+				cout << "; " << aux.duracio << " min; " << aux.dataEstrena << "\n";
+			}
 		}
 		catch (...) {
 			cout << "ERROR\n";

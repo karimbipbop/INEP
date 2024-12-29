@@ -13,7 +13,7 @@ void TxVisualitzarPel::executar() {
 		visP.augmentaNumVisualitzacions();
 		visP.modifica();
 	}
-	catch (const sql::SQLException& e) {
+	catch (int exc) {
 		//No existeix una visualitzacio d'aquest usuari per aquesta pel.licula.
 		try {
 			PassarelaPelicula pel = cercPel.cercaPelicula(titolP);

@@ -33,8 +33,8 @@ PassarelaVisualitzaPel CercadoraVisualitzaPel::cercaVisualitzaPel(string sobreno
         ConnexioBD& db = ConnexioBD::getInstance(); // Get the singleton instance
         string query = "SELECT * FROM visualitzacio_pelicula WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '"
             + titol + "'";
-
         sql::ResultSet* result = db.consulta(query); // Execute query
+        
 
         if (result->next()) { // Comprobar si hay resultados
             PassarelaVisualitzaPel pasVis(result);
@@ -43,7 +43,7 @@ PassarelaVisualitzaPel CercadoraVisualitzaPel::cercaVisualitzaPel(string sobreno
         }
         else {
             delete result; // Liberar memoria
-            throw;
+            throw(13); //hacer error
         }
     }
     catch (const sql::SQLException& e) {
