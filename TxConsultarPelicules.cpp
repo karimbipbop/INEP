@@ -1,5 +1,5 @@
 #include "TxConsultarPelicules.h"
-/*
+
 TxConsultarPelicules::TxConsultarPelicules() {
 	//subscripcio = "";
 }
@@ -20,4 +20,3 @@ void TxConsultarPelicules::executar() {
 vector<DTOPelicula> TxConsultarPelicules::obteResultat() {
 	return resultat;
 }
-*/

@@ -92,7 +92,7 @@ void visualitzar() {
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
 		break;
 	case 1:
-		cout << "VISUALITZAR PEL.LICULA\n";
+		p.processarVisualitzaPel();
 		break;
 	case 2:
 		cout << "VISUALITZAR CAPITOL\n";

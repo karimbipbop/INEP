@@ -30,18 +30,18 @@ vector<PassarelaVisualitzaPel> CercadoraVisualitzaPel::cercaVisualitzaPel(string
 
 PassarelaVisualitzaPel CercadoraVisualitzaPel::cercaVisualitzaPel(string sobrenom, string titol) {
     try {
-        PassarelaVisualitzaPel visualitzacio;
         ConnexioBD& db = ConnexioBD::getInstance(); // Get the singleton instance
-        string query = "SELECT * FROM visualitzacio_pelicula WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = "
+        string query = "SELECT * FROM visualitzacio_pelicula WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '"
                         + titol + "'";
 
         sql::ResultSet* result = db.consulta(query); // Execute query
 
         // Pass data to PassarelaUsuari (assuming PassarelaUsuari constructor accepts a ResultSet)
         PassarelaVisualitzaPel pasVis(result);
+        cout << "debug: " << pasVis.obteTitolPelicula() << ' ' << pasVis.obteSobrenom();
 
         delete result; // Free memory after use
-        return visualitzacio;
+        return pasVis;
     }
     catch (const sql::SQLException& e) {
         throw;

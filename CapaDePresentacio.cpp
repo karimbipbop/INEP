@@ -184,18 +184,44 @@ void CapaDePresentacio::processarVisualitzaPel() {
 	getline(cin, nomP);
 	PetitFlix& pf = PetitFlix::getInstance();
 	string sobrenom = pf.obteUsuari().obteSobrenom();
+	string modalitat = pf.obteUsuari().obteSubscripcio();
 	//transaccio mostra dades pelicula...
+
+	
+	try {
+		TxObteInfoPel tinfp(nomP);
+		tinfp.executar();
+		DTOPelicula pel = tinfp.obteResultat();
+		cout << "Informacio pel.licula... \n";
+		cout << "Titol: " << pel.titol << "\n";
+		cout << "Descripcio: " << pel.descripcio << "\n";
+		cout << "Qualificacio: " << pel.qualificacio << "\n";
+		formatDate(pel.dataEstrena);
+		cout << "Data estrena: " << pel.dataEstrena << "\n";
+		cout << "Duracio: " << pel.duracio << "\n";
+	}
+	catch (sql::SQLException& e) {
+		//No existeix la pelicula
+		cout << e.what();
+	}
 
 	cout << "Vols continuar amb la visualitzacio (S/N): ";
 	char opt;
 	cin >> opt;
+
 	if (opt == 's' || opt == 'S') {
-		TxVisualitzarPel tvisp(sobrenom, nomP);
 		try {
+			TxVisualitzarPel tvisp(sobrenom, nomP, modalitat);
 			tvisp.executar();
+			string avui = today();
+			formatDate(avui);
+			cout << "Visualitzacio registrada: " << avui << "\n";
+			cout << "Titols relacionats:\n";
+
 		}
 		catch (...) {
-
+			cout << "ERROR\n";
+			//todo if excepciones mensajes custom.
 		}
 	}
 	else

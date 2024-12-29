@@ -18,6 +18,7 @@
 #include "TxEsborraUsuari.h"
 #include "CtrlModificaUsuari.h"
 #include "TxVisualitzarPel.h"
+#include "TxObteInfoPel.h"
 
 #include "TxProximesEstrenes.h"
 #include "TxConsultarPelicules.h"

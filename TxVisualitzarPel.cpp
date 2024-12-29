@@ -1,16 +1,20 @@
 #include "TxVisualitzarPel.h"
 
-TxVisualitzarPel::TxVisualitzarPel(string sobrenom, string titol) {
+TxVisualitzarPel::TxVisualitzarPel(string sobrenom, string titol, string modalitat) {
 	sU = sobrenom;
 	titolP = titol;
+	sSubscripcio = modalitat;
 }
 
 void TxVisualitzarPel::executar() {
 	try {
 		//Existeix una visualitzacio d'aquest usuari per aquesta pel.licula, augmenta en 1 numVisualitzacions.
 		PassarelaVisualitzaPel visP = cercVisP.cercaVisualitzaPel(sU, titolP);
+		cout << "\nfuncionaaaaa\n";
 		visP.augmentaNumVisualitzacions();
+		cout << "\nfuncionaaaaa\n";
 		visP.modifica();
+		cout << "\nfuncionaaaaa\n";
 	}
 	catch (const sql::SQLException& e) {
 		//No existeix una visualitzacio d'aquest usuari per aquesta pel.licula.
@@ -19,8 +23,12 @@ void TxVisualitzarPel::executar() {
 			string data = today();
 			if (pel.obteDataEstrena() > data)
 				throw; //Pel.licula no estrenada.
-			//PassarelaContingut pCon = cercCont.cercaContinguts();
+			PassarelaContingut pCon = cercCont.cercaContingutPerTitol(titolP);
+			string qual = pCon.obteQualificacio();
+			if (sSubscripcio == "Infantil" && (qual == "16+" || qual == "18+"))
+				throw; //Pel.licula no apta.
 			pVP = PassarelaVisualitzaPel(sU, titolP, data, 1);
+			pVP.insereix();
 		}
 		catch (const sql::SQLException& e) {
 			//No existeix la pelicula...
@@ -30,6 +38,6 @@ void TxVisualitzarPel::executar() {
 	}
 }
 
-PassarelaVisualitzaPel TxVisualitzarPel::obteResultat() {
+PassarelaVisualitzaPel TxVisualitzarPel::obteVisualitzacio() {
 	return pVP;
 }
