@@ -19,6 +19,7 @@
 #include "CtrlModificaUsuari.h"
 #include "TxVisualitzarPel.h"
 #include "TxObteInfoPel.h"
+#include "TxObteInfoCap.h"
 #include "TxObteRelacionatsPel.h"
 
 #include "TxProximesEstrenes.h"
@@ -45,7 +46,7 @@ public:
 	void processarEsborraUsuari();
 
 	void processarVisualitzaPel();
-
+	void processarConsultarVisualitzacions();
 	void processarProximesEstrenes();
 	void processarUltimesNovetats();
 	void processarConsultarPelicules();

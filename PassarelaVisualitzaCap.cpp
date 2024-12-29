@@ -10,14 +10,12 @@ PassarelaVisualitzaCap::PassarelaVisualitzaCap() {
 }
 
 PassarelaVisualitzaCap::PassarelaVisualitzaCap(sql::ResultSet* result) {
-	if (result->next()) {
-		sobrenom = result->getString("sobrenom_usuari");
-		titolSerie = result->getString("titol_serie");
-		numTemporada = result->getInt("num_temporada");
-		numCapitol = result->getInt("num_capitol");
-		data = result->getString("data");
-		numVisualitzacions = result->getInt("num_visualitzacions");
-	}
+	sobrenom = result->getString("sobrenom_usuari");
+	titolSerie = result->getString("titol_serie");
+	numTemporada = result->getInt("num_temporada");
+	numCapitol = result->getInt("num_capitol");
+	data = result->getString("data");
+	numVisualitzacions = result->getInt("num_visualitzacions");
 }
 
 PassarelaVisualitzaCap::PassarelaVisualitzaCap(string sobrenomC, string titolSerieC, int numTemporadaC, int numCapitolC, string dataC, int numVisualitzacionsC) {

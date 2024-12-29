@@ -237,6 +237,39 @@ void CapaDePresentacio::processarVisualitzaPel() {
 	
 }
 
+void CapaDePresentacio::processarConsultarVisualitzacions() {
+	cout << "** Consultar visualitzacions **\n\n";
+	TxInfoVisualitzacions tinf;
+	tinf.executar();
+	vector<DTOPelicula> pels = tinf.obtePelVisu();
+	if (pels.size() > 0) {
+		cout << "** Pel.licules visualitzades **\n";
+		cout << "*******************************\n";
+		for (unsigned int i = 0; i < pels.size(); ++i) {
+			TxObteInfoPel tinfp(pels[i].titol);
+			tinfp.executar();
+			DTOPelicula aux = tinfp.obteResultat();
+			cout << pels[i].dataV << ": " << aux.titol << "; " << aux.descripcio << "; ";
+			cout << aux.qualificacio << "; nombre de visualitzacions " << pels[i].visualitzacions << "\n";
+		}
+	}
+	vector<DTOCapitol> caps = tinf.obteCapVisu();
+	if (caps.size() > 0) {
+		cout << "\n** Series visualitzades **\n";
+		cout << "**************************\n";
+		for (unsigned int i = 0; i < caps.size(); ++i) {
+			TxObteInfoCap tinfc(caps[i].titolSerie, caps[i].numeroTemporada, caps[i].numero);
+			tinfc.executar();
+			DTOCapitol aux = tinfc.obteResultat();
+			formatDate(caps[i].dataV);
+			cout << caps[i].dataV << ": " << aux.titolSerie << "; " << aux.qualificacio << "; Temporada ";
+			cout << aux.numeroTemporada << "; Capitol " << aux.numero << "; nombre de visualitzacions " << caps[i].visualitzacions << "\n";
+		}
+	}
+	if (pels.size() == 0 && caps.size() == 0)
+		cout << "No hi ha cap titol visualitzat\n";
+}
+
 void CapaDePresentacio::processarProximesEstrenes() {
 	string modalitat;
 	if (!logg) {

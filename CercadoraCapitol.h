@@ -10,4 +10,5 @@ class CercadoraCapitol {
 public:
     CercadoraCapitol();
     vector<PassarelaCapitol> cercaCapitols(string titol_serie);
+    PassarelaCapitol cercaCapitol(string titol_serie, int numT, int numC);
 };

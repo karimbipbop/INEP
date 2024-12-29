@@ -18,7 +18,6 @@ vector<PassarelaVisualitzaCap> CercadoraVisualitzaCap::cercaVisualitzaCap(string
             PassarelaVisualitzaCap pasCap(result);
             visualitzacions.push_back(pasCap);
         }
-
         delete result; // Free memory after use
         return visualitzacions;
     }

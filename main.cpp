@@ -98,7 +98,7 @@ void visualitzar() {
 		cout << "VISUALITZAR CAPITOL\n";
 		break;
 	case 3:
-		cout << "CONSULTAR VISUALITZACIONS\n";
+		p.processarConsultarVisualitzacions();
 		break;
 	case 4:
 		break;

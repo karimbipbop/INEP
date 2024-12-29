@@ -8,10 +8,8 @@ PassarelaSerie::PassarelaSerie()
 
 PassarelaSerie::PassarelaSerie(sql::ResultSet* result)
 {
-    if (result->next()) {
-        titol = result->getString("titol");
-        dataEstrena = result->getString("data_estrena");
-    }
+    titol = result->getString("titol");
+    dataEstrena = result->getString("data_estrena");
 }
 
 PassarelaSerie::PassarelaSerie(string titolS, string dataEstrenaS)

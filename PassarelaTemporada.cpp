@@ -8,10 +8,8 @@ PassarelaTemporada::PassarelaTemporada()
 
 PassarelaTemporada::PassarelaTemporada(sql::ResultSet* result)
 {
-    if (result->next()) {
-        titolSerie = result->getString("titol_serie");
-        numero = result->getInt("numero");
-    }
+    titolSerie = result->getString("titol_serie");
+    numero = result->getInt("numero");
 }
 
 PassarelaTemporada::PassarelaTemporada(string titolSerieT, int numeroT)
