@@ -12,4 +12,5 @@ public:
     vector<PassarelaContingut>cercaContinguts();
     vector<PassarelaContingut>cercaContingutsPerQualificacio(vector<string> qualificacions);
     vector<PassarelaContingut>cercaContingutsPerTipus(string tipus);
+    PassarelaContingut cercaContingutPerTitol(string titol);
 };

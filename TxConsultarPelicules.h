@@ -2,7 +2,7 @@
 #include "DTOUsuari.h"
 #include "Transaccio.h"
 #include "PassarelaPelicula.h"
-/*
+
 class TxConsultarPelicules : public Transaccio {
 private:
     vector<DTOPelicula> resultat;
@@ -14,4 +14,3 @@ public:
     vector<DTOPelicula> obteResultat();
 };
 
-*/

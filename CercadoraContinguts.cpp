@@ -95,3 +95,26 @@ vector<PassarelaContingut> CercadoraContinguts::cercaContingutsPerTipus(string t
         throw;
     }
 }
+
+PassarelaContingut CercadoraContinguts::cercaContingutPerTitol(string titol) {
+    try {
+        ConnexioBD& db = ConnexioBD::getInstance();
+        string query = "SELECT * FROM contingut WHERE titol = '" + titol + "'";
+
+        sql::ResultSet* result = db.consulta(query);
+
+        if (!result) {
+            delete result;
+            throw;
+            // No hi ha continguts llavors...
+        }
+        PassarelaContingut pasCon(result);
+
+        delete result; // Free memory after use
+        return pasCon;
+    }
+    catch (const sql::SQLException& e) {
+        cerr << "MySQL error: " << e.what() << endl;
+        throw;
+    }
+}

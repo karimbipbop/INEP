@@ -14,6 +14,8 @@ struct DTOUsuari {
 struct DTOPelicula {
 	string titol;
 	string dataEstrena;
+	string qualificacio;
+	string descripcio;
 	int duracio;
 	int visualitzacions;
 };

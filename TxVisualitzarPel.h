@@ -4,9 +4,10 @@
 class TxVisualitzarPel : public Transaccio {
 private:
 	PassarelaVisualitzaPel pVP;
-	string sU, titolP;
+	PassarelaPelicula pP;
+	string sU, titolP, sSubscripcio;
 public:
-	TxVisualitzarPel(string sobrenom, string titol);
+	TxVisualitzarPel(string sobrenom, string titol, string modalitat);
 	void executar();
-	PassarelaVisualitzaPel obteResultat();
+	PassarelaVisualitzaPel obteVisualitzacio();
 };

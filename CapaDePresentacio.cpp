@@ -184,96 +184,50 @@ void CapaDePresentacio::processarVisualitzaPel() {
 	getline(cin, nomP);
 	PetitFlix& pf = PetitFlix::getInstance();
 	string sobrenom = pf.obteUsuari().obteSobrenom();
+	string modalitat = pf.obteUsuari().obteSubscripcio();
 	//transaccio mostra dades pelicula...
+
+	
+	try {
+		TxObteInfoPel tinfp(nomP);
+		tinfp.executar();
+		DTOPelicula pel = tinfp.obteResultat();
+		cout << "Informacio pel.licula... \n";
+		cout << "Titol: " << pel.titol << "\n";
+		cout << "Descripcio: " << pel.descripcio << "\n";
+		cout << "Qualificacio: " << pel.qualificacio << "\n";
+		formatDate(pel.dataEstrena);
+		cout << "Data estrena: " << pel.dataEstrena << "\n";
+		cout << "Duracio: " << pel.duracio << "\n";
+	}
+	catch (sql::SQLException& e) {
+		//No existeix la pelicula
+		cout << e.what();
+	}
 
 	cout << "Vols continuar amb la visualitzacio (S/N): ";
 	char opt;
 	cin >> opt;
+
 	if (opt == 's' || opt == 'S') {
-		TxVisualitzarPel tvisp(sobrenom, nomP);
 		try {
+			TxVisualitzarPel tvisp(sobrenom, nomP, modalitat);
 			tvisp.executar();
+			string avui = today();
+			formatDate(avui);
+			cout << "Visualitzacio registrada: " << avui << "\n";
+			cout << "Titols relacionats:\n";
+
 		}
 		catch (...) {
-
+			cout << "ERROR\n";
+			//todo if excepciones mensajes custom.
 		}
 	}
 	else
 		return;
 	
 }
-
-/************************************************/
-//void CapaDePresentacio::processarModificaUsuari()
-//{
-//	try {
-//		ConnexioBD& c = ConnexioBD::getInstance();
-//		// Sentència SQL per obtenir totes les files de la taula usuari
-//		Usuari n;
-//		cout << "Insereix el teu sobrenom" << endl;
-//		cin >> n.sobrenom;
-//		string sql = "SELECT COUNT(*) AS count FROM Usuari WHERE sobrenom = '" + n.sobrenom + "'";
-//		sql::ResultSet* res = c.consulta(sql);
-//		res->next();
-//		if (res->getInt("count") == 0) {
-//			cout << "ERROR: No existeix l'usuari '" << n.sobrenom << "' a la base de dades.\n";
-//		}
-//		else {
-//			cout << "Insereix el teu nou nom i el teu nou correu electronic" << endl;
-//			cin >> n.nom >> n.correuElectronic;
-//			sql = "UPDATE Usuari SET nom = '" + n.nom + "', correu_electronic = '" + n.correuElectronic + "' WHERE sobrenom = '" + n.sobrenom + "'";
-//			c.execucio(sql);
-//			cout << "L'Usuari " << n.sobrenom << " s'ha modificat correctament!" << endl;
-//		}
-//	}
-//	catch (sql::SQLException& e) {
-//		std::cerr << "SQL Error: " << e.what() << std::endl;
-//	}
-//}
-//
-//{
-//	try {
-//		ConnexioBD& c = ConnexioBD::getInstance();
-//		// Sentència SQL per obtenir totes les files de la taula usuari
-//		Usuari n;
-//		cout << "Insereix el teu sobrenom" << endl;
-//		cin >> n.sobrenom;
-//		string sql = "SELECT COUNT(*) AS count FROM Usuari WHERE sobrenom = '" + n.sobrenom + "'";
-//		sql::ResultSet* res = c.consulta(sql);
-//		res->next();
-//		if (res->getInt("count") == 0) {
-//			cout << "ERROR: No existeix l'usuari '" << n.sobrenom << "' a la base de dades.\n";
-//		}
-//		else {
-//			string sql = "DELETE FROM Usuari WHERE sobrenom='" + n.sobrenom + "'";
-//			c.execucio(sql);
-//			cout << "L'Usuari " << n.sobrenom << " s'ha esborrat correctament!" << endl;
-//		}
-//	}
-//	catch (sql::SQLException& e) {
-//		std::cerr << "SQL Error: " << e.what() << std::endl;
-//	}
-//}
-//
-//void CapaDePresentacio::processarGestioPelicules()
-//{
-//	cout << "S'ha processat l'opcio Gestio pel.licules" << endl;
-//}
-//
-//void CapaDePresentacio::processarGestioSeries()
-//{
-//	cout << "S'ha processat l'opcio Gestio series" << endl;
-//}
-//
-//void CapaDePresentacio::processarConsultaQualificacioEdat()
-//{
-//	cout << "S'ha processat l'opcio Consulta per qualificacio d'edat" << endl;
-//}
-//
-//void CapaDePresentacio::processarUltimesNovetats()
-//{
-//	cout << "S'ha processat l'opcio Ultimes novetats" << endl;
-//}
 
 void CapaDePresentacio::processarProximesEstrenes() {
 	string modalitat;
