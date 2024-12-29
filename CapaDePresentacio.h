@@ -22,6 +22,7 @@
 #include "TxObteRelacionatsPel.h"
 
 #include "TxProximesEstrenes.h"
+#include "TxUltimesNovetats.h"
 #include "TxConsultarPelicules.h"
 
 
@@ -46,6 +47,7 @@ public:
 	void processarVisualitzaPel();
 
 	void processarProximesEstrenes();
+	void processarUltimesNovetats();
 	void processarConsultarPelicules();
 
 	/*a partir de aqui son operaciones de las entregas del lab*/
@@ -54,6 +56,6 @@ public:
 	//void processarGestioPelicules();
 	//void processarGestioSeries();
 	//void processarConsultaQualificacioEdat();
-	//void processarUltimesNovetats();
+	
 	//void processarProximesEstrenes();
 };
