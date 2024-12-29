@@ -11,13 +11,10 @@ void TxProximesEstrenes::executar() {
 
 	vector<PassarelaContingut> continguts;
 	if (subscripcio == "Infantil") {
-		continguts = cercCont.cercaContingutsPerQualificacio({ "TP", "+7", "+12"});
+		continguts = cercCont.cercaContingutsPerQualificacio({ "TP", "7+", "12+"});
 	}
 	else if (subscripcio == "Completa") {
 		continguts = cercCont.cercaContinguts();
-		for (int i = 0; i < continguts.size(); ++i) {
-			cout << continguts[i].obteTitol() << endl;
-		}
 	}
 	else {
 		// Cinèfil
@@ -30,13 +27,11 @@ void TxProximesEstrenes::executar() {
 	for (auto&cont : continguts) {
 		vector<string> dataEstrena;
 		vector<string> infoContingut;
-		cout << "TIpus: " << cont.obteTipus() << endl;
 		if (cont.obteTipus() == "pelicula") {
 			PassarelaPelicula p = cercPel.cercaPelicula(cont.obteTitol());
 			dataEstrena.push_back(p.obteDataEstrena());
 			string dataArreglada = dataEstrena[0];
 			formatDate(dataArreglada);
-			cout << dataArreglada << endl;
 			infoContingut.push_back(dataArreglada + " [Pel.licula]: " + p.obteTitol() + "; " +
 				cont.obteQualificacio() + "; " + to_string(p.obteDuracio()) + " min.");
 		}
@@ -58,8 +53,6 @@ void TxProximesEstrenes::executar() {
 				size_t index = distance(resData.begin(), it);
 				resData.insert(it, dataEstrena[i]);
 				res.insert(res.begin() + index, infoContingut[i]);
-
-				cout << continguts[i].obteTitol() << endl;
 				if (res.size() > 10) { // Borrem per nomes mostrar les 10 noves estrenes
 					res.pop_back();
 					resData.pop_back();

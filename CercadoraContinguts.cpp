@@ -46,9 +46,7 @@ vector<PassarelaContingut> CercadoraContinguts::cercaContingutsPerQualificacio(v
         }
 
         query += ')';
-
         sql::ResultSet* result = db.consulta(query);
-
         if (!result) {
             delete result;
             throw;
@@ -56,10 +54,10 @@ vector<PassarelaContingut> CercadoraContinguts::cercaContingutsPerQualificacio(v
         }
         vector<PassarelaContingut> vpasCon;
 
-        do {
+        while (result->next()) {
             PassarelaContingut pasCon(result);
             vpasCon.push_back(pasCon);
-        } while (result->next());
+        }
 
         delete result; // Free memory after use
         return vpasCon;
@@ -84,10 +82,10 @@ vector<PassarelaContingut> CercadoraContinguts::cercaContingutsPerTipus(string t
         }
         vector<PassarelaContingut> vpasCon;
 
-        do {
+        while (result->next()) {
             PassarelaContingut pasCon(result);
             vpasCon.push_back(pasCon);
-        } while (result->next());
+        }
 
         delete result; // Free memory after use
         return vpasCon;

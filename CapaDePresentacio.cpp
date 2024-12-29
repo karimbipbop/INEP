@@ -280,7 +280,7 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	if (!logg) {
 		cout << "Indica la modalitat de subscripcio: ";
 		cin >> modalitat;
-		if (modalitat != "Completa" and modalitat != "Cinèfil" and modalitat != "Infantil") {
+		if (modalitat != "Completa" and modalitat != "Cinèfil" and modalitat != "Cinefil" and modalitat != "Infantil") {
 			cout << "La modalitat es incorrecta" << endl;
 			return;
 		}
