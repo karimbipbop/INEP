@@ -6,6 +6,7 @@
 #include "CercadoraVisualitzaCap.h"
 #include "CercadoraVisualitzaPel.h"
 #include "CercadoraContinguts.h"
+#include "CercadoraPelicula.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ protected:
     CercadoraVisualitzaPel cercVisP;
     CercadoraVisualitzaCap cercVisC;
     CercadoraContinguts cercCont;
+    CercadoraPelicula cercPel;
     void inicialitza();
 
 };
