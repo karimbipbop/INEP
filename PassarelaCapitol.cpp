@@ -12,14 +12,12 @@ PassarelaCapitol::PassarelaCapitol()
 
 PassarelaCapitol::PassarelaCapitol(sql::ResultSet* result)
 {
-    if (result->next()) {
-        titolSerie = result->getString("titol_serie");
-        numeroTemporada = result->getInt("numero_temporada");
-        numero = result->getInt("numero");
-        titol = result->getString("titol");
-        dataEstrena = result->getString("data_estrena");
-        qualificacio = result->getString("qualificacio");
-    }
+    titolSerie = result->getString("titol_serie");
+    numeroTemporada = result->getInt("numero_temporada");
+    numero = result->getInt("numero");
+    titol = result->getString("titol");
+    dataEstrena = result->getString("data_estrena");
+    qualificacio = result->getString("qualificacio");
 }
 
 PassarelaCapitol::PassarelaCapitol(string titolSerieC, int numeroTemporadaC, int numeroC, string titolC, string dataEstrenaC, string qualificacioC)

@@ -5,7 +5,7 @@ CercadoraCapitol::CercadoraCapitol() {
 
 }
 
-PassarelaCapitol CercadoraCapitol::cercaCapitol(string titol_serie) {
+vector<PassarelaCapitol> CercadoraCapitol::cercaCapitols(string titol_serie) {
     try {
         ConnexioBD& db = ConnexioBD::getInstance();
         string query = "SELECT * FROM capitol WHERE titol_serie = '" + titol_serie + "'";
@@ -17,10 +17,15 @@ PassarelaCapitol CercadoraCapitol::cercaCapitol(string titol_serie) {
             throw;
             // No hi ha continguts llavors...
         }
-        PassarelaCapitol pasCap(result);
+
+        vector<PassarelaCapitol> vpasCap;
+        while (result->next()) {
+            PassarelaCapitol pasCap(result);
+            vpasCap.push_back(pasCap);
+        }
 
         delete result; // Free memory after use
-        return pasCap;
+        return vpasCap;
     }
     catch (const sql::SQLException& e) {
         cerr << "MySQL error: " << e.what() << endl;

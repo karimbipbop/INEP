@@ -9,5 +9,5 @@ using namespace std;
 class CercadoraCapitol {
 public:
     CercadoraCapitol();
-    PassarelaCapitol cercaCapitol(string titol_serie);
+    vector<PassarelaCapitol> cercaCapitols(string titol_serie);
 };

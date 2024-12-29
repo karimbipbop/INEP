@@ -14,15 +14,14 @@ vector<PassarelaContingut> CercadoraContinguts::cercaContinguts() {
 
         if (!result) {
             delete result;
-            throw;
+            return {};
             // No hi ha continguts llavors...
         }
         vector<PassarelaContingut> vpasCon;
-
-        do {
+        while (result->next()) {
             PassarelaContingut pasCon(result);
             vpasCon.push_back(pasCon);
-        } while (result->next());
+        }
 
         delete result; // Free memory after use
         return vpasCon;
