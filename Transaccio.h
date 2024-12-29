@@ -13,8 +13,8 @@ using namespace std;
 
 // Modifica la data que se li passa per canviar de DD/MM/YYYY a YYYY/MM/DD o al reves
 static bool formatDate(std::string& inputDate) {
-	std::vector<std::string> parts;
-	std::string part;
+	vector<std::string> parts;
+	string part;
 
 	// Parse the input string and split it into parts
 	for (char ch : inputDate) {
@@ -41,11 +41,11 @@ static bool formatDate(std::string& inputDate) {
 }
 
 static string today() {
-	std::time_t t = std::time(nullptr);
-	std::tm* localTime = std::localtime(&t);
+	time_t t = std::time(nullptr);
+	tm* localTime = std::localtime(&t);
 	char buffer[11];
-	std::strftime(buffer, sizeof(buffer), "%Y-%m-%d", localTime);
-	std::string dataAvui = buffer;
+	strftime(buffer, sizeof(buffer), "%Y-%m-%d", localTime);
+	string dataAvui = buffer;
 	return dataAvui;
 }
 

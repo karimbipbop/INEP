@@ -235,7 +235,7 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	if (!logg) {
 		cout << "Indica la modalitat de subscripcio: ";
 		cin >> modalitat;
-		if (modalitat != "Completa" and modalitat != "Cinèfil" and modalitat != "Infantil") {
+		if (modalitat != "Completa" and modalitat != "Cinèfil" and modalitat != "Cinefil" and modalitat != "Infantil") {
 			cout << "La modalitat es incorrecta" << endl;
 			return;
 		}
@@ -253,9 +253,9 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	TxProximesEstrenes p(modalitat);
 	p.executar();
 	vector<string> estrenes = p.obteResultat();
-	// Mostrem 10 estrenes
-	for (int i = 0; i < 9; ++i) {
-		cout << estrenes[i] << endl;
+	int n = estrenes.size();
+	for (int i = 0; i < n; ++i) {
+		cout << i << ".- " << estrenes[i] << endl;
 	}
 }
 
