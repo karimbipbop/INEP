@@ -1,6 +1,5 @@
 #include "CapaDePresentacio.h"
 
-
 //Menu Sessió no iniciada
 void mostraMenuPrincipalN()
 {
