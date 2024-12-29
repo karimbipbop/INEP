@@ -131,7 +131,7 @@ void consultes()
 		p.processarProximesEstrenes();
 		break;
 	case 2:
-		cout << "ULTIMES NOVETATS\n";
+		p.processarUltimesNovetats();
 		break;
 	case 3:
 		p.processarConsultarPelicules();

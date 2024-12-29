@@ -255,8 +255,48 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	vector<string> estrenes = p.obteResultat();
 	int n = estrenes.size();
 	for (int i = 0; i < n; ++i) {
-		cout << i << ".- " << estrenes[i] << endl;
+		cout << i+1 << ".- " << estrenes[i] << endl;
 	}
+}
+
+void CapaDePresentacio::processarUltimesNovetats() {
+	string modalitat;
+	if (!logg) {
+		cout << "Indica la modalitat de subscripcio: ";
+		cin >> modalitat;
+		if (modalitat != "Completa" and modalitat != "Cinèfil" and modalitat != "Cinefil" and modalitat != "Infantil") {
+			cout << "La modalitat es incorrecta" << endl;
+			return;
+		}
+	}
+	else {
+		TxConsultaUsuari tcon;
+		tcon.executar();
+		DTOUsuari u = tcon.obteResultat();
+		modalitat = u.subscripcio;
+	}
+
+	cout << "** Novetats **\n";
+	cout << "Modalitat: " << modalitat << "\n\n";
+	TxUltimesNovetats u(modalitat);
+	u.executar();
+	pair<vector<string>, vector<string>> novetats = u.obteResultat();
+	int n_pel = novetats.first.size();
+	cout << "** Novetats pel.licules **\n";
+	cout << "***************************\n";
+	for (int i = 0; i < n_pel; ++i) {
+		cout << i+1 << ".- " << novetats.first[i] << endl;
+	}
+	if (modalitat != "Cinefil" and modalitat != "Cinèfil") {
+		// Si es cinefil no mostrem les series
+		int n_cap = novetats.second.size();
+		cout << "** Novetats series **\n";
+		cout << "***************************\n";
+		for (int i = 0; i < n_cap; ++i) {
+			cout << i + 1 << ".- " << novetats.second[i] << endl;
+		}
+	}
+	
 }
 
 void CapaDePresentacio::processarConsultarPelicules() {
