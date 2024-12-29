@@ -261,47 +261,18 @@ void CapaDePresentacio::processarVisualitzaCap() {
 		cout << "Escull temporada: ";
 		int temp;
 		cin >> temp;
-		
-		
-		vector<string> capitols = 
+		TxObteCapitols tcaps(nomS);
+		tcaps.executar();
+		vector<DTOCapitol> capitols = tcaps.obteResultat();
+		cout << "Llista capitols:\n";
+		for (auto& cap : capitols) {
+			bool esVisualitzat;
+			cout << cap.numero << ". " << cap.titolCapitol << "; " << cap.dataEstrena << "; ";
+		}
 	}
 	catch (sql::SQLException& e) {
-		//No existeix la pelicula
 		cout << e.what();
 	}
-
-	cout << "Vols continuar amb la visualitzacio (S/N): ";
-	char opt;
-	cin >> opt;
-
-	if (opt == 's' || opt == 'S') {
-		try {
-			TxVisualitzarPel tvisp(sobrenom, nomP, modalitat);
-			tvisp.executar();
-			string avui = today();
-			formatDate(avui);
-			cout << "Visualitzacio registrada: " << avui << "\n";
-			cout << "Titols relacionats:\n";
-			TxObteRelacionatsPel torp(nomP);
-			torp.executar();
-			vector<string> relacionats = torp.obteTitolsRel();
-			for (unsigned int i = 0; i < relacionats.size(); ++i) {
-				TxObteInfoPel tinfp(relacionats[i]);
-				tinfp.executar();
-				DTOPelicula aux = tinfp.obteResultat();
-				formatDate(aux.dataEstrena);
-				cout << "- " << aux.titol << "; " << aux.descripcio << "; " << aux.qualificacio;
-				cout << "; " << aux.duracio << " min; " << aux.dataEstrena << "\n";
-			}
-		}
-		catch (...) {
-			cout << "ERROR\n";
-			//todo if excepciones mensajes custom.
-		}
-	}
-	else
-		return;
-
 }
 
 void CapaDePresentacio::processarProximesEstrenes() {

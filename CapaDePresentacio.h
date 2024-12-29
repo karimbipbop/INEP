@@ -20,6 +20,7 @@
 #include "TxVisualitzarPel.h"
 #include "TxObteInfoPel.h"
 #include "TxObteContingut.h"
+#include "TxObteCapitols.h"
 #include "TxObteTemporades.h"
 #include "TxObteRelacionatsPel.h"
 

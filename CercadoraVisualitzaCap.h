@@ -8,4 +8,5 @@ class CercadoraVisualitzaCap {
 public:
     CercadoraVisualitzaCap();
     vector<PassarelaVisualitzaCap> cercaVisualitzaCap(string sobrenom);
+    PassarelaVisualitzaCap cercaVisualitzaCap(string sobrenom, string titol_serie, int num_temporada, int num_capitol);
 };
