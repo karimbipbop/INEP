@@ -18,4 +18,5 @@ public:
     string obteTitolPelicula();
     string obteData();
     int obteNumVisualitzacions();
+    void augmentaNumVisualitzacions();
 };

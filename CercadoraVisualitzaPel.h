@@ -8,4 +8,5 @@ class CercadoraVisualitzaPel {
 public:
     CercadoraVisualitzaPel();
     vector<PassarelaVisualitzaPel> cercaVisualitzaPel(string sobrenom);
+    PassarelaVisualitzaPel cercaVisualitzaPel(string sobrenom, string titol);
 };

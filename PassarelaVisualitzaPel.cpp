@@ -8,12 +8,10 @@ PassarelaVisualitzaPel::PassarelaVisualitzaPel() {
 }
 
 PassarelaVisualitzaPel::PassarelaVisualitzaPel(sql::ResultSet* result) {
-	if (result->next()) {
-		sobrenom = result->getString("sobrenom_usuari");
-		titolPelicula = result->getString("titol_pelicula");
-		data = result->getString("data");
-		numVisualitzacions = result->getInt("num_visualitzacions");
-	}
+	sobrenom = result->getString("sobrenom_usuari");
+	titolPelicula = result->getString("titol_pelicula");
+	data = result->getString("data");
+	numVisualitzacions = result->getInt("num_visualitzacions");
 }
 
 PassarelaVisualitzaPel::PassarelaVisualitzaPel(string sobrenomP, string titolPeliculaP, string dataP, int numVisualitzacionsP) {
@@ -84,4 +82,9 @@ string PassarelaVisualitzaPel::obteData()
 int PassarelaVisualitzaPel::obteNumVisualitzacions()
 {
 	return numVisualitzacions;
+}
+
+void PassarelaVisualitzaPel::augmentaNumVisualitzacions()
+{
+	++numVisualitzacions;
 }

@@ -3,34 +3,6 @@
 bool run = true;
 bool logg = false;
 
-// Modifica la data que se li passa per canviar de DD/MM/YYYY a YYYY-MM-DD
-bool formatDate(std::string& inputDate) {
-	std::vector<std::string> parts;
-	std::string part;
-
-	// Parse the input string and split it into parts
-	for (char ch : inputDate) {
-		if (ch == '/' || ch == '-') {
-			parts.push_back(part);
-			part.clear();
-		}
-		else if (ch == ' ')
-			break;
-		else {
-			part += ch;
-		}
-	}
-	parts.push_back(part); // Add the last part
-
-	// Validate that we have exactly three parts
-	if (parts.size() != 3) {
-		return false;
-	}
-
-	// Modify the input string to the formatted YYYY-MM-DD
-	inputDate = parts[2] + "/" + parts[1] + "/" + parts[0];
-	return true;
-}
 
 CapaDePresentacio::CapaDePresentacio() {
 
@@ -43,10 +15,11 @@ CapaDePresentacio& CapaDePresentacio::getInstance() {
 
 void CapaDePresentacio::processarRegistreUsuari()
 {
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cout << "** Registrar usuari **" << endl;
 	DTOUsuari u;
 	cout << "Nom complert: ";
-	cin >> u.nom;
+	getline(cin, u.nom);
 	cout << "Sobrenom: ";
 	cin >> u.sobrenom;
 	cout << "Contrassenya: ";
@@ -202,6 +175,32 @@ void CapaDePresentacio::processarEsborraUsuari() {
 	catch (int exc) {
 		throw(ErrorContrasenya);
 	}
+}
+
+void CapaDePresentacio::processarVisualitzaPel() {
+	cout << "** Visualitzar Pel.licula **\n";
+	string nomP;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	getline(cin, nomP);
+	PetitFlix& pf = PetitFlix::getInstance();
+	string sobrenom = pf.obteUsuari().obteSobrenom();
+	//transaccio mostra dades pelicula...
+
+	cout << "Vols continuar amb la visualitzacio (S/N): ";
+	char opt;
+	cin >> opt;
+	if (opt == 's' || opt == 'S') {
+		TxVisualitzarPel tvisp(sobrenom, nomP);
+		try {
+			tvisp.executar();
+		}
+		catch (...) {
+
+		}
+	}
+	else
+		return;
+	
 }
 
 /************************************************/
