@@ -105,7 +105,7 @@ PassarelaContingut CercadoraContinguts::cercaContingutPerTitol(string titol) {
 
         sql::ResultSet* result = db.consulta(query);
 
-        if (!result) {
+        if (!result->next()) {
             delete result;
             throw;
             // No hi ha continguts llavors...

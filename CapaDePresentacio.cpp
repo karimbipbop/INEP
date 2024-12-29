@@ -181,6 +181,7 @@ void CapaDePresentacio::processarVisualitzaPel() {
 	cout << "** Visualitzar Pel.licula **\n";
 	string nomP;
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cout << "Titol: ";
 	getline(cin, nomP);
 	PetitFlix& pf = PetitFlix::getInstance();
 	string sobrenom = pf.obteUsuari().obteSobrenom();

@@ -32,16 +32,19 @@ PassarelaVisualitzaPel CercadoraVisualitzaPel::cercaVisualitzaPel(string sobreno
     try {
         ConnexioBD& db = ConnexioBD::getInstance(); // Get the singleton instance
         string query = "SELECT * FROM visualitzacio_pelicula WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '"
-                        + titol + "'";
+            + titol + "'";
 
         sql::ResultSet* result = db.consulta(query); // Execute query
 
-        // Pass data to PassarelaUsuari (assuming PassarelaUsuari constructor accepts a ResultSet)
-        PassarelaVisualitzaPel pasVis(result);
-        cout << "debug: " << pasVis.obteTitolPelicula() << ' ' << pasVis.obteSobrenom();
-
-        delete result; // Free memory after use
-        return pasVis;
+        if (result->next()) { // Comprobar si hay resultados
+            PassarelaVisualitzaPel pasVis(result);
+            delete result; // Liberar memoria
+            return pasVis;
+        }
+        else {
+            delete result; // Liberar memoria
+            throw;
+        }
     }
     catch (const sql::SQLException& e) {
         throw;

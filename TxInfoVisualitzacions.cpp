@@ -10,8 +10,12 @@ void TxInfoVisualitzacions::executar() {
 	string sobrenom = pf.obteUsuari().obteSobrenom();
 	vector<PassarelaVisualitzaPel> pVisP = cercVisP.cercaVisualitzaPel(sobrenom);
 	vector<PassarelaVisualitzaCap> pVisC = cercVisC.cercaVisualitzaCap(sobrenom);
-	resultat.first = pVisP.size();
-	resultat.second = pVisC.size();
+	for (unsigned int i = 0; i < pVisP.size(); ++i) {
+		resultat.first += pVisP[i].obteNumVisualitzacions();
+	}
+	for (unsigned int i = 0; i < pVisC.size(); ++i) {
+		resultat.second += pVisC[i].obteNumVisualitzacions();
+	}
 }
 
 pair<int, int> TxInfoVisualitzacions::obteResultat() {

@@ -10,11 +10,8 @@ void TxVisualitzarPel::executar() {
 	try {
 		//Existeix una visualitzacio d'aquest usuari per aquesta pel.licula, augmenta en 1 numVisualitzacions.
 		PassarelaVisualitzaPel visP = cercVisP.cercaVisualitzaPel(sU, titolP);
-		cout << "\nfuncionaaaaa\n";
 		visP.augmentaNumVisualitzacions();
-		cout << "\nfuncionaaaaa\n";
 		visP.modifica();
-		cout << "\nfuncionaaaaa\n";
 	}
 	catch (const sql::SQLException& e) {
 		//No existeix una visualitzacio d'aquest usuari per aquesta pel.licula.
