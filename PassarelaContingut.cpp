@@ -10,12 +10,10 @@ PassarelaContingut::PassarelaContingut()
 
 PassarelaContingut::PassarelaContingut(sql::ResultSet* result)
 {
-    if (result->next()) {
-        titol = result->getString("titol");
-        descripcio = result->getString("descripcio");
-        qualificacio = result->getString("qualificacio");
-        tipus = result->getString("tipus");
-    }
+    titol = result->getString("titol");
+    descripcio = result->getString("descripcio");
+    qualificacio = result->getString("qualificacio");
+    tipus = result->getString("tipus");
 }
 
 

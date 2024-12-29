@@ -14,7 +14,7 @@ void TxConsultarPelicules::executar() {
 		p.duracio = pelicules[i].obteDuracio();
 		resultat.push_back(p);
 	}
-	*/
+	
 }
 
 vector<DTOPelicula> TxConsultarPelicules::obteResultat() {
