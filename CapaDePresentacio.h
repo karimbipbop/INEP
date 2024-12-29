@@ -19,9 +19,11 @@
 #include "CtrlModificaUsuari.h"
 #include "TxVisualitzarPel.h"
 #include "TxObteInfoPel.h"
-#include "TxObteInfoCap.h"
+#include "TxObteContingut.h"
+#include "TxObteCapitols.h"
+#include "TxObteTemporades.h"
 #include "TxObteRelacionatsPel.h"
-
+#include "TxObteInfoCap.h"
 #include "TxProximesEstrenes.h"
 #include "TxUltimesNovetats.h"
 #include "TxConsultarPelicules.h"

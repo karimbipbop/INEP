@@ -270,6 +270,44 @@ void CapaDePresentacio::processarConsultarVisualitzacions() {
 		cout << "No hi ha cap titol visualitzat\n";
 }
 
+void CapaDePresentacio::processarVisualitzaCap() {
+	cout << "** Visualitzar Capitol **\n";
+	string nomS;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cout << "Nom de la serie: ";
+	getline(cin, nomS);
+	PetitFlix& pf = PetitFlix::getInstance();
+	string sobrenom = pf.obteUsuari().obteSobrenom();
+	string modalitat = pf.obteUsuari().obteSubscripcio();
+	try {
+		TxObteContingut tcont(nomS);
+		tcont.executar();
+		DTOContingut contingut = tcont.obteResultat();
+		if (modalitat == "Infantil" and (contingut.qualificacio == "16+" or contingut.qualificacio == "18+")) {
+			cout << "La serie no es apropiada per l'edat de l'usuari" << endl;
+			return;
+		}
+		TxObteTemporades tinft(nomS);
+		tinft.executar();
+		vector<DTOTemporada> temporades = tinft.obteResultat();
+		cout << "La serie te " << temporades.size() << " temporades." << endl;
+		cout << "Escull temporada: ";
+		int temp;
+		cin >> temp;
+		TxObteCapitols tcaps(nomS);
+		tcaps.executar();
+		vector<DTOCapitol> capitols = tcaps.obteResultat();
+		cout << "Llista capitols:\n";
+		for (auto& cap : capitols) {
+			bool esVisualitzat;
+			cout << cap.numero << ". " << cap.titolCapitol << "; " << cap.dataEstrena << "; ";
+		}
+	}
+	catch (sql::SQLException& e) {
+		cout << e.what();
+	}
+}
+
 void CapaDePresentacio::processarProximesEstrenes() {
 	string modalitat;
 	if (!logg) {

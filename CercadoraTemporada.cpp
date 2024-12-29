@@ -1,11 +1,11 @@
-#include "CercadoraPelicula.h"
+#include "CercadoraTemporada.h"
 
 
-CercadoraPelicula::CercadoraPelicula() {
+CercadoraTemporada::CercadoraTemporada() {
 
 }
 
-PassarelaPelicula CercadoraPelicula::cercaPelicula(string titol) {
+vector<PassarelaTemporada> CercadoraTemporada::cercaTemporades(string titol) {
     try {
         ConnexioBD& db = ConnexioBD::getInstance();
         string query = "SELECT * FROM pelicula WHERE titol = '" + titol + "'";
@@ -17,11 +17,14 @@ PassarelaPelicula CercadoraPelicula::cercaPelicula(string titol) {
             throw;
             // No hi ha continguts llavors...
         }
-        if (result->next()) {
-            PassarelaPelicula pasPel(result);
-            delete result; // Free memory after use
-            return pasPel;
+        vector<PassarelaTemporada> vPasTemp;
+        while (result->next()) {
+            PassarelaTemporada pasTemp(result);
+            vPasTemp.push_back(pasTemp);
         }
+
+        delete result; // Free memory after use
+        return vPasTemp;
     }
     catch (const sql::SQLException& e) {
         cerr << "MySQL error: " << e.what() << endl;

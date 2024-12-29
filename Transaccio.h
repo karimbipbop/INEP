@@ -7,6 +7,7 @@
 #include "CercadoraVisualitzaPel.h"
 #include "CercadoraContinguts.h"
 #include "CercadoraPelicula.h"
+#include "CercadoraTemporada.h"
 #include "CercadoraCapitol.h"
 #include "CercadoraRelacionat.h"
 
@@ -65,6 +66,7 @@ protected:
     CercadoraVisualitzaCap cercVisC;
     CercadoraContinguts cercCont;
 	CercadoraPelicula cercPel;
+	CercadoraTemporada cercTemp;
 	CercadoraCapitol cercCap;
 	CercadoraRelacionat cercRel;
     void inicialitza();

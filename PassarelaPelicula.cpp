@@ -9,11 +9,9 @@ PassarelaPelicula::PassarelaPelicula()
 
 PassarelaPelicula::PassarelaPelicula(sql::ResultSet* result)
 {
-    if (result->next()) {
-        titol = result->getString("titol");
-        dataEstrena = result->getString("data_estrena");
-        duracio = result->getInt("duracio");
-    }
+    titol = result->getString("titol");
+    dataEstrena = result->getString("data_estrena");
+    duracio = result->getInt("duracio");
 }
 
 

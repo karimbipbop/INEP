@@ -32,3 +32,15 @@ struct DTOCapitol {
 	int visualitzacions;
 	string dataV;
 };
+
+struct DTOTemporada {
+	string titol_serie;
+	int numero;
+};
+
+struct DTOContingut {
+	string titol;
+	string descripcio;
+	string qualificacio;
+	string tipus;
+};
