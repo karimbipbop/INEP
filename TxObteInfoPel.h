@@ -6,6 +6,7 @@ private:
 	PassarelaPelicula pP;
 	string titol;
 	DTOPelicula res;
+
 public:
 	TxObteInfoPel(string titolP);
 	void executar();
