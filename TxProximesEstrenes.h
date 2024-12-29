@@ -1,6 +1,7 @@
 #pragma once
 #include "Transaccio.h"
 #include "PassarelaPelicula.h"
+#include "PassarelaCapitol.h"
 
 class TxProximesEstrenes : public Transaccio {
 private:

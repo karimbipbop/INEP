@@ -3,34 +3,6 @@
 bool run = true;
 bool logg = false;
 
-// Modifica la data que se li passa per canviar de DD/MM/YYYY a YYYY-MM-DD
-bool formatDate(std::string& inputDate) {
-	std::vector<std::string> parts;
-	std::string part;
-
-	// Parse the input string and split it into parts
-	for (char ch : inputDate) {
-		if (ch == '/' || ch == '-') {
-			parts.push_back(part);
-			part.clear();
-		}
-		else if (ch == ' ')
-			break;
-		else {
-			part += ch;
-		}
-	}
-	parts.push_back(part); // Add the last part
-
-	// Validate that we have exactly three parts
-	if (parts.size() != 3) {
-		return false;
-	}
-
-	// Modify the input string to the formatted YYYY-MM-DD
-	inputDate = parts[2] + "/" + parts[1] + "/" + parts[0];
-	return true;
-}
 
 CapaDePresentacio::CapaDePresentacio() {
 
@@ -281,6 +253,10 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	if (!logg) {
 		cout << "Indica la modalitat de subscripcio: ";
 		cin >> modalitat;
+		if (modalitat != "Completa" and modalitat != "Cinèfil" and modalitat != "Infantil") {
+			cout << "La modalitat es incorrecta" << endl;
+			return;
+		}
 	}
 	else {
 		TxConsultaUsuari tcon;
@@ -296,7 +272,7 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	p.executar();
 	vector<string> estrenes = p.obteResultat();
 	// Mostrem 10 estrenes
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < 9; ++i) {
 		cout << estrenes[i] << endl;
 	}
 }
