@@ -8,9 +8,17 @@ TxEsCapitolVisualitzat::TxEsCapitolVisualitzat(string sobrenom, string titol_ser
 }
 
 void TxEsCapitolVisualitzat::executar() {
-	
+	try {
+		PassarelaVisualitzaCap pVC = cercVisC.cercaVisualitzaCap(sobrenom, titol_serie, num_temporada, num_capitol);
+		res.dataV = pVC.obteData();
+		res.visualitzacions = pVC.obteNumVisualitzacions();
+	}
+	catch (sql::SQLException& e) {
+		//no trobat visualitzacio
+		throw e;
+	}
 }
 
-bool TxEsCapitolVisualitzat::obteResultat() {
-	return resultat;
+DTOCapitol TxEsCapitolVisualitzat::obteResultat() {
+	return res;
 }

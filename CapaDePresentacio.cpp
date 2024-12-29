@@ -238,7 +238,7 @@ void CapaDePresentacio::processarVisualitzaPel() {
 }
 
 void CapaDePresentacio::processarVisualitzaCap() {
-	/*cout << "** Visualitzar Capitol **\n";
+	cout << "** Visualitzar Capitol **\n";
 	string nomS;
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cout << "Nom de la serie: ";
@@ -261,18 +261,53 @@ void CapaDePresentacio::processarVisualitzaCap() {
 		cout << "Escull temporada: ";
 		int temp;
 		cin >> temp;
-		TxObteCapitols tcaps(nomS);
+		TxObteCapitols tcaps(nomS, temp);
 		tcaps.executar();
 		vector<DTOCapitol> capitols = tcaps.obteResultat();
 		cout << "Llista capitols:\n";
 		for (auto& cap : capitols) {
-			bool esVisualitzat;
+			formatDate(cap.dataEstrena);
 			cout << cap.numero << ". " << cap.titolCapitol << "; " << cap.dataEstrena << "; ";
+			try {
+				TxEsCapitolVisualitzat tcap(sobrenom, cap.titolSerie, cap.numeroTemporada, cap.numero);
+				tcap.executar();
+				DTOCapitol aux = tcap.obteResultat();
+				formatDate(aux.dataV);
+				cout << "visualitzat el " << aux.dataV << "\n";
+			}
+			catch (int exc) {
+				//no trobada visualitzacio
+				cout << "no visualitzat\n";
+			}
 		}
+		cout << "Numero del capitol a visualitzar: ";
+		int nCap;
+		cin >> nCap;
+		cout << "Vols continuar amb la visualitzacio (S/N): ";
+		char opt;
+		cin >> opt;
+		if (opt == 's' || opt == 'S') {
+			if (nCap < 1 || nCap > capitols.size()) {
+				cout << "Aquest capitol no existeix\n";
+				return;
+			}
+			try {
+				TxVisualitzarCap tvc(sobrenom, nomS, temp, nCap);
+				tvc.executar();
+				string avui = today();
+				formatDate(avui);
+				cout << "Visualitzacio registrada: " << avui << "\n";
+			}
+			catch (...) {
+				cout << "ERROR";
+			}
+		}
+		else
+			return;
 	}
 	catch (sql::SQLException& e) {
 		cout << e.what();
-	}*/
+	}
 }
 
 void CapaDePresentacio::processarConsultarVisualitzacions() {

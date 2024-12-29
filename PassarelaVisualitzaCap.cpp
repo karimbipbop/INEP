@@ -100,3 +100,7 @@ int PassarelaVisualitzaCap::obteNumVisualitzacions()
 {
 	return numVisualitzacions;
 }
+
+void PassarelaVisualitzaCap::augmentaNumVisualitzacions() {
+	++numVisualitzacions;
+}

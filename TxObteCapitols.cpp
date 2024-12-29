@@ -1,13 +1,14 @@
 #include "TxObteCapitols.h"
 
-TxObteCapitols::TxObteCapitols(string titol) {
+TxObteCapitols::TxObteCapitols(string titol, int numT) {
 	titol_serie = titol;
+	numeroTemporada = numT;
 }
 
 void TxObteCapitols::executar() {
 	try {
 		PassarelaContingut pCon = cercCont.cercaContingutPerTitol(titol_serie);
-		vector<PassarelaCapitol> pCap = cercCap.cercaCapitols(titol_serie);
+		vector<PassarelaCapitol> pCap = cercCap.cercaCapitols(titol_serie, numeroTemporada);
 		for (auto& capitol : pCap) {
 			DTOCapitol c;
 			c.titolSerie = pCon.obteTitol();

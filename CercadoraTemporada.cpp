@@ -8,7 +8,7 @@ CercadoraTemporada::CercadoraTemporada() {
 vector<PassarelaTemporada> CercadoraTemporada::cercaTemporades(string titol) {
     try {
         ConnexioBD& db = ConnexioBD::getInstance();
-        string query = "SELECT * FROM pelicula WHERE titol = '" + titol + "'";
+        string query = "SELECT * FROM temporada WHERE titol_serie = '" + titol + "'";
 
         sql::ResultSet* result = db.consulta(query);
 

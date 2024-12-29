@@ -7,10 +7,10 @@ private:
 	string titol_serie;
 	int num_temporada;
 	int num_capitol;
-	bool resultat;
+	DTOCapitol res;
 
 public:
 	TxEsCapitolVisualitzat(string sobrenom, string titol_serie, int num_temporada, int num_capitol);
 	void executar();
-	bool obteResultat();
+	DTOCapitol obteResultat();
 };

@@ -6,9 +6,10 @@
 class TxObteCapitols : public Transaccio {
 private:
 	string titol_serie;
+	int numeroTemporada;
 	vector<DTOCapitol> res;
 public:
-	TxObteCapitols(string titol);
+	TxObteCapitols(string titol, int numT);
 	void executar();
 	vector<DTOCapitol> obteResultat();
 };

@@ -20,4 +20,5 @@ public:
     int obteNumCapitol();
     string obteData();
     int obteNumVisualitzacions();
+    void augmentaNumVisualitzacions();
 };

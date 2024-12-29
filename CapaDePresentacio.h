@@ -16,6 +16,8 @@
 #include "TxProximesEstrenes.h"
 #include "TxUltimesNovetats.h"
 #include "TxConsultarPelicules.h"
+#include "TxEsCapitolVisualitzat.h"
+#include "TxVisualitzarCap.h"
 
 
 //Variables globals per manejar el menu.
