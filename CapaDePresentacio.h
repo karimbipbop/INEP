@@ -48,17 +48,9 @@ public:
 	void processarEsborraUsuari();
 
 	void processarVisualitzaPel();
+	void processarVisualitzaCap();
 	void processarConsultarVisualitzacions();
 	void processarProximesEstrenes();
 	void processarUltimesNovetats();
 	void processarConsultarPelicules();
-
-	/*a partir de aqui son operaciones de las entregas del lab*/
-	//void processarConsultaUsuari();
-	//void processarModificaUsuari();
-	//void processarGestioPelicules();
-	//void processarGestioSeries();
-	//void processarConsultaQualificacioEdat();
-	
-	//void processarProximesEstrenes();
 };
