@@ -43,7 +43,6 @@ void TxProximesEstrenes::executar() {
 				formatDate(dataArreglada);
 				infoContingut.push_back(dataArreglada + " [Serie]: " + c.obteTitolSerie() + "; " +
 					cont.obteQualificacio() + "; Temporada " + to_string(c.obteNumeroTemporada()) + '.');
-
 			}
 		}
 		int n = infoContingut.size();

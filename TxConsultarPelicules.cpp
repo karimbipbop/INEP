@@ -1,11 +1,11 @@
 #include "TxConsultarPelicules.h"
-
+/*
 TxConsultarPelicules::TxConsultarPelicules() {
 	//subscripcio = "";
 }
 
 void TxConsultarPelicules::executar() {
-	/*PassarelaPelicula* passarelaPelicula = new PassarelaPelicula();
+	PassarelaPelicula* passarelaPelicula = new PassarelaPelicula();
 	vector<PassarelaPelicula> pelicules = passarelaPelicula->consultaPelicules(subscripcio);
 	for (int i = 0; i < pelicules.size(); i++) {
 		DTOPelicula p;
@@ -20,3 +20,4 @@ void TxConsultarPelicules::executar() {
 vector<DTOPelicula> TxConsultarPelicules::obteResultat() {
 	return resultat;
 }
+*/

@@ -252,9 +252,9 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	TxProximesEstrenes p(modalitat);
 	p.executar();
 	vector<string> estrenes = p.obteResultat();
-	// Mostrem 10 estrenes
-	for (int i = 0; i < 9; ++i) {
-		cout << estrenes[i] << endl;
+	int n = estrenes.size();
+	for (int i = 0; i < n; ++i) {
+		cout << i << ".- " << estrenes[i] << endl;
 	}
 }
 
