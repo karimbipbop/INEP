@@ -237,6 +237,73 @@ void CapaDePresentacio::processarVisualitzaPel() {
 	
 }
 
+void CapaDePresentacio::processarVisualitzaCap() {
+	cout << "** Visualitzar Capitol **\n";
+	string nomS;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cout << "Nom de la serie: ";
+	getline(cin, nomS);
+	PetitFlix& pf = PetitFlix::getInstance();
+	string sobrenom = pf.obteUsuari().obteSobrenom();
+	string modalitat = pf.obteUsuari().obteSubscripcio();
+	try {
+		TxObteContingut tcont(nomS);
+		tcont.executar();
+		DTOContingut contingut = tcont.obteResultat();
+		if (modalitat == "Infantil" and (contingut.qualificacio == "16+" or contingut.qualificacio == "18+")) {
+			cout << "La serie no es apropiada per l'edat de l'usuari" << endl;
+			return;
+		}
+		TxObteTemporades tinft(nomS);
+		tinft.executar();
+		vector<DTOTemporada> temporades = tinft.obteResultat();
+		cout << "La serie te " << temporades.size() << " temporades." << endl;
+		cout << "Escull temporada: ";
+		int temp;
+		cin >> temp;
+		
+		
+		vector<string> capitols = 
+	}
+	catch (sql::SQLException& e) {
+		//No existeix la pelicula
+		cout << e.what();
+	}
+
+	cout << "Vols continuar amb la visualitzacio (S/N): ";
+	char opt;
+	cin >> opt;
+
+	if (opt == 's' || opt == 'S') {
+		try {
+			TxVisualitzarPel tvisp(sobrenom, nomP, modalitat);
+			tvisp.executar();
+			string avui = today();
+			formatDate(avui);
+			cout << "Visualitzacio registrada: " << avui << "\n";
+			cout << "Titols relacionats:\n";
+			TxObteRelacionatsPel torp(nomP);
+			torp.executar();
+			vector<string> relacionats = torp.obteTitolsRel();
+			for (unsigned int i = 0; i < relacionats.size(); ++i) {
+				TxObteInfoPel tinfp(relacionats[i]);
+				tinfp.executar();
+				DTOPelicula aux = tinfp.obteResultat();
+				formatDate(aux.dataEstrena);
+				cout << "- " << aux.titol << "; " << aux.descripcio << "; " << aux.qualificacio;
+				cout << "; " << aux.duracio << " min; " << aux.dataEstrena << "\n";
+			}
+		}
+		catch (...) {
+			cout << "ERROR\n";
+			//todo if excepciones mensajes custom.
+		}
+	}
+	else
+		return;
+
+}
+
 void CapaDePresentacio::processarProximesEstrenes() {
 	string modalitat;
 	if (!logg) {

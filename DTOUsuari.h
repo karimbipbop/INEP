@@ -19,3 +19,15 @@ struct DTOPelicula {
 	int duracio;
 	int visualitzacions;
 };
+
+struct DTOTemporada {
+	string titol_serie;
+	int numero;
+};
+
+struct DTOContingut {
+	string titol;
+	string descripcio;
+	string qualificacio;
+	string tipus;
+};
