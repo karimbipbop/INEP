@@ -271,7 +271,7 @@ void CapaDePresentacio::processarConsultarVisualitzacions() {
 }
 
 void CapaDePresentacio::processarVisualitzaCap() {
-	cout << "** Visualitzar Capitol **\n";
+	/*cout << "** Visualitzar Capitol **\n";
 	string nomS;
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	cout << "Nom de la serie: ";
@@ -305,7 +305,7 @@ void CapaDePresentacio::processarVisualitzaCap() {
 	}
 	catch (sql::SQLException& e) {
 		cout << e.what();
-	}
+	}*/
 }
 
 void CapaDePresentacio::processarProximesEstrenes() {

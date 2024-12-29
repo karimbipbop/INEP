@@ -48,6 +48,7 @@ public:
 	void processarEsborraUsuari();
 
 	void processarVisualitzaPel();
+	void processarVisualitzaCap();
 	void processarConsultarVisualitzacions();
 	void processarProximesEstrenes();
 	void processarUltimesNovetats();
