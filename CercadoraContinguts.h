@@ -9,5 +9,7 @@ using namespace std;
 class CercadoraContinguts {
 public:
     CercadoraContinguts();
-    vector<pair<string, string>>cercaContinguts();
+    vector<PassarelaContingut>cercaContinguts();
+    vector<PassarelaContingut>cercaContingutsPerQualificacio(vector<string> qualificacions);
+    vector<PassarelaContingut>cercaContingutsPerTipus(string tipus);
 };

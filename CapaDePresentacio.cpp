@@ -280,6 +280,10 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	if (!logg) {
 		cout << "Indica la modalitat de subscripcio: ";
 		cin >> modalitat;
+		if (modalitat != "Completa" and modalitat != "Cinèfil" and modalitat != "Infantil") {
+			cout << "La modalitat es incorrecta" << endl;
+			return;
+		}
 	}
 	else {
 		TxConsultaUsuari tcon;
@@ -295,7 +299,7 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	p.executar();
 	vector<string> estrenes = p.obteResultat();
 	// Mostrem 10 estrenes
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < 9; ++i) {
 		cout << estrenes[i] << endl;
 	}
 }
