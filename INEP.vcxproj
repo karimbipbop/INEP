@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CapaDePresentacio.cpp" />
+    <ClCompile Include="CercadoraCapitol.cpp" />
+    <ClCompile Include="CercadoraContinguts.cpp" />
+    <ClCompile Include="CercadoraPelicula.cpp" />
+    <ClCompile Include="CercadoraRelacionat.cpp" />
+    <ClCompile Include="CercadoraTemporada.cpp" />
+    <ClCompile Include="CercadoraUsuari.cpp" />
+    <ClCompile Include="CercadoraVisualitzaCap.cpp" />
+    <ClCompile Include="CercadoraVisualitzaPel.cpp" />
+    <ClCompile Include="ConnexioBD.cpp" />
+    <ClCompile Include="CtrlModificaUsuari.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PassarelaCapitol.cpp" />
+    <ClCompile Include="PassarelaContingut.cpp" />
+    <ClCompile Include="PassarelaPelicula.cpp" />
+    <ClCompile Include="PassarelaRelacionat.cpp" />
+    <ClCompile Include="PassarelaSerie.cpp" />
+    <ClCompile Include="PassarelaTemporada.cpp" />
+    <ClCompile Include="PassarelaUsuari.cpp" />
+    <ClCompile Include="PassarelaVisualitzaCap.cpp" />
+    <ClCompile Include="PassarelaVisualitzaPel.cpp" />
+    <ClCompile Include="PetitFlix.cpp" />
+    <ClCompile Include="Transaccio.cpp" />
+    <ClCompile Include="TxConsultarPelicules.cpp" />
+    <ClCompile Include="TxConsultaUsuari.cpp" />
+    <ClCompile Include="TxEsborraUsuari.cpp" />
+    <ClCompile Include="TxEsCapitolVisualitzat.cpp" />
+    <ClCompile Include="TxInfoVisualitzacions.cpp" />
+    <ClCompile Include="TxIniciSessio.cpp" />
+    <ClCompile Include="TxObteCapitols.cpp" />
+    <ClCompile Include="TxObteContingut.cpp" />
+    <ClCompile Include="TxObteInfoCap.cpp" />
+    <ClCompile Include="TxObteInfoPel.cpp" />
+    <ClCompile Include="TxObteRelacionatsPel.cpp" />
+    <ClCompile Include="TxObteTemporades.cpp" />
+    <ClCompile Include="TxProximesEstrenes.cpp" />
+    <ClCompile Include="TxRegistraUsuari.cpp" />
+    <ClCompile Include="TxTancaSessio.cpp" />
+    <ClCompile Include="TxUltimesNovetats.cpp" />
+    <ClCompile Include="TxVisualitzarCap.cpp" />
+    <ClCompile Include="TxVisualitzarPel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CapaDePresentacio.h" />
+    <ClInclude Include="CercadoraCapitol.h" />
+    <ClInclude Include="CercadoraContinguts.h" />
+    <ClInclude Include="CercadoraPelicula.h" />
+    <ClInclude Include="CercadoraRelacionat.h" />
+    <ClInclude Include="CercadoraTemporada.h" />
+    <ClInclude Include="CercadoraUsuari.h" />
+    <ClInclude Include="CercadoraVisualitzaCap.h" />
+    <ClInclude Include="CercadoraVisualitzaPel.h" />
+    <ClInclude Include="ConnexioBD.h" />
+    <ClInclude Include="CtrlModificaUsuari.h" />
+    <ClInclude Include="DTOUsuari.h" />
+    <ClInclude Include="Excepcio.h" />
+    <ClInclude Include="PassarelaCapitol.h" />
+    <ClInclude Include="PassarelaContingut.h" />
+    <ClInclude Include="PassarelaPelicula.h" />
+    <ClInclude Include="PassarelaRelacionat.h" />
+    <ClInclude Include="PassarelaSerie.h" />
+    <ClInclude Include="PassarelaTemporada.h" />
+    <ClInclude Include="PassarelaUsuari.h" />
+    <ClInclude Include="PassarelaVisualitzaCap.h" />
+    <ClInclude Include="PassarelaVisualitzaPel.h" />
+    <ClInclude Include="PetitFlix.h" />
+    <ClInclude Include="Transaccio.h" />
+    <ClInclude Include="TxConsultarPelicules.h" />
+    <ClInclude Include="TxConsultaUsuari.h" />
+    <ClInclude Include="TxEsborraUsuari.h" />
+    <ClInclude Include="TxEsCapitolVisualitzat.h" />
+    <ClInclude Include="TxInfoVisualitzacions.h" />
+    <ClInclude Include="TxIniciSessio.h" />
+    <ClInclude Include="TxObteCapitols.h" />
+    <ClInclude Include="TxObteContingut.h" />
+    <ClInclude Include="TxObteInfoCap.h" />
+    <ClInclude Include="TxObteInfoPel.h" />
+    <ClInclude Include="TxObteRelacionatsPel.h" />
+    <ClInclude Include="TxObteTemporades.h" />
+    <ClInclude Include="TxProximesEstrenes.h" />
+    <ClInclude Include="TxRegistraUsuari.h" />
+    <ClInclude Include="TxTancaSessio.h" />
+    <ClInclude Include="TxUltimesNovetats.h" />
+    <ClInclude Include="TxVisualitzarCap.h" />
+    <ClInclude Include="TxVisualitzarPel.h" />
+    <ClInclude Include="Usuari.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="config.txt" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{40d01f48-0f92-41d2-a4d1-a0f65f9b33ce}</ProjectGuid>
+    <RootNamespace>INEP</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Program Files\MySQL\mysql-connector-c++-9.1.0-winx64\include\jdbc</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files\MySQL\mysql-connector-c++-9.1.0-winx64\lib64\vs14</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
