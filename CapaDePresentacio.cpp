@@ -458,9 +458,14 @@ void CapaDePresentacio::processarConsultarPelicules() {
 	TxConsultarPelicules tcon;
 	tcon.executar();
 	vector<string> pels = tcon.obteResultat();
-
+	int n = pels.size();
 	cout << "** Pel.licules mes visualitzades **\n\n";
-	for (int i = 0; i < 5; ++i) {
-		if (pels[i] != "") cout << i + 1 << ".- " << pels[i] << endl;
+	if (n == 0) {
+		cout << "No hi ha cap pel.licula visualitzada\n";
+	}
+	else {
+		for (int i = 0; i < n; ++i) {
+			cout << i + 1 << ".- " << pels[i] << endl;
+		}
 	}
 }
