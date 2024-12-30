@@ -139,6 +139,10 @@ void CapaDePresentacio::processarModificaUsuari() {
 	formatDate(u.dataNaixament);
 	cout << "Modalitats de subscripcio: ";
 	getline(cin, u.subscripcio);
+	if (u.subscripcio != "Cinefil" && u.subscripcio != "Completa" && u.subscripcio != "Infantil") {
+		cout << "Modalitat incorrecta\n";
+		return;
+	}
 	if (u.nom.empty() && u.contrassenya.empty() && u.correuElectronic.empty() && u.dataNaixament.empty() && u.subscripcio.empty()) {
 		cout << "No s'ha entrat cap dada a modificar\n";
 		return;
@@ -155,7 +159,10 @@ void CapaDePresentacio::processarModificaUsuari() {
 		cout << "Modalitat subscripcio: " << u.subscripcio << "\n";
 	}
 	catch (sql::SQLException& e) {
-		throw(e);
+		cout << "Error inesperat: " << e.what() << "\n";
+	}
+	catch (int exc) {
+		cout << "El correu ja esta utilitzat per un altre usuari\n";
 	}
 }
 

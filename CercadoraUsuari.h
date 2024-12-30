@@ -10,4 +10,5 @@ class CercadoraUsuari {
 public:
     CercadoraUsuari();
     PassarelaUsuari cercaUsuari(string sobrenomU);
+    PassarelaUsuari cercaUsuariPerCorreu(string correuU);
 };
