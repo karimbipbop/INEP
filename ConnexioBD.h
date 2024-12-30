@@ -6,6 +6,7 @@
 #include <string>
 #include <mysql_connection.h>
 #include <mysql_driver.h>
+#include "Excepcio.h"
 
 using namespace std;
 
