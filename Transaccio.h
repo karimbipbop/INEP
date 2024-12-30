@@ -10,6 +10,7 @@
 #include "CercadoraTemporada.h"
 #include "CercadoraCapitol.h"
 #include "CercadoraRelacionat.h"
+#include "DTOs.h"
 
 using namespace std;
 
