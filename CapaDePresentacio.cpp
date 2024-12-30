@@ -434,7 +434,7 @@ void CapaDePresentacio::processarUltimesNovetats() {
 		cout << i+1 << ".- " << novetats.first[i] << endl;
 	}
 	if (modalitat != "Cinefil" and modalitat != "Cinèfil") {
-		// Si es cinefil no mostrem les series
+		// Si no es cinefil mostrem les series
 		int n_cap = novetats.second.size();
 		cout << "** Novetats series **\n";
 		cout << "***************************\n";
