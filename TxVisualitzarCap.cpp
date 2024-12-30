@@ -19,13 +19,14 @@ void TxVisualitzarCap::executar() {
 		try {
 			PassarelaCapitol cap = cercCap.cercaCapitol(titolSerie, numeroT, numeroC);
 			string data = today();
-			if (cap.obteDataEstrena() > data)
-				throw; //Pel.licula no estrenada.
+			if (cap.obteDataEstrena() > data) {
+				throw; //no estrenada.
+			}
 			pVC = PassarelaVisualitzaCap(sU, titolSerie, numeroT, numeroC, data, 1);
 			pVC.insereix();
 		}
 		catch (int exc) {
-			//No existeix la pelicula...
+			//No existeix...
 			throw exc;
 		}
 

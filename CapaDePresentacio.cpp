@@ -287,7 +287,7 @@ void CapaDePresentacio::processarVisualitzaCap() {
 		char opt;
 		cin >> opt;
 		if (opt == 's' || opt == 'S') {
-			if (nCap < 1 || nCap > capitols.size()) {
+			if (nCap < 1) {
 				cout << "Aquest capitol no existeix\n";
 				return;
 			}
