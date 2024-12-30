@@ -12,15 +12,14 @@ PassarelaPelicula CercadoraPelicula::cercaPelicula(string titol) {
 
         sql::ResultSet* result = db.consulta(query);
 
-        if (!result) {
-            delete result;
-            throw NoTrobat;
-            // No hi ha continguts llavors...
-        }
         if (result->next()) {
             PassarelaPelicula pasPel(result);
             delete result; // Free memory after use
             return pasPel;
+        }
+        else {
+            delete result;
+            throw NoTrobat;
         }
     }
     catch (const sql::SQLException& e) {
