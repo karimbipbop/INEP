@@ -80,18 +80,3 @@ int PassarelaPelicula::obteDuracio()
 {
     return duracio;
 }
-
-//void PassarelaPelicula::posaTitol(string titolC)
-//{
-//    titol = titolC;
-//}
-//
-//void PassarelaPelicula::posaDataEstrena(string dataEstrenaP)
-//{
-//    dataEstrena = dataEstrenaP;
-//}
-//
-//void PassarelaPelicula::posaDuracio(string duracioP)
-//{
-//    duracio = duracioP;
-//}

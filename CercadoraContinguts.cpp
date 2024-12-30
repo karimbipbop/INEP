@@ -110,11 +110,38 @@ PassarelaContingut CercadoraContinguts::cercaContingutPerTitol(string titol) {
         }
         PassarelaContingut pasCon(result);
 
-        delete result; // Free memory after use
+        delete result;
         return pasCon;
     }
     catch (const sql::SQLException& e) {
         cerr << "MySQL error: " << e.what() << endl;
         throw;
     }
+}
+
+vector<pair<string, int> > CercadoraContinguts::cercaPelicules() {
+	try {
+		ConnexioBD& db = ConnexioBD::getInstance();
+		string query = "SELECT sobrenom_usuari, titol_pelicula, data, SUM(num_visualitzacions) AS total  FROM visualitzacio_pelicula  GROUP BY titol_pelicula  ORDER BY num_visualitzacions DESC  LIMIT 5";
+
+		sql::ResultSet* result = db.consulta(query);
+
+		if (!result) {
+			delete result;
+			throw;
+		}
+		vector<pair<string, int> > vpasCon;
+
+		while (result->next()) {
+			pair<string, int> aux = make_pair(result->getString("titol_pelicula"), result->getInt("total"));
+			vpasCon.push_back(aux);
+		}
+
+		delete result;
+		return vpasCon;
+	}
+	catch (const sql::SQLException& e) {
+		cerr << "MySQL error: " << e.what() << endl;
+		throw;
+	}
 }

@@ -90,23 +90,3 @@ string PassarelaContingut::obteTipus()
 {
     return tipus;
 }
-
-//void PassarelaContingut::posaTitol(string titolC)
-//{
-//    titol = titolC;
-//}
-//
-//void PassarelaContingut::posaDescripcio(string descripcioC)
-//{
-//    descripcio = descripcioC;
-//}
-//
-//void PassarelaContingut::posaQualificacio(string qualificacioC)
-//{
-//    qualificacio = qualificacioC;
-//}
-//
-//void PassarelaContingut::posaTipus(string tipusC)
-//{
-//    tipus = tipusC;
-//}

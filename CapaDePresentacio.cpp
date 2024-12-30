@@ -413,10 +413,13 @@ void CapaDePresentacio::processarUltimesNovetats() {
 }
 
 void CapaDePresentacio::processarConsultarPelicules() {
-	
+	TxConsultarPelicules tcon;
+	int numPels;
+	tcon.executar();
+	vector<string> pels = tcon.obteResultat();
 
 	cout << "** Pel.licules mes visualitzades **\n\n";
-	for (int i = 1; i < 6; ++i) {
-		cout << i << ".- " << "hola\n";
+	for (int i = 0; i < 5; ++i) {
+		if (pels[i] != "") cout << i + 1 << ".- " << pels[i] << endl;
 	}
 }

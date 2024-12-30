@@ -17,7 +17,4 @@ public:
     string obteTitol();
     string obteDataEstrena();
     int obteDuracio();
-    //void posaTitol(string titolP);
-    //void posaDataEstrena(string dataEstrenaP);
-    //void posaDuracio(int duracioP);
 };
