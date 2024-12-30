@@ -15,7 +15,6 @@ void TxConsultarPelicules::executar() {
 	vector<pair<string, int> > titolPels = cercCont.cercaPelicules();
 
 	sort(titolPels.begin(), titolPels.end(), compare);
-
 	for (int i = 0; i < titolPels.size(); ++i) {
 		PassarelaContingut pelCon = cercCont.cercaContingutPerTitol(titolPels[i].first);
 		PassarelaPelicula pel = cercPel.cercaPelicula(titolPels[i].first);
@@ -27,11 +26,8 @@ void TxConsultarPelicules::executar() {
 			formatDate(data);
 			info += " [VISTA: " + data + "]";
 		}
-		catch (sql::SQLException& e) {
-			throw e;
-		}
-		catch (int exc) {
-			throw exc;
+		catch (...) {
+			// no s'ha visualitzat
 		}
 
 		resultat.push_back(info);
