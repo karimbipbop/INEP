@@ -5,8 +5,6 @@ TxUltimesNovetats::TxUltimesNovetats(string sub) {
 }
 
 void TxUltimesNovetats::executar() {
-	PetitFlix& pf = PetitFlix::getInstance();
-
 	string dataAvui = today();
 
 	vector<PassarelaContingut> continguts;

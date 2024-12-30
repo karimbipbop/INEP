@@ -17,8 +17,4 @@ public:
     string obteDescripcio();
     string obteQualificacio();
     string obteTipus();
-    //void posaTitol(string titolC);
-    //void posaDescripcio(string descripcioC);
-    //void posaQualificacio(string qualificacioC);
-    //void posaTipus(string tipusC);
 };
