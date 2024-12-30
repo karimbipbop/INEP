@@ -73,11 +73,11 @@ void CapaDePresentacio::processarIniciSessio() {
 	try {
 		TxIniciSessio tini(sU, cU);
 		tini.executar();
+		logg = true;
 		cout << "Sessio iniciada correctament!\n";
 	}
 	catch(int exc) {
 		cout << "Alguna credencial no es correcta.\n";
-		throw(ErrorContrasenya);
 	}
 }
 
@@ -89,10 +89,11 @@ void CapaDePresentacio::processarTancaSessio() {
 	if (op == 'S' || op == 's') {
 		TxTancaSessio ttanc;
 		ttanc.executar();
+		logg = false;
 		cout << "Sessio tancada correctament!\n";
 	}
 	else {
-		throw(NoTancaSessio);
+		cout << "No s'ha tancat la sessio\n";
 	}
 }
 
@@ -175,12 +176,13 @@ void CapaDePresentacio::processarEsborraUsuari() {
 	try {
 		TxEsborraUsuari tesb(c);
 		tesb.executar();
+		logg = false;
 		cout << "Usuari esborrat correctament" << endl;
 		TxTancaSessio ttanc;
 		ttanc.executar();
 	}
 	catch (int exc) {
-		throw(ErrorContrasenya);
+		cout << "Error: La contrassenya no es correcta" << endl;
 	}
 }
 

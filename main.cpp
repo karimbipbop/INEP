@@ -55,15 +55,8 @@ void gestioUsuari()
 		p.processarModificaUsuari();
 		break;
 	case 3:
-		try {
-			p.processarEsborraUsuari();
-			logg = false;
-			break;
-		}
-		catch (int exc) {
-			cout << "La contrassenya es incorrecta." << endl;
-			break;
-		}
+		p.processarEsborraUsuari();
+		break;
 	case 4:
 		break;
 	}
@@ -167,13 +160,7 @@ int main()
 				consultes();
 				break;
 			case 4:
-				try {
-					p.processarTancaSessio();
-					logg = false;
-				}
-				catch (int exc) {
-					//Error al tancar la sessió
-				}
+				p.processarTancaSessio();
 				break;
 			case 5:
 				run = false;
@@ -190,13 +177,7 @@ int main()
 				cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Esborra el buffer de cin fins a l'últim salt de línia.
 				break;
 			case 1:
-				try {
-					p.processarIniciSessio();
-					logg = true;
-				}
-				catch (int exc) {
-					//Error al iniciar la sessió
-				}
+				p.processarIniciSessio();
 				break;
 			case 2:
 				p.processarRegistreUsuari();
