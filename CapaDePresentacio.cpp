@@ -137,7 +137,7 @@ void CapaDePresentacio::processarModificaUsuari() {
 	getline(cin, u.correuElectronic);
 	cout << "Data naixement (DD/MM/AAAA): ";
 	getline(cin, u.dataNaixament);
-	if (!formatDate(u.dataNaixament)) {
+	if (u.dataNaixament != "" && !formatDate(u.dataNaixament)) {
 		cout << "La data es erronia\n";
 		return;
 	};

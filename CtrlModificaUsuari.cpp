@@ -24,6 +24,9 @@ void CtrlModificaUsuari::modificaUsuari(string nomU, string contraU, string corr
 			if (exc == NoTrobat) {
 				usuari.posaCorreuElectronic(correuU);
 			}
+			else {
+				throw CorreuExisteix;
+			}
 		}
 	}
 	if (nomU != "") usuari.posaNom(nomU);
