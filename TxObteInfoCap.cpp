@@ -15,9 +15,12 @@ void TxObteInfoCap::executar() {
 		res.numeroTemporada = cap.obteNumeroTemporada();
 		res.numero = cap.obteNumero();
 	}
+	catch (int exc) {
+		//no existeix.
+		throw exc;
+	}
 	catch (sql::SQLException& e) {
-		//no existeix la pelicula.
-		throw;
+		throw e;
 	}
 }
 

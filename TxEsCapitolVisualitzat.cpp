@@ -13,8 +13,11 @@ void TxEsCapitolVisualitzat::executar() {
 		res.dataV = pVC.obteData();
 		res.visualitzacions = pVC.obteNumVisualitzacions();
 	}
-	catch (sql::SQLException& e) {
+	catch (int exc) {
 		//no trobat visualitzacio
+		throw exc;
+	}
+	catch (sql::SQLException& e) {
 		throw e;
 	}
 }

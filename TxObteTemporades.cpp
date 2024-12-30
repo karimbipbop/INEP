@@ -15,9 +15,12 @@ void TxObteTemporades::executar() {
 			res.push_back(t);
 		}
 	}
+	catch (int exc) {
+		//no existeix
+		throw exc;
+	}
 	catch (sql::SQLException& e) {
-		//no existeix la pelicula.
-		throw;
+		throw e;
 	}
 }
 

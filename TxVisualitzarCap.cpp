@@ -20,7 +20,7 @@ void TxVisualitzarCap::executar() {
 			PassarelaCapitol cap = cercCap.cercaCapitol(titolSerie, numeroT, numeroC);
 			string data = today();
 			if (cap.obteDataEstrena() > data) {
-				throw; //no estrenada.
+				throw NoEstrenat; //no estrenada.
 			}
 			pVC = PassarelaVisualitzaCap(sU, titolSerie, numeroT, numeroC, data, 1);
 			pVC.insereix();

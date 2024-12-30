@@ -14,9 +14,12 @@ void TxObteInfoPel::executar() {
 		res.descripcio = pCon.obteDescripcio();
 		res.qualificacio = pCon.obteQualificacio();
 	}
-	catch (sql::SQLException& e) {
+	catch (int exc) {
 		//no existeix la pelicula.
-		throw;
+		throw exc;
+	}
+	catch (sql::SQLException& e) {
+		throw e;
 	}
 }
 

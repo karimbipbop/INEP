@@ -58,7 +58,7 @@ void CapaDePresentacio::processarRegistreUsuari()
 		cout << "Nou usuari registrat correctament!" << endl;
 	}
 	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error: " << e.what() << std::endl;
+		std::cerr << "Error inesperat: " << e.what() << std::endl;
 		return;
 	}
 }
@@ -155,7 +155,10 @@ void CapaDePresentacio::processarModificaUsuari() {
 		cout << "Nom complet: " << u.nom << "\n";
 		cout << "Sobrenom: " << u.sobrenom << "\n";
 		cout << "Correu electronic: " << u.correuElectronic << "\n";
-		formatDate(u.dataNaixament);
+		if (!formatDate(u.dataNaixament)) {
+			cout << "La data es erronia\n";
+			return;
+		}
 		cout << "Data naixement (DD/MM/AAAA): " << u.dataNaixament << "\n";
 		cout << "Modalitat subscripcio: " << u.subscripcio << "\n";
 	}
@@ -207,9 +210,16 @@ void CapaDePresentacio::processarVisualitzaPel() {
 		cout << "Data estrena: " << pel.dataEstrena << "\n";
 		cout << "Duracio: " << pel.duracio << "\n";
 	}
-	catch (sql::SQLException& e) {
+	catch (int exc) {
 		//No existeix la pelicula
-		cout << e.what();
+		if (exc == NoTrobat) {
+			cout << "No s'ha trobat la pel.licula\n";
+			return;
+		}
+	}
+	catch (sql::SQLException& e) {
+		cout << "Error inesperat: " << e.what() << "\n";
+		return;
 	}
 
 	cout << "Vols continuar amb la visualitzacio (S/N): ";
@@ -236,14 +246,20 @@ void CapaDePresentacio::processarVisualitzaPel() {
 				cout << "; " << aux.duracio << " min; " << aux.dataEstrena << "\n";
 			}
 		}
-		catch (...) {
-			cout << "ERROR\n";
-			//todo if excepciones mensajes custom.
+		catch (int exc) {
+			if (exc == NoEstrenat) {
+				cout << "Pel.licula no estrenada\n";
+			}
+			else if (exc == NoApta) {
+				cout << "Pel.licula no apta per l'edat de l'usuari\n";
+			}
+		}
+		catch(sql::SQLException& e) {
+			cout << "Error inesperat: " << e.what() << "\n";
 		}
 	}
 	else
 		return;
-	
 }
 
 void CapaDePresentacio::processarVisualitzaCap() {
@@ -307,8 +323,16 @@ void CapaDePresentacio::processarVisualitzaCap() {
 				formatDate(avui);
 				cout << "Visualitzacio registrada: " << avui << "\n";
 			}
-			catch (...) {
-				cout << "ERROR";
+			catch (int exc) {
+				if (exc == NoTrobat) {
+					cout << "Aquest capitol no existeix\n";
+				}
+				else if (exc == NoEstrenat) {
+					cout << "Aquest capitol no s'ha estrenat\n";
+				}
+			}
+			catch (sql::SQLException& e) {
+				cout << "Error inesperat: " << e.what() << "\n";
 			}
 		}
 		else
@@ -423,7 +447,6 @@ void CapaDePresentacio::processarUltimesNovetats() {
 
 void CapaDePresentacio::processarConsultarPelicules() {
 	TxConsultarPelicules tcon;
-	int numPels;
 	tcon.executar();
 	vector<string> pels = tcon.obteResultat();
 

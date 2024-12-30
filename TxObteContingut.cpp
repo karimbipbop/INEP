@@ -12,9 +12,12 @@ void TxObteContingut::executar() {
 		res.qualificacio = pCon.obteQualificacio();
 		res.tipus = pCon.obteTipus();
 	}
-	catch (sql::SQLException& e) {
+	catch (int exc) {
 		//no existeix la pelicula.
-		throw;
+		throw exc;
+	}
+	catch (sql::SQLException& e) {
+		throw e;
 	}
 }
 

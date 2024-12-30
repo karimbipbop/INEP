@@ -32,7 +32,7 @@ void PassarelaVisualitzaPel::insereix() {
 		c.execucio(query);
 	}
 	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error: " << e.what() << std::endl;
+		throw e;
 	}
 }
 
@@ -45,7 +45,7 @@ void PassarelaVisualitzaPel::modifica() {
 		c.execucio(query);
 	}
 	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error: " << e.what() << std::endl;
+		throw e;
 	}
 }
 
@@ -59,7 +59,7 @@ void PassarelaVisualitzaPel::esborra() {
 		c.execucio(query);
 	}
 	catch (sql::SQLException& e) {
-		std::cerr << "SQL Error: " << e.what() << std::endl;
+		throw e;
 	}
 }
 

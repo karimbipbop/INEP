@@ -74,7 +74,7 @@ void PassarelaUsuari::esborra()
         c.execucio(query);
     }
     catch (sql::SQLException& e) {
-		cerr << "SQL Error: " << e.what() << std::endl;
+        throw e;
 	}
 }
 
