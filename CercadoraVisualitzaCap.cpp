@@ -13,7 +13,9 @@ vector<PassarelaVisualitzaCap> CercadoraVisualitzaCap::cercaVisualitzaCap(string
 
         sql::ResultSet* result = db.consulta(query); // Execute query
 
-        // Pass data to PassarelaUsuari (assuming PassarelaUsuari constructor accepts a ResultSet)
+        if (!result) {
+            throw NoTrobat;
+        }
         while (result && result->next()) {
             PassarelaVisualitzaCap pasCap(result);
             visualitzacions.push_back(pasCap);
@@ -22,13 +24,12 @@ vector<PassarelaVisualitzaCap> CercadoraVisualitzaCap::cercaVisualitzaCap(string
         return visualitzacions;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }
 
 PassarelaVisualitzaCap CercadoraVisualitzaCap::cercaVisualitzaCap(string sobrenom, string titol_serie, int num_temporada, int num_capitol) {
-    //try {
+    try {
         ConnexioBD& db = ConnexioBD::getInstance(); // Get the singleton instance
         string query = "SELECT * FROM visualitzacio_capitol WHERE sobrenom_usuari = '" + sobrenom +
             "' AND titol_serie = '" + titol_serie + "' AND num_temporada = '" + to_string(num_temporada) +
@@ -41,11 +42,10 @@ PassarelaVisualitzaCap CercadoraVisualitzaCap::cercaVisualitzaCap(string sobreno
             return pasCap;
         }
         else {
-            throw 15;
+            throw NoTrobat;
         }
-    //}
-    /*catch (const sql::SQLException& e) {
-        cout << "aquiiiii\n";
+    }
+    catch (const sql::SQLException& e) {
         throw e;
-    }*/
+    }
 }

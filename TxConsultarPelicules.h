@@ -1,5 +1,4 @@
 #pragma once
-#include "DTOs.h"
 #include "Transaccio.h"
 #include <algorithm>
 
