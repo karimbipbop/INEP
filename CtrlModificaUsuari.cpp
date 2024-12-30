@@ -14,9 +14,20 @@ DTOUsuari CtrlModificaUsuari::consultaUsuari() {
 }
 
 void CtrlModificaUsuari::modificaUsuari(string nomU, string contraU, string correuU, string neixU, string modalitatU) {
+	if (correuU != "") {
+		CercadoraUsuari cercUsu;
+		try {
+			PassarelaUsuari pU = cercUsu.cercaUsuariPerCorreu(correuU);
+			throw CorreuExisteix;
+		} 
+		catch (int exc) {
+			if (exc == NoTrobat) {
+				usuari.posaCorreuElectronic(correuU);
+			}
+		}
+	}
 	if (nomU != "") usuari.posaNom(nomU);
 	if (contraU != "") usuari.posaContrasenya(contraU);
-	if (correuU != "") usuari.posaCorreuElectronic(correuU);
 	if (neixU != "") usuari.posaDataNaixement(neixU);
 	if (modalitatU != "") usuari.posaSubscripcio(modalitatU);
 
