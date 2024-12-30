@@ -25,9 +25,12 @@ void TxObteCapitols::executar() {
 			return a.numero < b.numero; // Ordenem de mes gran a mes petit
 			});
 	}
-	catch (sql::SQLException& e) {
+	catch (int exc) {
 		//no existeix la pelicula.
-		throw;
+		throw exc;
+	}
+	catch (sql::SQLException& e) {
+		throw e;
 	}
 }
 

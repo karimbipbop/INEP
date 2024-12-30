@@ -19,17 +19,17 @@ void TxVisualitzarPel::executar() {
 			PassarelaPelicula pel = cercPel.cercaPelicula(titolP);
 			string data = today();
 			if (pel.obteDataEstrena() > data)
-				throw; //Pel.licula no estrenada.
+				throw NoEstrenat; //Pel.licula no estrenada.
 			PassarelaContingut pCon = cercCont.cercaContingutPerTitol(titolP);
 			string qual = pCon.obteQualificacio();
 			if (sSubscripcio == "Infantil" && (qual == "16+" || qual == "18+"))
-				throw; //Pel.licula no apta.
+				throw NoApta; //Pel.licula no apta.
 			pVP = PassarelaVisualitzaPel(sU, titolP, data, 1);
 			pVP.insereix();
 		}
 		catch (const sql::SQLException& e) {
 			//No existeix la pelicula...
-			throw;
+			throw e;
 		}
 		
 	}

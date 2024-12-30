@@ -27,7 +27,11 @@ void TxConsultarPelicules::executar() {
 			formatDate(data);
 			info += " [VISTA: " + data + "]";
 		}
-		catch (...) {
+		catch (sql::SQLException& e) {
+			throw e;
+		}
+		catch (int exc) {
+			throw exc;
 		}
 
 		resultat.push_back(info);
