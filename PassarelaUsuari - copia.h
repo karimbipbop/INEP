@@ -2,6 +2,9 @@
 #include "ConnexioBD.h"
 #include "DTOs.h"
 
+const int SobrenomExisteix = 3;
+const int CorreuExisteix = 4;
+
 class PassarelaUsuari {
 private:
     string nom, sobrenom, contrasenya, correuElectronic, dataNaixement, subscripcio;
