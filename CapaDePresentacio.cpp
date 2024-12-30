@@ -137,7 +137,10 @@ void CapaDePresentacio::processarModificaUsuari() {
 	getline(cin, u.correuElectronic);
 	cout << "Data naixement (DD/MM/AAAA): ";
 	getline(cin, u.dataNaixament);
-	formatDate(u.dataNaixament);
+	if (!formatDate(u.dataNaixament)) {
+		cout << "La data es erronia\n";
+		return;
+	};
 	cout << "Modalitats de subscripcio: ";
 	getline(cin, u.subscripcio);
 	if (u.subscripcio != "Cinefil" && u.subscripcio != "Completa" && u.subscripcio != "Infantil") {
@@ -155,18 +158,15 @@ void CapaDePresentacio::processarModificaUsuari() {
 		cout << "Nom complet: " << u.nom << "\n";
 		cout << "Sobrenom: " << u.sobrenom << "\n";
 		cout << "Correu electronic: " << u.correuElectronic << "\n";
-		if (!formatDate(u.dataNaixament)) {
-			cout << "La data es erronia\n";
-			return;
-		}
+		formatDate(u.dataNaixament);
 		cout << "Data naixement (DD/MM/AAAA): " << u.dataNaixament << "\n";
 		cout << "Modalitat subscripcio: " << u.subscripcio << "\n";
 	}
-	catch (sql::SQLException& e) {
-		cout << "Error inesperat: " << e.what() << "\n";
-	}
 	catch (int exc) {
 		cout << "El correu ja esta utilitzat per un altre usuari\n";
+	}
+	catch (sql::SQLException& e) {
+		cout << "Error inesperat: " << e.what() << "\n";
 	}
 }
 
