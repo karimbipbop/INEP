@@ -30,55 +30,6 @@ PassarelaCapitol::PassarelaCapitol(string titolSerieC, int numeroTemporadaC, int
     qualificacio = qualificacioC;
 }
 
-void PassarelaCapitol::insereix()
-{
-    try {
-        ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "INSERT INTO capitol VALUES ('" +
-            titolSerie + "', '" + std::to_string(numeroTemporada) +
-            "', '" + std::to_string(numero) + "', '" + titol + "', '" +
-            dataEstrena + "', '" + qualificacio + "')";
-        c.execucio(query);
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
-void PassarelaCapitol::modifica()
-{
-    try {
-        ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "UPDATE capitol SET "
-            "titol_serie = '" + titolSerie + "', "
-            "numero_temporada = '" + std::to_string(numeroTemporada) + "', "
-            "numero = '" + std::to_string(numero) + "', "
-            "titol = '" + titol + "', " + "data_estrena = '" + dataEstrena
-            + "', qualificacio = '" + qualificacio + "' "
-            "WHERE titol_serie = '" + titolSerie +
-            "' AND numero_temporada = '" + std::to_string(numeroTemporada) +
-            "' AND numero = '" + std::to_string(numero) + "'";
-        c.execucio(query);
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << endl;
-    }
-}
-
-void PassarelaCapitol::esborra()
-{
-    try {
-        ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "DELETE FROM capitol WHERE titol_serie = '" + titolSerie +
-            "' AND numero_temporada = '" + std::to_string(numeroTemporada) + "' AND" +
-            " numero = '" + std::to_string(numero) + "'";
-        c.execucio(query);
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
 string PassarelaCapitol::obteTitolSerie()
 {
     return titolSerie;

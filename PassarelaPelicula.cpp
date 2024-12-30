@@ -22,49 +22,6 @@ PassarelaPelicula::PassarelaPelicula(string titolP, string dataEstrenaP, int dur
     duracio = duracioP;
 }
 
-void PassarelaPelicula::insereix()
-{
-    try {
-        ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "INSERT INTO pelicula VALUES ('" +
-            titol + "', '" +
-            dataEstrena + "', '" +
-            std::to_string(duracio) + "')";
-        c.execucio(query);
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
-void PassarelaPelicula::modifica()
-{
-    try {
-        ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "UPDATE pelicula SET "
-            "titol = '" + titol + "', "
-            "data_estrena = '" + dataEstrena + "', "
-            "duracio = '" + std::to_string(duracio) + "' "
-            "WHERE titol = '" + titol + "'";
-        c.execucio(query);
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << endl;
-    }
-}
-
-void PassarelaPelicula::esborra()
-{
-    try {
-        ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "DELETE FROM pelicula WHERE titol = '" + titol + "'";
-        c.execucio(query);
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
 string PassarelaPelicula::obteTitol()
 {
     return titol;

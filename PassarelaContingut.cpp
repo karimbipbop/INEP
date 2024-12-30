@@ -25,51 +25,6 @@ PassarelaContingut::PassarelaContingut(string titolC, string descripcioC, string
     tipus = tipusC;
 }
 
-void PassarelaContingut::insereix()
-{
-    try {
-        ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "INSERT INTO contingut VALUES ('" +
-            titol + "', '" +
-            descripcio + "', '" +
-            qualificacio + "', '" +
-            tipus + "')";
-        c.execucio(query);
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
-void PassarelaContingut::modifica()
-{
-    try {
-        ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "UPDATE contingut SET "
-            "titol = '" + titol + "', "
-            "descripcio = '" + descripcio + "', "
-            "qualificacio = '" + qualificacio + "', "
-            "tipus = '" + tipus + "' "
-            "WHERE titol = '" + titol + "'";
-        c.execucio(query);
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << endl;
-    }
-}
-
-void PassarelaContingut::esborra()
-{
-    try {
-        ConnexioBD& c = ConnexioBD::getInstance();
-        std::string query = "DELETE FROM contingut WHERE titol = '" + titol + "'";
-        c.execucio(query);
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}
-
 string PassarelaContingut::obteTitol()
 {
     return titol;

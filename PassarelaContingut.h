@@ -9,9 +9,6 @@ public:
     PassarelaContingut();
     PassarelaContingut(sql::ResultSet* result);
     PassarelaContingut(string titolC, string descripcioC, string qualificacioC, string tipusC);
-    void insereix();
-    void modifica();
-    void esborra();
 
     string obteTitol();
     string obteDescripcio();

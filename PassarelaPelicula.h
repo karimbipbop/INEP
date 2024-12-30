@@ -10,9 +10,6 @@ public:
     PassarelaPelicula();
     PassarelaPelicula(sql::ResultSet* result);
     PassarelaPelicula(string titolP, string dataEstrenaP, int duracioP);
-    void insereix();
-    void modifica();
-    void esborra();
 
     string obteTitol();
     string obteDataEstrena();
