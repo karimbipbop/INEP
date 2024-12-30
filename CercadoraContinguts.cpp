@@ -103,7 +103,7 @@ PassarelaContingut CercadoraContinguts::cercaContingutPerTitol(string titol) {
 
         if (!result->next()) {
             delete result;
-            throw;
+            throw NoTrobat;
             // No hi ha continguts llavors...
         }
         PassarelaContingut pasCon(result);

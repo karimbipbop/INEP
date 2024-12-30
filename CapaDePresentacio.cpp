@@ -345,6 +345,11 @@ void CapaDePresentacio::processarVisualitzaCap() {
 	catch (sql::SQLException& e) {
 		cout << e.what();
 	}
+	catch (int exc) {
+		if (exc == NoTrobat) {
+			cout << "Error: La serie no existeix.\n";
+		}
+	}
 }
 
 void CapaDePresentacio::processarConsultarVisualitzacions() {
