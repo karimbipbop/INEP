@@ -14,7 +14,7 @@ PassarelaUsuari CercadoraUsuari::cercaUsuari(string sobrenomU) {
 
         if (!result || !result->next()) {
             delete result;
-            throw(UsuariNoExisteix);
+            throw NoTrobat;
         }
 
         PassarelaUsuari pasUsu(result);
@@ -23,7 +23,6 @@ PassarelaUsuari CercadoraUsuari::cercaUsuari(string sobrenomU) {
         return pasUsu;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }

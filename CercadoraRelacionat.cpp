@@ -14,7 +14,7 @@ vector<PassarelaRelacionat> CercadoraRelacionat::cercaRelacionats(string titol) 
 
         if (!result) {
             delete result;
-            throw;
+            throw NoTrobat;
             // No hi ha continguts llavors...
         }
 
@@ -28,7 +28,6 @@ vector<PassarelaRelacionat> CercadoraRelacionat::cercaRelacionats(string titol) 
         return vpasRel;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }

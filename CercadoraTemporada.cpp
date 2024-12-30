@@ -14,7 +14,7 @@ vector<PassarelaTemporada> CercadoraTemporada::cercaTemporades(string titol) {
 
         if (!result) {
             delete result;
-            throw;
+            throw NoTrobat;
             // No hi ha continguts llavors...
         }
         vector<PassarelaTemporada> vPasTemp;
@@ -27,7 +27,6 @@ vector<PassarelaTemporada> CercadoraTemporada::cercaTemporades(string titol) {
         return vPasTemp;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }

@@ -23,8 +23,7 @@ vector<PassarelaVisualitzaPel> CercadoraVisualitzaPel::cercaVisualitzaPel(string
         return visualitzacions;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }
 
@@ -43,10 +42,10 @@ PassarelaVisualitzaPel CercadoraVisualitzaPel::cercaVisualitzaPel(string sobreno
         }
         else {
             delete result; // Liberar memoria
-            throw(13); //hacer error
+            throw NoTrobat; //hacer error
         }
     }
     catch (const sql::SQLException& e) {
-        throw;
+        throw e;
     }
 }

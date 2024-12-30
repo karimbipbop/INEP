@@ -14,7 +14,7 @@ vector<PassarelaCapitol> CercadoraCapitol::cercaCapitols(string titol_serie) {
 
         if (!result) {
             delete result;
-            throw;
+            throw NoTrobat;
             // No hi ha continguts llavors...
         }
 
@@ -28,8 +28,7 @@ vector<PassarelaCapitol> CercadoraCapitol::cercaCapitols(string titol_serie) {
         return vpasCap;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }
 
@@ -43,7 +42,7 @@ vector<PassarelaCapitol> CercadoraCapitol::cercaCapitols(string titol_serie, int
 
         if (!result) {
             delete result;
-            throw;
+            throw NoTrobat;
             // No hi ha continguts llavors...
         }
 
@@ -57,8 +56,7 @@ vector<PassarelaCapitol> CercadoraCapitol::cercaCapitols(string titol_serie, int
         return vpasCap;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }
 
@@ -72,7 +70,7 @@ PassarelaCapitol CercadoraCapitol::cercaCapitol(string titol_serie, int numT, in
 
         if (!result->next()) {
             delete result;
-            throw;
+            throw NoTrobat;
             // No hi ha continguts llavors...
         }
 
@@ -81,7 +79,6 @@ PassarelaCapitol CercadoraCapitol::cercaCapitol(string titol_serie, int numT, in
         return pasCap;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }

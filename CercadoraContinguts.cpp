@@ -27,8 +27,7 @@ vector<PassarelaContingut> CercadoraContinguts::cercaContinguts() {
         return vpasCon;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }
 
@@ -49,7 +48,7 @@ vector<PassarelaContingut> CercadoraContinguts::cercaContingutsPerQualificacio(v
         sql::ResultSet* result = db.consulta(query);
         if (!result) {
             delete result;
-            throw;
+            throw NoTrobat;
             // No hi ha continguts llavors...
         }
         vector<PassarelaContingut> vpasCon;
@@ -63,8 +62,7 @@ vector<PassarelaContingut> CercadoraContinguts::cercaContingutsPerQualificacio(v
         return vpasCon;
     }
     catch (const sql::SQLException& e) {
-        cerr << "MySQL error: " << e.what() << endl;
-        throw;
+        throw e;
     }
 }
 
