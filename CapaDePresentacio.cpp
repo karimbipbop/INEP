@@ -140,7 +140,7 @@ void CapaDePresentacio::processarModificaUsuari() {
 	formatDate(u.dataNaixament);
 	cout << "Modalitats de subscripcio: ";
 	getline(cin, u.subscripcio);
-	if (u.subscripcio != "Cinefil" && u.subscripcio != "Completa" && u.subscripcio != "Infantil") {
+	if (u.subscripcio != "" && u.subscripcio != "Cinefil" && u.subscripcio != "Completa" && u.subscripcio != "Infantil") {
 		cout << "Modalitat incorrecta\n";
 		return;
 	}
