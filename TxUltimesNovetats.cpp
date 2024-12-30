@@ -8,17 +8,21 @@ void TxUltimesNovetats::executar() {
 	string dataAvui = today();
 
 	vector<PassarelaContingut> continguts;
-	if (subscripcio == "Infantil") {
-		continguts = cercCont.cercaContingutsPerQualificacio({ "TP", "7+", "12+" });
+	try {
+		if (subscripcio == "Infantil") {
+			continguts = cercCont.cercaContingutsPerQualificacio({ "TP", "7+", "12+" });
+		}
+		else if (subscripcio == "Completa") {
+			continguts = cercCont.cercaContinguts();
+		}
+		else {
+			// Cinèfil
+			continguts = cercCont.cercaContingutsPerTipus("pelicula");
+		}
 	}
-	else if (subscripcio == "Completa") {
-		continguts = cercCont.cercaContinguts();
+	catch (int exc) {
+		throw exc;
 	}
-	else {
-		// Cinèfil
-		continguts = cercCont.cercaContingutsPerTipus("pelicula");
-	}
-
 	int n = continguts.size();
 	vector<string> pelicules;
 	vector<string> capitols;

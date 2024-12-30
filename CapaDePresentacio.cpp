@@ -405,12 +405,19 @@ void CapaDePresentacio::processarProximesEstrenes() {
 	cout << "** Properes estrenes **\n";
 	cout << "Modalitat: " << modalitat << "\n\n";
 
-	TxProximesEstrenes p(modalitat);
-	p.executar();
-	vector<string> estrenes = p.obteResultat();
-	int n = estrenes.size();
-	for (int i = 0; i < n; ++i) {
-		cout << i+1 << ".- " << estrenes[i] << endl;
+	try {
+		TxProximesEstrenes p(modalitat);
+		p.executar();
+		vector<string> estrenes = p.obteResultat();
+		int n = estrenes.size();
+		for (int i = 0; i < n; ++i) {
+			cout << i + 1 << ".- " << estrenes[i] << endl;
+		}
+	}
+	catch (int exc) {
+		if (exc == NoTrobat) {
+			cout << "No hi ha properes estrenes!\n";
+		}
 	}
 }
 
@@ -433,25 +440,38 @@ void CapaDePresentacio::processarUltimesNovetats() {
 
 	cout << "** Novetats **\n";
 	cout << "Modalitat: " << modalitat << "\n\n";
-	TxUltimesNovetats u(modalitat);
-	u.executar();
-	pair<vector<string>, vector<string>> novetats = u.obteResultat();
-	int n_pel = novetats.first.size();
-	cout << "** Novetats pel.licules **\n";
-	cout << "***************************\n";
-	for (int i = 0; i < n_pel; ++i) {
-		cout << i+1 << ".- " << novetats.first[i] << endl;
-	}
-	if (modalitat != "Cinefil" and modalitat != "Cinèfil") {
-		// Si no es cinefil mostrem les series
-		int n_cap = novetats.second.size();
-		cout << "** Novetats series **\n";
-		cout << "***************************\n";
-		for (int i = 0; i < n_cap; ++i) {
-			cout << i + 1 << ".- " << novetats.second[i] << endl;
+	try {
+		TxUltimesNovetats u(modalitat);
+		u.executar();
+		pair<vector<string>, vector<string>> novetats = u.obteResultat();
+		int n_pel = novetats.first.size();
+		if (n_pel != 0) {
+			cout << "** Novetats pel.licules **\n";
+			cout << "***************************\n";
+			for (int i = 0; i < n_pel; ++i) {
+				cout << i + 1 << ".- " << novetats.first[i] << endl;
+			}
+		}
+		if (modalitat != "Cinefil" and modalitat != "Cinèfil") {
+			// Si no es cinefil mostrem les series
+			int n_cap = novetats.second.size();
+			if (n_cap == 0) {
+				if (n_pel == 0) throw NoTrobat;
+			}
+			else {
+				cout << "** Novetats series **\n";
+				cout << "***************************\n";
+				for (int i = 0; i < n_cap; ++i) {
+					cout << i + 1 << ".- " << novetats.second[i] << endl;
+				}
+			}
 		}
 	}
-	
+	catch (int exc) {
+		if (exc == NoTrobat) {
+			cout << "No hi ha novetats\n";
+		}
+	}
 }
 
 void CapaDePresentacio::processarConsultarPelicules() {
