@@ -265,12 +265,16 @@ void CapaDePresentacio::processarVisualitzaPel() {
 void CapaDePresentacio::processarVisualitzaCap() {
 	cout << "** Visualitzar Capitol **\n";
 	string nomS;
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cout << "Nom de la serie: ";
-	getline(cin, nomS);
 	PetitFlix& pf = PetitFlix::getInstance();
 	string sobrenom = pf.obteUsuari().obteSobrenom();
 	string modalitat = pf.obteUsuari().obteSubscripcio();
+	if (pf.obteUsuari().obteSubscripcio() == "Cinefil") {
+		cout << "Aquest usuari no pot visualitzar series\n";
+		return;
+	}
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cout << "Nom de la serie: ";
+	getline(cin, nomS);
 	try {
 		TxObteContingut tcont(nomS);
 		tcont.executar();
